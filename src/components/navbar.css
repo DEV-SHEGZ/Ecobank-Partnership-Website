@@ -1,0 +1,22 @@
+#start-learning-btn {
+  padding: 12px 32px !important;
+  border-radius: 100px;
+  background-color: #0075ff;
+  color: white;
+  border: none;
+}
+
+#eco-navbar {
+  padding: 15px 0px !important;
+  width: 90% !important;
+  margin: auto !important;
+  background: none !important;
+}
+
+.rmv-flx {
+  flex-grow: 0 !important;
+}
+
+.navbar-nav > li {
+  margin-right: 20px !important;
+}

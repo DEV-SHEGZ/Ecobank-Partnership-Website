@@ -1,0 +1,32 @@
+.hero-container {
+  background-color: #fdd8e2 !important;
+  height: 100vh !important;
+}
+
+.zero-h1 {
+  font-size: 50px !important;
+}
+
+.claim-btn {
+  padding: 12px 24px !important;
+  border-radius: 100px;
+  color: white !important;
+  background-color: #f53064 !important;
+  border: none !important;
+  font-size: 18px;
+}
+.open-btn {
+  padding: 12px 24px !important;
+  border-radius: 100px;
+  border-width: 1px;
+  color: #4e4e4e;
+  background-color: #fee7ed !important;
+  border-color: #f53064 !important;
+  font-size: 18px;
+}
+
+.roboto-medium {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+}

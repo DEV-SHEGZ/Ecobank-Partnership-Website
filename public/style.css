@@ -3,3 +3,8 @@
   padding: 0 !important;
   box-sizing: border-box !important;
 }
+
+@font-face {
+  font-family: visby;
+  src: url("../fonts/visby.otf");
+}

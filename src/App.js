@@ -9,7 +9,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 function App() {
   return (
     <Router>
-      <Nav />
       <Routes>
         <Route path="/" element={<Hero />} />
       </Routes>

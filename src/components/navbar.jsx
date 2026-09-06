@@ -1,13 +1,14 @@
 import react from "react";
 import "./navbar.css";
 import atcLogo from "../images/A.T.C.png";
+import ecologo from "../images/ecoobank-logo.png";
 
 const navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav id="eco-navbar" class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          Navbar
+          <img src={ecologo} alt="Ecobank Logo" className="eco-logo" />
         </a>
         <button
           class="navbar-toggler"
@@ -20,29 +21,39 @@ const navbar = () => {
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="rmv-flx collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Home
+              <a class="nav-link" href="#">
+                How it works
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
-                Link
+                Our Teachers
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                The journey
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" aria-disabled="true">
-                Disabled
+              <a class="nav-link" href="#">
+                Enroll now
               </a>
             </li>
           </ul>
-          <button class="d-flex align-items-center" role="search">
-            <p>Start Learning</p>
-            <img src={atcLogo} alt="ATC Logo" className="atc-logo" />
-          </button>
         </div>
+        <button
+          id="start-learning-btn"
+          class="d-flex align-items-center"
+          role="search"
+        >
+          <p>Start Learning</p>
+          <img src={atcLogo} alt="ATC Logo" className="atc-logo" />
+        </button>
       </div>
     </nav>
   );
