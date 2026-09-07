@@ -23,23 +23,28 @@ const navbar = () => {
         </button>
         <div class="rmv-flx collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
+            <li class="nav-item roboto-regular ">
+              <a class="nav-link" href="#">
+                About
+              </a>
+            </li>
+            <li class="nav-item roboto-regular ">
               <a class="nav-link" href="#">
                 How it works
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item roboto-regular ">
               <a class="nav-link" href="#">
                 Our Teachers
               </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item roboto-regular ">
               <a class="nav-link" href="#">
                 The journey
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item roboto-regular ">
               <a class="nav-link" href="#">
                 Enroll now
               </a>

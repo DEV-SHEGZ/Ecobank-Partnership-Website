@@ -18,5 +18,10 @@
 }
 
 .navbar-nav > li {
-  margin-right: 20px !important;
+  margin-right: 30px !important;
+  font-size: 16px !important;
+}
+
+.navbar-nav > li > a {
+  color: #00577a !important;
 }

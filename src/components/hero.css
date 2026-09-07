@@ -5,6 +5,24 @@
 
 .zero-h1 {
   font-size: 50px !important;
+  color: #023448 !important;
+  width: 70% !important;
+}
+
+.zero-p {
+  font-size: 24px !important;
+  letter-spacing: -0.5px !important;
+  width: 65% !important;
+}
+
+.hero-content {
+  width: 70% !important;
+  height: 271px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  margin-left: 7% !important;
+  margin-top: 10% !important;
 }
 
 .claim-btn {
@@ -14,6 +32,7 @@
   background-color: #f53064 !important;
   border: none !important;
   font-size: 18px;
+  margin-right: 10px !important;
 }
 .open-btn {
   padding: 12px 24px !important;
@@ -29,4 +48,22 @@
   font-family: Roboto;
   font-weight: 500;
   font-style: Medium;
+}
+
+.roboto-regular {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+}
+
+.curtain {
+  position: absolute;
+  top: 10%;
+  right: 0%;
+}
+
+.girl {
+  position: absolute;
+  top: 30%;
+  right: 7%;
 }

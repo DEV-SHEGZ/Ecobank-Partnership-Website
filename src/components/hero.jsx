@@ -1,5 +1,7 @@
 import react from "react";
 import Nav from "./navbar.jsx";
+import curtain from "../images/pink curtain.png";
+import girl from "../images/pink girl.png";
 import "./hero.css";
 
 const Hero = () => {
@@ -10,7 +12,7 @@ const Hero = () => {
         <h1 className="roboto-medium zero-h1">
           Zero to Mastery with Andrew Teaching Coding
         </h1>
-        <p>
+        <p className="roboto-regular zero-p">
           Claim the free coding workbook to start your child learning journey
           today with 18 hrs WhatsApp support
         </p>
@@ -21,6 +23,8 @@ const Hero = () => {
           </button>
         </div>
       </div>
+      <img src={curtain} alt="Pink Curtain" className="curtain" />
+      <img src={girl} alt="Pink Girl" className="girl" />
     </div>
   );
 };
