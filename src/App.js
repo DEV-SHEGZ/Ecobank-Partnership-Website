@@ -12,10 +12,18 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/" element={<Hero />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
     </Router>
+  );
+}
+
+function MainPage() {
+  return (
+    <>
+      <Hero />
+      <How />
+    </>
   );
 }
 

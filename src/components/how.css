@@ -1,3 +1,4 @@
 .how-container {
   background: linear-gradient(180deg, #aed3ff 0%, #f0f7ff 86.69%);
+  height: 100vh !important;
 }

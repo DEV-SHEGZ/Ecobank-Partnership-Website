@@ -108,6 +108,7 @@
     #adbd03 48%,
     #adbd03 100%
   );
+  z-index: 1 !important;
 }
 
 .claim-container {
