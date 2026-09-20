@@ -26,6 +26,7 @@ import "./hero.css";
 
 const Hero = () => {
   return (
+
     <>
       <Swiper
         modules={[Autoplay]}
@@ -177,7 +178,7 @@ const Hero = () => {
             <img src={child} alt="Child" className="child" />
           </div>
         </div>
-        </section>
+        </div>
      <div className="initiative-container">
         <Initiative />
     </div>
@@ -187,8 +188,6 @@ const Hero = () => {
       <div className="footer-container">
         <Footer />
       </div>
-
-    </div>
     </>
   );
 };
