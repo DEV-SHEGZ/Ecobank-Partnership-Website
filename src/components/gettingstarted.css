@@ -1,0 +1,242 @@
+.getting-started {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 55px 6% 80px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+}
+
+.section-label {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto 18px;
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: -0.4px;
+  color: #0082BB;
+  text-align: left;
+  padding-top: 100px !important;
+}
+.getting-started h2 {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto 45px;
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 53px;
+  letter-spacing: -1px;
+  color: #023448;
+  text-align: left;
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+.getting-started-cards {
+  display: flex;
+  gap: 32px;
+  width: 1160px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.coding-card {
+  position: relative;
+  height: 741px;
+  width: 1160px; 
+  box-sizing: border-box;
+  background-color: #c6db00;
+  border-radius: 24px;
+}
+.coding-card:first-child {
+  width: 478px;
+  flex: 0 0 478px;
+}
+.coding-card h3 {
+  margin: 22px;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -1px;
+  color: #023448;
+  padding-left: 30px !important;
+  padding-top: 30px !important;
+  padding-bottom: 10px !important;
+}
+.coding-card ul {
+  list-style: disc !important;
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  margin: 0 !important;
+  padding-left: 50px !important;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -1px;
+  color: #023448;
+}
+
+.coding-card li {
+  display: list-item !important;
+  list-style: disc !important;
+  margin-bottom: 2px;
+  flex-grow: 1;
+  min-width: 0;
+  position: static !important; 
+  float: none !important;
+}
+
+.card-button {
+  min-width: 132px;
+  height: 45px;
+  box-sizing: border-box;
+  margin-top: 22px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 76.83px;
+  background-color: #023448;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px !important;
+}
+.card-text-list img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  object-fit: contain;
+  object-position: bottom right;
+  flex-shrink: 0;
+  position: static !important; 
+  float: none !important;
+}
+.card-text-list{
+  display: flex;
+  flex-direction: row; /* Explicitly forces side-by-side */
+  align-items: flex-start; /* Aligns text to the top of the image */
+  gap: 20px; /* Creates clean spacing between them */
+  width: 100%;
+  position: relative;
+}
+@media (max-width: 900px) {
+  .getting-started {
+    padding: 45px 5% 60px;
+  }
+
+  .section-label {
+    font-size: 20px;
+  }
+
+  .getting-started h2 {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .getting-started-cards {
+    width: 100%;
+    max-width: 800px;
+    gap: 20px;
+  }
+
+  .coding-card {
+    height: 680px;
+    padding: 45px 30px;
+  }
+
+  .coding-card:first-child {
+    width: auto;
+    flex: 1;
+  }
+
+  .coding-card:last-child {
+    width: auto;
+    flex: 1;
+  }
+
+  .coding-card h3 {
+    font-size: 30px;
+  }
+
+  .coding-card ul {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  .card-girl {
+    width: 195px;
+    height: auto;
+  }
+
+  .card-boy {
+    width: 275px;
+    height: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .getting-started {
+    min-height: auto;
+    padding: 40px 20px 50px;
+  }
+
+  .section-label {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .getting-started h2 {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 30px;
+  }
+
+  .getting-started-cards {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .coding-card,
+  .coding-card:first-child,
+  .coding-card:last-child {
+    flex: none;
+    width: 100%;
+    height: 600px;
+  }
+
+  .card-text,
+  .coding-card:last-child .card-text {
+    width: 100%;
+  }
+
+  .coding-card h3 {
+    font-size: 28px;
+  }
+
+  .coding-card ul {
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  .card-girl {
+    width: 180px;
+    height: auto;
+  }
+
+  .card-boy {
+    width: 240px;
+    height: auto;
+  }
+}

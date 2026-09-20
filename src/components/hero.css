@@ -1,7 +1,11 @@
 .hero-container {
   background-color: #fdd8e2 !important;
   height: 100vh !important;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
 }
+
 
 .zero-h1 {
   font-size: 50px !important;
