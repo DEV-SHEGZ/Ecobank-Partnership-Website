@@ -4,6 +4,7 @@
   background-color: #0075ff;
   color: white;
   border: none;
+  text-decoration: none !important;
 }
 
 #eco-navbar {
@@ -11,6 +12,9 @@
   width: 90% !important;
   margin: auto !important;
   background: none !important;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .rmv-flx {
@@ -24,4 +28,10 @@
 
 .navbar-nav > li > a {
   color: #00577a !important;
+}
+
+.atc-logo {
+  border: 3px solid #ffbf46;
+  border-radius: 100px;
+  padding: 2px !important;
 }
