@@ -5,6 +5,10 @@
   position: relative;
   overflow: hidden;
 }
+.hero-container-green {
+  background-color: #d6e9c3 !important;
+  height: 100vh !important;
+}
 
 
 .zero-h1 {
@@ -26,7 +30,14 @@
   flex-direction: column !important;
   justify-content: space-between !important;
   margin-left: 7% !important;
-  margin-top: 10% !important;
+  margin-top: 15% !important;
+  z-index: 5 !important;
+  position: absolute !important;
+}
+
+.hero-container-green > .hero-content {
+  margin-top: 15% !important;
+  margin-left: 4% !important;
 }
 
 .claim-btn {
@@ -48,16 +59,27 @@
   font-size: 18px;
 }
 
+#green-btn {
+  background-color: #669438 !important;
+  color: #ffffff !important;
+}
+
+#green-white {
+  border: 1px solid #669438 !important;
+  background-color: #f2f8ec !important;
+  color: #4e4e4e !important;
+}
+
 .roboto-medium {
   font-family: Roboto;
   font-weight: 500;
-  font-style: Medium;
+  font-style: Medium !important;
 }
 
 .roboto-regular {
   font-family: Roboto;
   font-weight: 400;
-  font-style: Regular;
+  font-style: Regular !important;
 }
 
 .curtain {
@@ -70,4 +92,126 @@
   position: absolute;
   top: 30%;
   right: 7%;
+}
+
+.flower {
+  position: absolute;
+  bottom: 15%;
+}
+
+.claim-section {
+  height: 130px !important;
+  position: absolute;
+  width: 100%;
+  top: 87%;
+  min-height: 120px;
+  background: linear-gradient(
+    120deg,
+    #0c5369 0%,
+    #0c5369 48%,
+    #adbd03 48%,
+    #adbd03 100%
+  );
+}
+
+.claim-container {
+  width: 90%;
+  margin: auto !important;
+}
+
+.claim-input {
+  border-radius: 57.41px;
+  padding: 6px 12px 6px 12px !important;
+  border-width: 0.57px;
+  color: #a7b2b6;
+  font-size: 15px !important;
+  border: none !important;
+  width: 100%;
+}
+
+.input-p {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.claim-book-btn {
+  border-radius: 76.83px;
+  padding: 6px 18px 6px 18px !important;
+  background-color: #bdcf00;
+  color: #023448;
+  width: max-content !important;
+  border: none !important;
+}
+
+.child-p {
+  color: #023448;
+  font-size: 20px;
+}
+
+.child {
+  margin-top: 14px !important;
+}
+
+.child-content {
+  align-items: center !important;
+}
+
+.open-btn-child {
+  border: none !important;
+  border-radius: 76.83px;
+  padding: 6px 18px !important;
+  background-color: #023448 !important;
+  color: #ffffff;
+  width: max-content !important;
+}
+
+.atc-digital {
+  width: 50% !important;
+}
+
+.child-section {
+  width: 52% !important;
+  margin-left: 100px !important;
+}
+
+.atc-book {
+  margin-right: 50px !important;
+  height: 100px !important;
+}
+
+.left-bg {
+  position: absolute;
+  left: 8% !important;
+}
+
+.right-bg {
+  position: absolute;
+  width: 100vw !important;
+}
+
+.sat-big {
+  position: absolute !important;
+  top: 17%;
+}
+
+.teacher {
+  position: absolute !important;
+  right: 5%;
+  top: 20%;
+}
+.earth {
+  position: absolute !important;
+  top: 70%;
+  right: 16%;
+}
+
+.greengirl {
+  position: absolute !important;
+  top: 47%;
+  right: 27%;
+}
+.greenboy {
+  position: absolute !important;
+  top: 53%;
+  right: 39%;
 }

@@ -3,6 +3,8 @@ import "./navbar.css";
 import atcLogo from "../images/A.T.C.png";
 import ecologo from "../images/layer1 (1).png";
 
+import ecologo from "../images/ecoobank-logo.png";
+import { Link } from "react-router-dom";
 const navbar = () => {
   return (
     <nav id="eco-navbar" class="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,14 +53,15 @@ const navbar = () => {
             </li>
           </ul>
         </div>
-        <button
+        <Link
+          to="#"
           id="start-learning-btn"
           class="d-flex align-items-center"
           role="search"
         >
-          <p>Start Learning</p>
+          <p className="pe-3">Start Learning</p>
           <img src={atcLogo} alt="ATC Logo" className="atc-logo" />
-        </button>
+        </Link>
       </div>
     </nav>
   );
