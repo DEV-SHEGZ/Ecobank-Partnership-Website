@@ -1,0 +1,317 @@
+.initiative{
+ background-image: url("../images/Group.png");
+ width: 100%;
+ height: 740px;
+ position: relative;
+}
+.content{
+    display:flex;
+    flex-direction: row;
+}
+.title{
+font-family: Roboto;
+font-weight: 500;
+font-style: Medium;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: -0.4px;
+color: #0082BB;
+margin-top: 100px !important;
+}
+.title img{
+    width: 28px;
+height: 28px;
+opacity: 1;
+
+}
+.initiative-left{
+    align-items: left;
+    width: 433px;
+height: 475px;
+top: 228px;
+left: 140px;
+gap: 24px;
+opacity: 1;
+margin-left: 100px !important;
+display: flex;
+flex-direction: column;
+margin-right: 200px !important;
+}
+
+.initiative-title{
+opacity: 1;
+font-family: Roboto;
+font-weight: 500;
+font-style: Medium;
+font-size: 40px;
+line-height: 53px;
+letter-spacing: -1px;
+color: #023448;
+}
+.initiative-description{
+    font-family: Roboto;
+font-weight: 400;
+font-style: Regular;
+font-size: 18px;
+line-height: 28px;
+letter-spacing: -0.4px;
+color: #4E4E4E;
+}
+.button{
+width: 279px;
+height: 56.000003814697266px;
+padding-top: 16px !important;
+padding-right: 32px !important;
+padding-bottom: 16px !important;
+padding-left: 32px !important;
+gap: 10px;
+opacity: 1;
+border-radius: 100px;
+background: #BDCF00;
+border: none;
+font-family: Roboto;
+font-weight: 500;
+font-style: Medium;
+font-size: 18px;
+line-height: 100%;
+letter-spacing: -0.5px;
+color: #023448;
+}
+.initiative-right {
+  position: relative;
+  flex: 1;
+  top: 100px;
+}
+
+.initiative-art {
+  position: relative;
+  width: 700px;
+  height: 600px;
+}
+.robot {
+  position: absolute;
+  width: 241.0795135498047px;
+  height: 509.99993896484375px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.laptop {
+  position: absolute;
+  width: 568.4359741210938px;
+  height: 338.24127197265625px;
+  top: 215px;
+  left: 50px;
+  z-index: 2;
+}
+
+.screen {
+  width: 370px;
+  height: 227px;
+  position: absolute;
+  top: 170px;
+  left: 165px;
+  z-index: 3;
+}
+.initiative-kids {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.girl-reading {
+  position: absolute;
+  width: 149.34938049316406px;
+  height: 120.80357360839844px;
+  top: 603px;
+  left: 286px;
+  opacity: 1;
+}
+
+.boy-reading {
+  position: absolute;
+  width: 186.51034545898438px;
+  height: 121.22572326660156px;
+  top: 569px;
+  left: 580px;
+  opacity: 1;
+}
+
+
+@media (max-width: 768px) {
+  .initiative {
+    height: auto;
+    min-height: 100vh;
+    background-image: url("../images/Group.png");
+    background-size: cover;
+    background-position: center;
+    padding: 36px 18px 24px;
+    overflow: hidden;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .initiative-left {
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-right: 0 !important;
+  }
+
+  .title {
+    margin-top: 0 !important;
+    font-size: 20px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .title img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .initiative-title {
+    font-size: 34px;
+    line-height: 1.12;
+    letter-spacing: -0.8px;
+    max-width: 100%;
+  }
+
+  .initiative-description {
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 280px;
+    height: 52px;
+    padding: 0 20px !important;
+    font-size: 17px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .initiative-right {
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin-top: 8px;
+    left: 0;
+  }
+
+  .initiative-art {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 360px;
+    margin: 0 auto;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .robot {
+    width: 170px;
+    height: auto;
+    top: 8px;
+    left: 12px;
+  }
+
+  .laptop {
+    width: 330px;
+    height: auto;
+    left: 38px;
+    top: 120px;
+  }
+
+  .screen {
+    width: 200px;
+    height: auto;
+    top: 95px;
+    left: 108px;
+  }
+
+  .initiative-kids {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin-top: -10px;
+  }
+
+  .girl-reading {
+    width: 102px;
+    height: auto;
+    left: 18px;
+    top: 0;
+  }
+
+  .boy-reading {
+    width: 122px;
+    height: auto;
+    right: 18px;
+    left: auto;
+    top: 0;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .initiative {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 28px;
+  }
+
+  .initiative-left {
+    gap: 14px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .initiative-title {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .initiative-description {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .button {
+    max-width: 240px;
+    font-size: 16px;
+    height: 48px;
+  }
+
+  .initiative-art {
+    transform: scale(0.72);
+    margin-left: -22px;
+    margin-top: -8px;
+  }
+
+  .initiative-kids {
+    height: 100px;
+    margin-top: -18px;
+  }
+}

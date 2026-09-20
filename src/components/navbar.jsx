@@ -1,6 +1,8 @@
 import react from "react";
 import "./navbar.css";
 import atcLogo from "../images/A.T.C.png";
+import ecologo from "../images/layer1 (1).png";
+
 import ecologo from "../images/ecoobank-logo.png";
 import { Link } from "react-router-dom";
 const navbar = () => {

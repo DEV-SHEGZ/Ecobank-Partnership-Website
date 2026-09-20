@@ -2,6 +2,9 @@ import react from "react";
 import Nav from "./navbar.jsx";
 import curtain from "../images/pink curtain.png";
 import girl from "../images/pink girl.png";
+import GettingStarted from "./gettingstarted.jsx";
+import Footer from "./footer.jsx";
+import Initiative from "./initiative.jsx";
 import flower from "../images/flowers.png";
 import atcbook from "../images/atc digital.png";
 import child from "../images/Child.png";
@@ -20,8 +23,10 @@ import "swiper/css";
 
 import "./hero.css";
 
+
 const Hero = () => {
   return (
+
     <>
       <Swiper
         modules={[Autoplay]}
@@ -91,7 +96,8 @@ const Hero = () => {
 
       {/* 
 
-      <div className="hero-container">
+      <div className="page">
+      <section className="hero-container">
         <div className="hero-content">
           <h1 className="roboto-medium zero-h1">
             Zero to Mastery with Andrew Teaching Coding
@@ -172,6 +178,15 @@ const Hero = () => {
             <img src={child} alt="Child" className="child" />
           </div>
         </div>
+        </div>
+     <div className="initiative-container">
+        <Initiative />
+    </div>
+      <div className="getting-started-container">
+      <GettingStarted />
+      </div>
+      <div className="footer-container">
+        <Footer />
       </div>
     </>
   );

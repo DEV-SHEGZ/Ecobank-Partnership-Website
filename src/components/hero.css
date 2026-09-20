@@ -1,11 +1,15 @@
 .hero-container {
   background-color: #fdd8e2 !important;
   height: 100vh !important;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
 }
 .hero-container-green {
   background-color: #d6e9c3 !important;
   height: 100vh !important;
 }
+
 
 .zero-h1 {
   font-size: 50px !important;
