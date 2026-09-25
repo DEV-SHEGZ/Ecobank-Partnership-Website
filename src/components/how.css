@@ -1,4 +1,226 @@
 .how-container {
   background: linear-gradient(180deg, #aed3ff 0%, #f0f7ff 86.69%);
-  height: 100vh !important;
+  height: max-content !important;
+}
+
+.head-ind {
+  display: flex;
+  align-items: center;
+}
+
+.head-ind {
+  font-size: 24px !important;
+  color: #023448 !important;
+  padding-top: 7% !important;
+  padding-left: 10% !important;
+}
+
+.head-h1 {
+  color: #023448;
+  padding-top: 3% !important;
+  padding-left: 10% !important;
+  width: 50% !important;
+}
+
+.cloud {
+  width: 375px !important;
+  height: 528px !important;
+  position: relative;
+}
+
+.cloud-head {
+  position: relative !important;
+  background-image: url("../images/Pink cloud.png");
+  height: 192px !important;
+  z-index: 2 !important;
+}
+
+#cloud-2 > .cloud-head {
+  background-image: url("../images/Orange cloud.png");
+}
+#cloud-3 > .cloud-head {
+  background-image: url("../images/Purple cloud.png");
+}
+#cloud-4 > .cloud-head {
+  background-image: url("../images/Green cloud.png");
+}
+
+#cloud-1 > .cloud-head > .cloud-heading {
+  color: #f64977 !important;
+}
+#cloud-2 > .cloud-head > .cloud-heading {
+  color: #ff9e00 !important;
+  left: 23%;
+  top: 44%;
+  text-align: center;
+}
+#cloud-3 > .cloud-head > .cloud-heading {
+  color: #4c4ea2 !important;
+  left: 25%;
+}
+#cloud-4 > .cloud-head > .cloud-heading {
+  color: #669438 !important;
+  text-align: center;
+  left: 17%;
+  top: 40%;
+}
+
+#cloud-1 > .cloud-head > .cloud-p {
+  color: #f64977 !important;
+}
+#cloud-2 > .cloud-head > .cloud-p {
+  color: #ff9e00 !important;
+}
+#cloud-3 > .cloud-head > .cloud-p {
+  color: #4c4ea2 !important;
+}
+#cloud-4 > .cloud-head > .cloud-p {
+  color: #669438 !important;
+}
+
+.cloud-img {
+  z-index: 1;
+  position: absolute;
+}
+.cloud-p {
+  background-color: #ffffff;
+  border-radius: 100px;
+  padding: 10px 20px !important;
+  width: max-content !important;
+  position: absolute;
+  top: 19%;
+  left: 36%;
+}
+
+.cloud-heading {
+  font-size: 24px !important;
+  position: absolute;
+  top: 50%;
+  left: 18%;
+}
+
+.rope1 {
+  position: absolute;
+  top: 31%;
+  left: 43%;
+  z-index: 1;
+}
+
+.rope2 {
+  position: absolute;
+  top: 65%;
+  left: 47%;
+  z-index: 5;
+}
+
+.box {
+  border-radius: 20px;
+  position: absolute;
+  top: 68%;
+  z-index: 1;
+  width: 270px;
+  padding: 19px !important;
+  left: 14%;
+  transform: rotate(-2deg);
+  font-size: 18px;
+  line-height: 28px;
+}
+
+#pink-box {
+  background-color: #f64977 !important;
+  color: #ffffff;
+}
+#orange-box {
+  background-color: #ff9e00 !important;
+  color: #ffffff;
+  top: 70%;
+  transform: rotate(0deg);
+  left: 10%;
+}
+#purple-box {
+  background-color: #4c4ea2 !important;
+  color: #ffffff;
+  top: 82%;
+  transform: rotate(-1.2deg);
+  left: 14% !important;
+}
+#green-box {
+  background-color: #669438 !important;
+  color: #ffffff;
+  transform: rotate(1.4deg);
+  top: 75%;
+}
+
+.hole {
+  background-color: #c4dfff;
+  width: 6px;
+  height: 6px;
+  border-radius: 100px;
+  left: 49%;
+  top: 3%;
+  position: absolute;
+}
+
+.cloud-container {
+  display: flex !important;
+  position: relative !important;
+  height: 800px !important;
+  width: 90%;
+  margin: auto !important;
+}
+
+#cloud-1 {
+  position: absolute !important;
+  top: 2% !important;
+  left: -2%;
+}
+
+#cloud-2 {
+  position: absolute !important;
+  top: 9%;
+  left: 26%;
+}
+#cloud-3 {
+  position: absolute !important;
+  top: -12% !important;
+  left: 48%;
+}
+
+#cloud-4 {
+  position: absolute !important;
+  top: -26%;
+  left: 73%;
+}
+
+#cloud-2 > .rope1 {
+  top: 35%;
+  left: 42%;
+}
+
+#cloud-2 > .rope2 {
+  top: 67%;
+  left: 44%;
+}
+#cloud-3 > .rope1 {
+  top: 29%;
+  left: 43%;
+}
+
+#cloud-3 > .rope2 {
+  top: 79%;
+  left: 47.6%;
+}
+
+#cloud-4 > .rope1 {
+  top: 30%;
+  left: 44%;
+}
+
+#cloud-4 > .rope2 {
+  top: 72.2%;
+  left: 48.4%;
+}
+
+.code14eco {
+  margin-top: -183px !important;
 }

@@ -10,7 +10,6 @@
   height: 100vh !important;
 }
 
-
 .zero-h1 {
   font-size: 50px !important;
   color: #023448 !important;
@@ -24,7 +23,7 @@
 }
 
 .hero-content {
-  width: 70% !important;
+  width: 60% !important;
   height: 271px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -84,13 +83,13 @@
 
 .curtain {
   position: absolute;
-  top: 10%;
+  top: 11%;
   right: 0%;
 }
 
 .girl {
   position: absolute;
-  top: 30%;
+  top: 32%;
   right: 7%;
 }
 
@@ -103,10 +102,10 @@
   height: 130px !important;
   position: absolute;
   width: 100%;
-  top: 87%;
+  top: 85%;
   min-height: 120px;
   background: linear-gradient(
-    120deg,
+    148deg,
     #0c5369 0%,
     #0c5369 48%,
     #adbd03 48%,
@@ -118,6 +117,7 @@
 .claim-container {
   width: 90%;
   margin: auto !important;
+  justify-content: space-between !important;
 }
 
 .claim-input {
@@ -164,15 +164,6 @@
   background-color: #023448 !important;
   color: #ffffff;
   width: max-content !important;
-}
-
-.atc-digital {
-  width: 50% !important;
-}
-
-.child-section {
-  width: 52% !important;
-  margin-left: 100px !important;
 }
 
 .atc-book {

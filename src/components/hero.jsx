@@ -23,10 +23,8 @@ import "swiper/css";
 
 import "./hero.css";
 
-
 const Hero = () => {
   return (
-
     <>
       <Swiper
         modules={[Autoplay]}
@@ -35,7 +33,7 @@ const Hero = () => {
         loop={true}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
       >
         {/* Slide 1 */}
@@ -178,15 +176,6 @@ const Hero = () => {
             <img src={child} alt="Child" className="child" />
           </div>
         </div>
-        </div>
-     <div className="initiative-container">
-        <Initiative />
-    </div>
-      <div className="getting-started-container">
-      <GettingStarted />
-      </div>
-      <div className="footer-container">
-        <Footer />
       </div>
     </>
   );

@@ -1,0 +1,70 @@
+#Age-range {
+  width: 320px;
+  height: 45px;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  border: 0.57px solid #d1d8db;
+  background-color: #f6f8f9 !important;
+  color: #a7b2b6 !important;
+}
+
+#Age-range :focus {
+  border: none !important;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+option {
+  background-color: #ffffff !important;
+  color: #023448 !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+.option-age {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 300px !important;
+}
+
+.option-age label {
+  font-size: 12px !important;
+  color: #023448;
+}
+.arr-down {
+  position: absolute;
+  left: 96%;
+  top: 67%;
+}
+
+.options-cont {
+  width: 80% !important;
+  margin: auto !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.submit {
+  border-radius: 76.83px;
+  padding: 12px 24px !important;
+  background-color: #bdcf00 !important;
+  color: #023448 !important;
+  border: none !important;
+  margin-top: 23px !important;
+}

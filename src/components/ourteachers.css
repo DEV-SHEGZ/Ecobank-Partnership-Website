@@ -1,0 +1,72 @@
+#teach-div {
+  width: 63% !important;
+}
+
+#teacher-card {
+  width: 540px !important;
+  height: 779px;
+  background-color: #bdcf00 !important;
+  border-radius: 40px;
+
+  padding: 18px !important;
+}
+
+#teach-crd-bdy {
+  border-radius: 24px !important;
+  background-color: #ffffff;
+  padding: 32px !important;
+  margin-top: 13px !important;
+}
+
+#teach-crd-bdy > h5 {
+  font-size: 36px !important;
+  color: #023448 !important;
+}
+
+#first-p {
+  font-size: 30px !important;
+  line-height: 38px !important;
+  color: #023448 !important;
+}
+
+#years {
+  font-size: 24px !important;
+}
+
+.linkedprof {
+  display: flex !important;
+  align-items: center;
+}
+
+.linkedprof > a {
+  text-decoration: none !important;
+  font-size: 18px !important;
+  color: #023448 !important;
+}
+
+.right-arr {
+  margin-top: 3px !important;
+}
+
+.cards-cont {
+  width: 100% !important;
+  margin-left: 10% !important;
+  padding-bottom: 5% !important;
+}
+
+.ourteacherscont {
+  margin-bottom: 50px !important;
+}
+
+.overall-cont {
+  background-image: url("../images/Group.png");
+}
+
+#teachers-img {
+  width: 100%;
+  height: 418px;
+  border-radius: 24px;
+}
+#new-slide #swiper-slide {
+  width: 580.714px !important;
+}

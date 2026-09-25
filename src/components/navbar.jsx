@@ -1,7 +1,7 @@
 import react from "react";
 import "./navbar.css";
 import atcLogo from "../images/A.T.C.png";
-import ecologo from "../images/layer1 (1).png";
+import ecologo1 from "../images/layer1 (1).png";
 
 import ecologo from "../images/ecoobank-logo.png";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const navbar = () => {
     <nav id="eco-navbar" class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src={ecologo} alt="Ecobank Logo" className="eco-logo" />
+          <img src={ecologo1} alt="Ecobank Logo" className="eco-logo" />
         </a>
         <button
           class="navbar-toggler"
