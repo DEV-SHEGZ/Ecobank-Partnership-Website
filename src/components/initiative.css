@@ -142,7 +142,7 @@ color: #023448;
 
 @media (max-width: 768px) {
   .initiative {
-    height: auto;
+    height: 932px;
     min-height: 100vh;
     background-image: url("../images/Group.png");
     background-size: cover;
@@ -156,6 +156,7 @@ color: #023448;
     flex-direction: column;
     width: 100%;
     align-items: flex-start;
+    margin-left: 20px !important;
   }
 
   .initiative-left {
@@ -165,14 +166,11 @@ color: #023448;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 18px;
+    gap: 18px !important;
     margin-right: 0 !important;
   }
 
   .title {
-    margin-top: 0 !important;
-    font-size: 20px;
-    line-height: 1.2;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -185,17 +183,19 @@ color: #023448;
   }
 
   .initiative-title {
-    font-size: 34px;
-    line-height: 1.12;
-    letter-spacing: -0.8px;
-    max-width: 100%;
+font-family: Roboto;
+font-weight: 500;
+font-style: Medium;
+font-size: 24px !important;
+line-height: 32px;
+letter-spacing: -1px;
+width: 280px !important;
   }
 
   .initiative-description {
     font-size: 16px;
     line-height: 24px;
-    max-width: 100%;
-    margin: 0;
+width: 312px !important;
   }
 
   .button {
@@ -212,64 +212,63 @@ color: #023448;
   }
 
   .initiative-right {
-    position: relative;
-    width: 100%;
-    top: 0;
-    margin-top: 8px;
-    left: 0;
+    position: absolute;
+   width: 381.9996337890625px !important;
+height: auto !important;
+opacity: 1;
+top: 0;
+margin-top: 8px;
   }
 
   .initiative-art {
-    position: relative;
+    position: absolute;
     width: 100%;
-    max-width: 420px;
-    height: 360px;
-    margin: 0 auto;
-    transform: scale(0.85);
-    transform-origin: top center;
+    height: 500px;
+    margin-top: 10px !important;
+
   }
 
   .robot {
     width: 170px;
-    height: auto;
-    top: 8px;
-    left: 12px;
+   height: 320px;
+    top: 520px;
+    left: 24px;
   }
 
   .laptop {
     width: 330px;
     height: auto;
-    left: 38px;
-    top: 120px;
+    left: 54.3px;
+    top: 653px;
   }
 
   .screen {
-    width: 200px;
+    width: 228.3px;
     height: auto;
-    top: 95px;
-    left: 108px;
+    top: 625.2px;
+    left: 128px;
   }
 
   .initiative-kids {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: 120px;
-    margin-top: -10px;
   }
 
   .girl-reading {
-    width: 102px;
-    height: auto;
-    left: 18px;
-    top: 0;
+width: 149.34938049316406px;
+height: 120.80406188964844px;
+top: 670px;
+left: 24px;
+
   }
 
   .boy-reading {
-    width: 122px;
-    height: auto;
-    right: 18px;
-    left: auto;
-    top: 0;
+    width: 186.51071166992188px;
+height: 121.22563934326172px;
+opacity: 1;
+top: 685px;
+left: 180px;
+    
   }
 }
  

@@ -10,8 +10,8 @@ const GettingStarted = () => {
       </p>
 
       <h2>
-        Getting started is as easy as Claiming
-        <br />a Free Digital Coding Workbook!
+        Getting started is as easy as Claiming 
+        <br /> a Free Digital Coding Workbook!
       </h2>
       <div className="getting-started-cards">
         <div className="coding-card">
