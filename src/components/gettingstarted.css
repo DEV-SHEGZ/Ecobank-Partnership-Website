@@ -138,13 +138,20 @@
 
   .section-label {
     font-size: 20px;
+    margin-left: 5% !important;
   }
 
   .getting-started h2 {
-    font-size: 34px;
-    line-height: 44px;
+margin-left: 5% !important;
+margin-right: 5% !important;
+font-size: 24px !important;
+line-height: 34px !important;
+letter-spacing: -1px !important;
+width: 90% !important;
   }
-
+  .getting-started h2 br{
+    display: none !important;
+  }
   .getting-started-cards {
     width: 100%;
     max-width: 800px;
@@ -152,37 +159,59 @@
   }
 
   .coding-card {
-    height: 680px;
     padding: 45px 30px;
+    overflow: hidden;
   }
 
   .coding-card:first-child {
-    width: auto;
+    width: 90% !important;
+height: 431px !important;
+opacity: 1;
+border-radius: 24px;
+margin-left: 5% !important;
     flex: 1;
   }
 
   .coding-card:last-child {
-    width: auto;
+width: 90% !important;
+height: 543px !important;
+border-radius: 24px;
+margin-left: 5% !important;
     flex: 1;
+    margin-bottom: 70px !important;
   }
 
+.coding-card:last-child button{
+  bottom: 20px !important;
+}
   .coding-card h3 {
-    font-size: 30px;
+font-style: Medium;
+font-size: 24px !important;
+line-height: 100%;
+letter-spacing: -1px;
+
   }
 
   .coding-card ul {
-    font-size: 18px;
-    line-height: 27px;
+font-size: 14px !important;
+line-height: 24px !important;
+letter-spacing: -1px;
+margin-left: -5px !important;
   }
 
   .card-girl {
-    width: 195px;
-    height: auto;
+width: 45% !important;
+height: 100%;
+opacity: 1;
   }
 
   .card-boy {
-    width: 275px;
-    height: auto;
+width: 70% !important;
+height: 628.2950439453125px;
+top: 70px;
+transform: translateX(-55px);
+opacity: 1;
+
   }
 }
 
@@ -206,6 +235,7 @@
   .getting-started-cards {
     flex-direction: column;
     gap: 15px;
+    
   }
 
   .coding-card,
