@@ -2,12 +2,48 @@ import react from "react";
 import indicator from "../images/indicator icon.png";
 import arrowDown from "../images/arrow-down.png";
 import defaultImg from "../images/default.png";
+import downloadIcon from "../images/Download icon.png";
+import bookShelve from "../images/books on shelf.png";
+import React, { useRef, useState } from "react";
 import "./thejourney.css";
 
 const TheJourney = () => {
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+  const [name, setName] = useState("");
+
+  const dataForFiveToSixYears = [
+    {
+      book: "Engineering Thinking Book 1",
+      point1: "Start developing object and situation awareness skills",
+      point2: "Build mind-hand coordination",
+      book1: "Engineering Thinking Book 2",
+      point3: "Solidify ability to recognise pattern",
+      point4: "Learn to see and analyse problems",
+      book2: "Engineering Thinking Book 3",
+    },
+
+    {
+      book: "HTML and the Web",
+      point1: "Identify correct html code and it’s function",
+      point2: "Write grammatically correct HTML code",
+      point3: "Listen and convert text content into HTML",
+    },
+    {
+      book: "Interface Design and Analysis",
+      point1: "See HTML tags as 3-dimensional objects",
+      point2: "Understand & Implement organisation of interfaces",
+      point3: "Master implementation of styles",
+      point4: "Implement professional web interface development",
+    },
+    {
+      book: "Grid Design & Analysis",
+      point1: "See web interfaces as grids",
+      point2: "Implement grid organisation",
+      point3: "Master professional interface development",
+    },
+  ];
+
   return (
     <>
       <div className="thejourneycont">
@@ -23,7 +59,11 @@ const TheJourney = () => {
             <label className="roboto-medium pb-1">
               Select Your Child’s Age Range{" "}
             </label>
-            <select id="Age-range" onChange={handleChange}>
+            <select
+              value={age}
+              id="Age-range"
+              onChange={(e) => setAge(e.target.value)}
+            >
               {" "}
               <option value="Select">Select</option>
               <option value="5 - 6 years">5 - 6 years</option>
@@ -35,13 +75,25 @@ const TheJourney = () => {
             <label className="roboto-medium pb-1">
               Enter Your Child’s First Name
             </label>
-            <input type="text" id="Age-range" placeholder="Andrew" />
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              id="Age-range"
+              placeholder="Andrew"
+            />
           </div>
           <div className="option-age">
             <label className="roboto-medium pb-1">
               Select Your Child’s Gender
             </label>
-            <select id="Age-range" onChange={handleChange}>
+            <select
+              value={gender}
+              id="Age-range"
+              onChange={(e) => {
+                setGender(e.target.value);
+              }}
+            >
               {" "}
               <option value="Select">Select</option>
               <option value="Male"> Male</option>
@@ -53,7 +105,40 @@ const TheJourney = () => {
         </div>
       </div>
 
-      <img className="mt-5" src={defaultImg} />
+      <img className="mt-5 d-none" src={defaultImg} />
+      <div className="slideCardCont">
+        <div>
+          <div>
+            <h1 className="roboto-medium atc-yr">Andrew’s First Year</h1>
+            <button className="submit roboto-medium">
+              {" "}
+              <img src={downloadIcon} /> Simulate Now
+            </button>
+            <img src={bookShelve} />
+          </div>
+          <div>
+            <h2 className="roboto-medium">He will master:</h2>
+            <p>Engineering Thinking Book 1</p>
+            <ul>
+              <li>Start developing object and situation awareness skills</li>
+              <li>Build mind-hand coordination </li>
+            </ul>
+            <p>Engineering Thinking Book 2</p>
+            <ul>
+              <li>Solidify ability to recognise pattern </li>
+              <li> Learn to see and analyse problems</li>
+            </ul>
+            <p>Engineering Thinking Book 3</p>
+            <ul>
+              <li>Solidify ability to recognise pattern </li>
+              <li>Learn to see and analyse problems</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <h1>Andrew journey to mastery will take</h1>
+        </div>
+      </div>
     </>
   );
 };

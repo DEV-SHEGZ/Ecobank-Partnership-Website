@@ -68,3 +68,8 @@ option {
   border: none !important;
   margin-top: 23px !important;
 }
+
+.atc-yr {
+  color: #023448;
+  font-size: 32px !important;
+}

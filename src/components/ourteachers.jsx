@@ -52,7 +52,7 @@ const OurTeachers = () => {
           <div id="teach-crd-bdy" class="card-body">
             <h5 class="card-title roboto-medium pb-2">{teacher.name}</h5>
             <p id="first-p" class="card-text roboto-regular pb-2">
-              Currently teaches at ${teacher.school}
+              Currently teaches at {teacher.school}
             </p>
             <p id="years" class="card-text pb-5">
               {teacher.years}
