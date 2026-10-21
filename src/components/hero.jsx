@@ -1,4 +1,5 @@
 import react from "react";
+import { useNavigate } from "react-router-dom";
 import Nav from "./navbar.jsx";
 import curtain from "../images/pink curtain.png";
 import girl from "../images/pink girl.png";
@@ -24,6 +25,7 @@ import "swiper/css";
 import "./hero.css";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Swiper
@@ -49,7 +51,7 @@ const Hero = () => {
               </p>
               <div>
                 <button className="claim-btn roboto-medium">Claim Now</button>
-                <button className="open-btn roboto-medium">
+                <button className="open-btn roboto-medium" onClick={() => navigate("/open-account")}>
                   Open a Junior Savers Account
                 </button>
               </div>
@@ -171,7 +173,7 @@ const Hero = () => {
               <p className="roboto-medium child-p">
                 Don’t have a Junior Savers Account?
               </p>
-              <button className="open-btn-child roboto-medium">Open Now</button>
+              <button className="open-btn-child roboto-medium" onClick={() => navigate("/open-account")}>Open Now</button>
             </div>
             <img src={child} alt="Child" className="child" />
           </div>
