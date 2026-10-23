@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { useState, useEffect, Component } from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
 import Hero from "./components/hero.jsx";
 import Nav from "./components/navbar.jsx";
 import How from "./components/how.jsx";
@@ -12,12 +11,26 @@ import Footer from "./components/footer.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
+import AccountOpening from "./features/account-opening/AccountOpening";
+
+function ScrollToSection() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+      else window.scrollTo(0, 0);
+    });
+  }, [pathname, hash]);
+  return null;
+}
+
 function App() {
   return (
     <Router>
-      <Nav />
+      <ScrollToSection />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/open-account" element={<AccountOpening />} />
       </Routes>
     </Router>
   );
@@ -26,12 +39,13 @@ function App() {
 function MainPage() {
   return (
     <>
+      <Nav />
       <Hero />
-      <Initiate />
-      <How />
-      <OurTeachers />
-      <TheJourney />
-      <Getting />
+      <div id="about"><Initiate /></div>
+      <div id="how-it-works"><How /></div>
+      <div id="teachers"><OurTeachers /></div>
+      <div id="journey"><TheJourney /></div>
+      <div id="enrol"><Getting /></div>
       <Footer />
     </>
   );
