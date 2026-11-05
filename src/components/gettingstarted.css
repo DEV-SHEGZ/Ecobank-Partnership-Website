@@ -131,6 +131,20 @@
   width: 100%;
   position: relative;
 }
+
+@media (min-width: 901px) {
+  .section-label {
+    padding-top: 0 !important;
+    margin-bottom: 48px !important;
+  }
+
+  .getting-started h2 {
+    margin-bottom: 80px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
 @media (max-width: 900px) {
   .getting-started {
     padding: 45px 5% 60px;
@@ -269,4 +283,20 @@ opacity: 1;
     width: 240px;
     height: auto;
   }
+}
+
+/* Figma desktop alignment (Enrol frame 1:234: cards at y262, 478x741 + 650x741) */
+@media (min-width: 1200px) {
+  .coding-card { background-color: #bdcf00; overflow: hidden; }
+  .coding-card h3 { margin: 0 !important; padding: 40px 40px 0 !important; line-height: 47px; }
+  .coding-card .card-text-list { margin-top: 24px !important; gap: 0; }
+  .coding-card ul { padding-left: 76px !important; flex: none; }
+  .coding-card:first-child ul { width: 270px; }
+  .coding-card:last-child ul { width: 387px; }
+  .coding-card li { margin: 0 !important; padding-left: 0 !important; }
+  .coding-card li::marker { font-size: 18px; }
+  .coding-card .card-button { margin-top: 30px !important; margin-left: -36px !important; padding: 0 24px !important; font-size: 18px; line-height: 21px; }
+  .coding-card:last-child .card-button { margin-left: -25px !important; }
+  .coding-card .card-girl { margin: -31px 0 0 -24px !important; }
+  .coding-card:last-child .card-text-list img { margin: -31px 0 0 -68px !important; }
 }

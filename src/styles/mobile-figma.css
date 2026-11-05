@@ -1,0 +1,200 @@
+/*
+ * Mobile homepage alignment with Figma "Mobile View › Landing View" (430px frame, node 1:13156).
+ * Loaded last (after Bootstrap) so it wins at equal specificity. Phone widths only.
+ * Tile tops in the frame: hero 0, about 932, how 1864, teachers 3569, journey 4305, enrol 6011, footer 7539.
+ */
+@media (max-width: 600px) {
+  /* Nav */
+  #eco-navbar { padding: 11px 14px 11px 24px !important; }
+  #eco-navbar .eco-logo { width: 80px; margin-left: -4px !important; }
+  #eco-navbar .navbar-toggler { margin-top: -2px !important; }
+  #eco-navbar .navbar-toggler-icon {
+    width: 17px; height: 13px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='13' viewBox='0 0 17 13'%3E%3Cpath d='M0 .5h17M0 6.5h17M0 12.5h17' stroke='%2300577a' stroke-width='1.3'/%3E%3C/svg%3E");
+    background-size: 17px 13px;
+  }
+
+  /* Hero: heading + copy sit at 80% opacity in the design */
+  .hero-home .hero-content { gap: 12px; }
+  .hero-home .zero-h1, .hero-home .zero-p { opacity: .8; }
+  .hero-home .zero-p { letter-spacing: -0.8px !important; }
+  .hero-home .claim-btn, .hero-home .open-btn { min-height: 43px; height: 43px; padding: 0 24px !important; font-size: 16px !important; line-height: 43px; letter-spacing: -0.45px; }
+
+  /* Section pins (icon 21px, text 16px) — icon top 61.6px into each tile */
+  .initiative .title img, .head-ind .indicator, .section-label img { width: 21px; height: 21px; }
+
+  /* About */
+  .initiative .initiative-title { width: 255px !important; margin-bottom: 16px !important; }
+  .initiative .initiative-description { width: 310px !important; margin-bottom: 16px !important; }
+  .initiative .button { width: 242px; padding: 0 24px !important; display: flex; align-items: center; justify-content: space-between; }
+  .initiative .support-widget { zoom: var(--mk, 1); top: 20px; right: 24px; gap: 12px; align-items: flex-start; }
+  .initiative .support-prompt { width: 139px; max-width: none; min-height: 60px; padding: 10px !important; border: 1px solid #eceff5; border-radius: 12px; background: #f6f7fb; box-shadow: none; color: #000; font-size: 16px; line-height: 20px; letter-spacing: -0.3px; }
+  .initiative .support-toggle { width: 48px; height: 48px; margin-top: 9px !important; padding: 12px !important; background: #25d366; }
+}
+
+/* How it Works — the whole tile is laid out on the 430px Figma grid and zoomed to the
+   phone's width (--mk = viewport / 430, set in index.js). Each step group is the desktop
+   group scaled to 62%, exactly as in the design. */
+@media (max-width: 600px) {
+  .how-container { position: relative; width: 430px; height: 1705px !important; padding: 0 !important; overflow: hidden; zoom: var(--mk, 1); }
+  .how-container > .head-ind { position: absolute; top: 61.5px; left: 28px; height: 21px; padding: 0 !important; gap: 8px; color: #0082bb !important; font-size: 16px !important; line-height: 21px; }
+  .how-container > .head-ind .indicator { margin: 0 !important; }
+  .how-container > .head-ind p { margin: 0 !important; line-height: 21px; }
+  .how-container > .head-h1 { position: absolute; top: 122px; left: 24px; width: 300px !important; padding: 0 !important; }
+  .how-container > .head-h1 h1 { margin: 0 !important; font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+
+  .how-container .cloud-container { display: block !important; position: absolute !important; inset: 0; width: 430px; height: 1705px !important; margin: 0 !important; padding: 0 !important; }
+  .how-container .cloud-container #cloud-1, .how-container .cloud-container #cloud-2,
+  .how-container .cloud-container #cloud-3, .how-container .cloud-container #cloud-4 {
+    position: absolute !important; display: block; width: 375px !important; height: 528px !important; margin: 0 !important; transform: none; zoom: .62;
+  }
+  /* zoomed children: coordinates below are in the 430px frame divided by 0.62 */
+  .how-container .cloud-container #cloud-1 { left: 12.9px !important; top: 408.1px !important; }
+  .how-container .cloud-container #cloud-2 { left: 318.5px !important; top: 321px !important; }
+  .how-container .cloud-container #cloud-3 { left: 32.3px !important; top: 969.4px !important; }
+  .how-container .cloud-container #cloud-4 { left: 333.9px !important; top: 883.9px !important; }
+
+  .how-container .cloud-head { width: 375px; height: 192px !important; aspect-ratio: auto; background-size: 375px 192px; background-position: 0 0; }
+  .how-container .cloud-p { left: 150px !important; top: 40px !important; height: 34px; transform: none; padding: 10px 20px !important; font-size: 12px; line-height: 14px; }
+  .how-container #cloud-1 .cloud-heading, .how-container #cloud-2 .cloud-heading,
+  .how-container #cloud-3 .cloud-heading, .how-container #cloud-4 .cloud-heading {
+    left: 0 !important; right: 0; width: auto; max-width: none; padding: 0 !important; text-align: center; font-size: 24px !important; line-height: 28px; letter-spacing: -0.5px;
+  }
+  .how-container #cloud-1 .cloud-heading { top: 98px !important; }
+  .how-container #cloud-2 .cloud-heading { top: 80px !important; }
+  .how-container #cloud-3 .cloud-heading { top: 90px !important; }
+  .how-container #cloud-4 .cloud-heading { top: 78px !important; left: 14px !important; }
+
+  .how-container .cloud > .rope1, .how-container .cloud > .rope2 { display: block; position: absolute; width: auto; height: auto; margin: 0 !important; object-fit: fill; }
+  .how-container .cloud > .rope1 { top: 31% !important; left: 43% !important; }
+  .how-container .cloud > .rope2 { top: 65% !important; left: 47% !important; }
+  .how-container #cloud-2 > .rope1 { top: 35% !important; left: 42% !important; }
+  .how-container #cloud-2 > .rope2 { top: 67% !important; left: 44% !important; }
+  .how-container #cloud-3 > .rope1 { top: 29% !important; left: 43% !important; }
+  .how-container #cloud-3 > .rope2 { top: 79% !important; left: 47.6% !important; }
+  .how-container #cloud-4 > .rope1 { top: 30% !important; left: 44% !important; }
+  .how-container #cloud-4 > .rope2 { top: 72.2% !important; left: 48.4% !important; }
+
+  .how-container #pink-box, .how-container #orange-box, .how-container #purple-box, .how-container #green-box {
+    position: absolute !important; left: 48px !important; margin: 0 !important; padding: 20px !important; border-radius: 20px; font-size: 18px; line-height: 28px; letter-spacing: 0;
+  }
+  .how-container #pink-box { width: 272px !important; top: 349px !important; transform: rotate(-2deg); }
+  .how-container #orange-box { width: 267px !important; top: 356px !important; left: 47px !important; transform: none; }
+  .how-container #purple-box { width: 270px !important; top: 431px !important; transform: rotate(-1.2deg); }
+  .how-container #green-box { width: 275px !important; top: 390px !important; left: 44px !important; transform: rotate(1.4deg); }
+
+  .how-container > picture { position: absolute; top: 1031px; left: 0; width: 430px; margin: 0 !important; }
+  .how-container .code14eco { display: block; width: 430px; height: 674px; margin: 0 !important; }
+}
+
+/* Shared pin + heading on the 430px grid: icon top 61.5px, heading top 122px */
+@media (max-width: 600px) {
+  .ourteacherscont .head-ind, .thejourneycont .head-ind { padding: 61.5px 0 0 4px !important; height: auto; gap: 8px; color: #0082bb !important; font-size: 16px !important; line-height: 21px; }
+  .ourteacherscont .head-ind .indicator, .thejourneycont .head-ind .indicator { margin: 0 !important; }
+  .ourteacherscont .head-ind p, .thejourneycont .head-ind p { margin: 0 !important; line-height: 21px; }
+  .ourteacherscont #teach-div, .thejourneycont #teach-div { padding: 39.5px 0 0 !important; margin: 0 !important; width: 100% !important; }
+  .ourteacherscont #teach-div h1, .thejourneycont #teach-div h1 { margin: 0 !important; font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+
+  /* Teachers: card = desktop card at 58.15% (314 x 455), first card at y220 */
+  .overall-cont { height: calc(736px * var(--mk, 1)); }
+  .ourteacherscont { zoom: var(--mk, 1); width: 430px; height: 220px; padding: 0 24px !important; margin: 0 !important; }
+  .cards-cont { width: calc(100% - 24px * var(--mk, 1)) !important; margin-left: calc(24px * var(--mk, 1)) !important; padding: 0 !important; }
+  .teacher-slide { width: calc(334px * var(--mk, 1)) !important; }
+  .teacher-card { zoom: calc(.5815 * var(--mk, 1)); width: 540px !important; height: 779px; min-height: 0; padding: 18px !important; border: 0 !important; border-radius: 40px !important; overflow: hidden; }
+  .teacher-card .teachers-img { display: block; width: 504px; height: 418px; border-radius: 24px; object-fit: cover; }
+  .teacher-card .teach-crd-bdy { flex: none; height: 307px; min-height: 0; margin-top: 18px !important; padding: 32px !important; border-radius: 24px !important; }
+  .teacher-card .teach-crd-bdy > h5.card-title { font-size: 36px !important; line-height: 44px; letter-spacing: -1px; margin: 0 0 8px !important; padding: 0 !important; }
+  .teacher-card .teach-crd-bdy .teacher-school { font-size: 30px !important; line-height: 38px !important; letter-spacing: -1px; height: 76px; overflow: hidden; margin: 0 0 8px !important; padding: 0 !important; }
+  .teacher-card .teach-crd-bdy .teacher-years { font-size: 18px !important; line-height: 29px; letter-spacing: -0.4px; margin: 0 0 32px !important; }
+  .teacher-card .linkedprof { height: 46px; padding: 8px !important; gap: 6px; }
+  .teacher-card .linkedprof .linkedin-icon { width: 30px; height: 30px; }
+  .teacher-card .linkedprof > .btn { padding: 0 !important; font-size: 16px !important; line-height: 21px; letter-spacing: -0.3px; margin-right: 14px !important; }
+}
+
+/* The Journey: heading + stacked form on the 430px grid, then the tall mobile artwork at y588 */
+@media (max-width: 600px) {
+  #journey { margin: 0 !important; padding: 0 !important; }
+  .thejourneycont { zoom: var(--mk, 1); width: 430px; height: 588px; padding: 0 24px !important; margin: 0 !important; overflow: hidden; }
+  .thejourneycont #teach-div h1 { max-width: 320px; }
+  #journey .options-cont { display: flex !important; flex-direction: column !important; align-items: stretch !important; gap: 24px; width: 382px !important; margin: 34px 0 0 !important; }
+  #journey .option-age { width: 382px !important; flex: none; }
+  #journey .option-age label { height: 14px; margin: 0 0 6px !important; padding: 0 !important; font-size: 12px !important; line-height: 14px; letter-spacing: -0.2px; }
+  #journey .option-age select, #journey .option-age input { width: 100%; height: 45px; padding: 12px 16px !important; border: 0.57px solid #d1d8db; border-radius: 12px; background: #f6f8f9; color: #a7b2b6; font: 400 16px/21px Roboto, sans-serif; letter-spacing: -0.4px; }
+  #journey .option-age input::placeholder { color: #a7b2b6; }
+  #journey .option-age select:valid, #journey .option-age input:not(:placeholder-shown) { color: #023448; }
+  #journey .arr-down { left: auto; right: 20px; top: 38.5px; width: 16px; height: 8px; }
+  #journey .submit { width: 382px; height: 43px; margin: -2px 0 0 !important; padding: 0 !important; font-size: 16px; line-height: 43px; letter-spacing: -0.4px; }
+  #journey picture { display: block; }
+  #journey .journey-default { display: block; width: 100%; height: auto; margin: 0 !important; }
+}
+
+/* Enrol Now: Figma's mobile heading is placeholder text (2 lines); the real heading needs 3 lines,
+   so cards start 32px lower than the frame (y252 instead of y220) and the tile is 1310px, not 1278px. */
+@media (max-width: 600px) {
+  .getting-started { zoom: var(--mk, 1); width: 430px; min-height: 0; height: 1310px; padding: 0 24px !important; display: block; overflow: hidden; }
+  .getting-started .section-label { display: flex; align-items: center; gap: 8px; height: 21px; margin: 61.5px 0 0 4px !important; padding: 0 !important; font-size: 16px; line-height: 21px; letter-spacing: -0.4px; }
+  .getting-started .section-label img { margin: 0 !important; }
+  .getting-started h2 { margin: 39.5px 0 0 !important; padding: 0 !important; max-width: 382px; font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+  .getting-started h2 br { display: none; }
+  .getting-started-cards { position: absolute; top: 252px; left: 24px; display: flex; flex-direction: column; gap: 25px; width: 382px; margin: 0 !important; }
+  .getting-started { position: relative; }
+  .getting-started .coding-card, .getting-started .coding-card:first-child { position: relative; width: 382px !important; max-width: none !important; flex: none; margin: 0 !important; height: 430px; border-radius: 24px; background-color: #bdcf00; overflow: hidden; }
+  .getting-started .coding-card:last-child { height: 542.5px; }
+  .getting-started .coding-card h3 { margin: 0 !important; padding: 20px 20px 0 !important; font-size: 24px; line-height: 28px; letter-spacing: -0.8px; }
+  .getting-started .coding-card .card-text-list { position: static; display: block; margin: 15.5px 0 0 !important; }
+  .getting-started .coding-card ul { width: 150px; padding-left: 45px !important; margin: 0 !important; font-size: 14px; line-height: 24px; letter-spacing: -0.9px; position: relative; z-index: 1; }
+  .getting-started .coding-card:last-child ul { width: 185px; }
+  .getting-started .coding-card li { margin: 0 !important; }
+  .getting-started .coding-card .card-button { position: absolute; left: 20px; top: 144.5px; min-width: 0; height: 38.5px; margin: 0 !important; padding: 0 18px !important; font-size: 16px; line-height: 38.5px; letter-spacing: -0.4px; }
+  .getting-started .coding-card:last-child .card-button { top: 360.5px; }
+  .getting-started .coding-card .card-text-list img { position: absolute !important; margin: 0 !important; height: auto; object-fit: fill; }
+  .getting-started .coding-card .card-girl { left: 190.5px; top: 57.5px; width: 185.5px; }
+  .getting-started .coding-card:last-child .card-text-list img { left: 170px; top: 70px; width: 259.5px; }
+}
+
+/* ATC banner (350 x 499.5 incl. 12px white rim) straddling the white enrol area and the footer,
+   then the stacked footer — the whole block sits on the 430px grid. */
+@media (max-width: 600px) {
+  .footer { zoom: var(--mk, 1); width: 430px; margin: 0 !important; overflow: hidden; }
+  .banner-wrap { position: relative; height: 250px; min-height: 0; padding: 0 !important; background: #fff; }
+  .banner { position: absolute; top: 0; left: 40px; transform: none; width: 349.5px; height: 499.5px; min-height: 0; padding: 0 !important; border: 12px solid #fff; border-radius: 36px; background-color: #0a7bff; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 0; }
+  .banner > img { width: 272px; height: auto; margin: 34.5px 0 0 !important; transform: none; }
+  .banner-text { display: flex; flex-direction: column; align-items: center; flex: 1; width: 300px; height: auto; margin: 0 !important; text-align: center; }
+  .banner-text h2 { margin: 33px 0 0 !important; font-size: 24px; line-height: 32px; letter-spacing: -0.9px; }
+  .banner-text p { max-width: 262px; margin: 12.5px 0 0 !important; font-size: 14px; line-height: 20px; letter-spacing: -0.3px; }
+  .banner-text button { width: 227.5px; max-width: none; height: 38px; margin: auto 0 39px !important; padding: 0 !important; font: 500 16px/38px Roboto, sans-serif; letter-spacing: -0.5px; }
+
+  .site-footer, footer.site-footer { width: 430px; height: 857px; padding: 310.5px 24px 0 !important; box-sizing: border-box; }
+  .footer-top { flex-direction: column; gap: 0; width: 382px; margin: 0 !important; }
+  .brand-row { height: 30px; gap: 0; margin: 0 !important; flex-wrap: nowrap; }
+  .logo-image { width: 61px; height: 30px; }
+  .divider { width: 30px; height: 30px; margin: 0 !important; font-size: 30px; line-height: 30px; text-align: center; color: #fff; }
+  .badge-image { width: 177.5px; height: 27px; object-fit: contain; object-position: left center; }
+  .brand-description { max-width: 300px; margin: 16.5px 0 0 !important; font-size: 12.5px; line-height: 20px; letter-spacing: -0.2px; }
+  .footer-links { display: flex; gap: 0; width: auto; height: auto; margin: 37px 0 0 !important; flex-wrap: nowrap; }
+  .link-column { flex: none; width: 119px; }
+  .link-column + .link-column h4, .link-column + .link-column a { padding-left: 0 !important; }
+  .link-column h4 { height: auto; margin: 0 0 7px !important; padding: 0 0 0 6.5px !important; font-size: 13.5px; line-height: 21px; letter-spacing: -0.4px; }
+  .link-column ul { display: flex; flex-direction: column; gap: 0; }
+  .link-column li { margin: 0 !important; font-size: 12.5px; line-height: 28px; }
+  .link-column a { display: inline-flex; justify-content: flex-start; gap: 0; width: auto; height: 28px; padding: 0 0 0 7px !important; font-size: 12.5px; line-height: 28px; letter-spacing: -0.3px; }
+  .link-column a .arrow { display: inline-block; width: 8px; margin-left: auto; font-size: 12px; transform: none; position: absolute; left: 70.5px; }
+  .link-column li { position: relative; }
+  .legal { width: 382px; transform: none; }
+  .footer-divider { width: 382px; height: 0; margin: 25px 0 0 !important; padding: 0 !important; border-top: 1px solid #046c95; opacity: 1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0; width: 382px; height: auto; margin: 13px 0 0 !important; font-size: 12.5px; line-height: 28px; letter-spacing: -0.3px; }
+  .footer-bottom p { padding-left: 6px !important; }
+  .legal-links { display: flex; flex-direction: column; flex-wrap: nowrap; gap: 0; padding: 0 0 0 7px !important; font-size: 12.5px; }
+  .legal-links a { line-height: 28px; }
+}
+
+/* About artwork on the 430px grid (positions matched against the Figma export) */
+@media (max-width: 600px) {
+  .initiative .initiative-right { zoom: var(--mk, 1); width: 430px !important; }
+  .initiative .initiative-kids { zoom: var(--mk, 1); width: 430px; }
+  .initiative .robot { left: 24px; top: 420px; width: 150px; height: 316px; }
+  .initiative .laptop { left: 54px; top: 552.5px; width: 352.5px; height: 210px; }
+  .initiative .screen { left: 125px; top: 525px; width: 229px; height: 140.5px; }
+  .initiative .girl-reading { left: 24px; top: 740px; width: 150px; height: 121px; }
+  .initiative .boy-reading { left: 219px; top: 750px; width: 187px; height: 122px; }
+}

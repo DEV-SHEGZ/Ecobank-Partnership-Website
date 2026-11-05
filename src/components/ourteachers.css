@@ -1,8 +1,4 @@
-#teach-div {
-  width: 63% !important;
-}
-
-#teacher-card {
+.teacher-card {
   width: 540px !important;
   height: 779px;
   background-color: #bdcf00 !important;
@@ -11,26 +7,31 @@
   padding: 18px !important;
 }
 
-#teach-crd-bdy {
+.teacher-card-1 {
+  background-color: #005d7c !important;
+}
+
+.teach-crd-bdy {
   border-radius: 24px !important;
   background-color: #ffffff;
   padding: 32px !important;
   margin-top: 13px !important;
 }
 
-#teach-crd-bdy > h5 {
+.teach-crd-bdy > h5 {
   font-size: 36px !important;
   color: #023448 !important;
 }
 
-#first-p {
+.teacher-school {
   font-size: 30px !important;
   line-height: 38px !important;
   color: #023448 !important;
 }
 
-#years {
+.teacher-years {
   font-size: 24px !important;
+  margin: 0 0 40px !important;
 }
 
 .linkedprof {
@@ -38,7 +39,7 @@
   align-items: center;
 }
 
-.linkedprof > a {
+.linkedprof > .btn {
   text-decoration: none !important;
   font-size: 18px !important;
   color: #023448 !important;
@@ -49,9 +50,13 @@
 }
 
 .cards-cont {
-  width: 81% !important;
-  margin-left: 10% !important;
+  width: 95% !important;
+  margin-left: 5% !important;
   padding-bottom: 5% !important;
+}
+
+@media (min-width: 1289px) {
+  .cards-cont { width: calc(50% + 580px) !important; margin-left: calc(50% - 580px) !important; }
 }
 
 .ourteacherscont {
@@ -62,11 +67,86 @@
   background-image: url("../images/Group.png");
 }
 
-#teachers-img {
+.teachers-img {
   width: 100%;
   height: 418px;
   border-radius: 24px;
 }
-#new-slide #swiper-slide {
-  width: 560.714px !important;
+.teacher-slide {
+  width: 572px !important;
+}
+
+#teach-div { width: 63% !important; }
+
+@media (max-width: 900px) {
+  .ourteacherscont { padding: 0 6%; }
+  #teach-div { width: 100% !important; }
+  .cards-cont { width: 90% !important; margin-left: 5% !important; overflow: hidden; }
+  .teacher-slide { width: min(46vw, 420px) !important; }
+  .teacher-card { width: 100% !important; height: auto; min-height: 590px; border-radius: 28px; padding: 12px !important; }
+  .teachers-img { height: 300px; object-fit: cover; }
+  .teach-crd-bdy { padding: 22px !important; margin-top: 12px !important; }
+  .teach-crd-bdy > h5 { font-size: 26px !important; }
+  .teacher-school { font-size: 19px !important; line-height: 1.4 !important; }
+  .teacher-years { font-size: 17px !important; margin-bottom: 22px !important; }
+}
+
+@media (max-width: 600px) {
+  .ourteacherscont { margin-bottom: 24px !important; padding: 0 20px; }
+  #teach-div { width: 100% !important; }
+  #teach-div h1 { font-size: 26px; line-height: 1.3; }
+  .cards-cont { width: 100% !important; margin-left: 20px !important; padding-bottom: 44px !important; }
+  .teacher-slide { width: min(84vw, 360px) !important; }
+  .teacher-card { min-height: 0; height: 600px; border-radius: 24px; padding: 10px !important; }
+  .teachers-img { height: 290px; border-radius: 16px; }
+  .teach-crd-bdy { border-radius: 16px !important; padding: 20px !important; margin-top: 10px !important; min-height: 270px; }
+  .teach-crd-bdy > h5 { font-size: 24px !important; margin-bottom: 4px !important; }
+  .teacher-school { font-size: 17px !important; line-height: 1.4 !important; }
+  .teacher-years { font-size: 15px !important; margin: 0 0 20px !important; }
+  .linkedprof { gap: 4px; }
+}
+
+@media (max-width: 600px) {
+  .ourteacherscont { padding: 0 24px !important; margin-bottom: 32px !important; }
+  .ourteacherscont .head-ind { padding: 64px 0 0 !important; font-size: 16px !important; }
+  .ourteacherscont #teach-div { width: 100% !important; padding: 40px 0 0 !important; }
+  .ourteacherscont #teach-div h1 { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+  .cards-cont { width: calc(100% - 24px) !important; margin-left: 24px !important; padding-bottom: 64px !important; }
+  .teacher-slide { width: 332px !important; }
+  .teacher-card { width: calc(100% - 18px) !important; height: 456px; padding: 10px !important; }
+  .teachers-img { height: 240px; flex: none; object-fit: cover; }
+  .teach-crd-bdy { min-height: 0; padding: 18px !important; }
+  .teach-crd-bdy > h5 { font-size: 20px !important; line-height: 24px; }
+  .teacher-school { font-size: 16px !important; line-height: 22px !important; }
+  .teacher-years { font-size: 12px !important; margin-bottom: 14px !important; }
+  .linkedprof > .btn { font-size: 12px !important; }
+  .linkedprof .linkedin-icon { width: 20px; height: 20px; }
+}
+
+@media (max-width: 369px) {
+  .teacher-slide { width: calc(100vw - 38px) !important; }
+}
+
+/* Figma desktop alignment (Teachers tile 1:2257) */
+@media (min-width: 1200px) {
+  .overall-cont { height: 1281px; }
+  .ourteacherscont { margin-bottom: 0 !important; }
+  .ourteacherscont .head-ind { color: #0082bb !important; }
+  .ourteacherscont #teach-div h1 { max-width: 654px; }
+  .cards-cont { padding-top: 80px !important; padding-bottom: 0 !important; }
+  .teacher-card { height: 779px; border: 0 !important; border-radius: 40px !important; overflow: hidden; }
+  .teachers-img { display: block; width: 504px; height: 418px; object-fit: cover; }
+  .teach-crd-bdy { margin-top: 18px !important; height: 307px; flex: none; }
+  .teach-crd-bdy > h5.card-title { font-size: 36px !important; line-height: 44px; margin: 0 0 8px !important; padding: 0 !important; }
+  .teach-crd-bdy .teacher-school { margin: 0 0 8px !important; padding: 0 !important; }
+  .teacher-years { line-height: 29px; margin: 0 0 32px !important; }
+  .linkedprof { height: 46px; padding: 8px !important; gap: 6px; }
+  .linkedprof .linkedin-icon { width: 30px; height: 30px; }
+  .linkedprof > .btn { padding: 0 !important; font-size: 18px !important; line-height: 21px; margin-right: 44px !important; }
+}
+@media (min-width: 1200px) {
+  .teach-crd-bdy > h5.card-title { letter-spacing: -1px; }
+  .teach-crd-bdy .teacher-school { letter-spacing: -1px; height: 76px; overflow: hidden; }
+  .teach-crd-bdy .teacher-years { font-size: 18px !important; letter-spacing: -0.4px; }
+  .linkedprof > .btn { font-size: 16px !important; margin-right: 14px !important; letter-spacing: -0.3px; }
 }

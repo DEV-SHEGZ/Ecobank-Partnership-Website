@@ -1,22 +1,19 @@
-import react from "react";
 import { useNavigate } from "react-router-dom";
-import Nav from "./navbar.jsx";
 import curtain from "../images/pink curtain.png";
 import girl from "../images/pink girl.png";
-import GettingStarted from "./gettingstarted.jsx";
-import Footer from "./footer.jsx";
-import Initiative from "./initiative.jsx";
 import flower from "../images/flowers.png";
 import atcbook from "../images/atc digital.png";
 import child from "../images/Child.png";
 import leftbg from "../images/Background Hero 2.png";
 import rightbg from "../images/Background Hero 2 b.png";
 import satbig from "../images/Satellite big.png";
-import satsmall from "../images/Satellite small.png";
 import teacher from "../images/Teacher.png";
 import greengirl from "../images/green girl.png";
 import earth from "../images/green earth.png";
 import greenboy from "../images/green boy.png";
+import mobileCurtain from "../images/mobile-hero-curtain-figma.png";
+import mobileGirl from "../images/mobile-hero-girl-figma.png";
+import mobileFloor from "../images/mobile-hero-floor-figma.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -27,15 +24,15 @@ import "./hero.css";
 const Hero = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="hero-home">
       <Swiper
         modules={[Autoplay]}
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
         autoplay={{
-          delay: 4000,
-          disableOnInteraction: true,
+          delay: 1200,
+          disableOnInteraction: false,
         }}
       >
         {/* Slide 1 */}
@@ -56,8 +53,9 @@ const Hero = () => {
                 </button>
               </div>
             </div>
-            <img src={curtain} alt="Pink Curtain" className="curtain" />
-            <img src={girl} alt="Pink Girl" className="girl" />
+            <img src={mobileFloor} alt="" className="hero-mobile-floor" />
+            <picture><source media="(max-width: 600px)" srcSet={mobileCurtain} /><img src={curtain} alt="" className="curtain" /></picture>
+            <picture><source media="(max-width: 600px)" srcSet={mobileGirl} /><img src={girl} alt="Child learning to code" className="girl" /></picture>
             <img src={flower} alt="Flowers" className="flower" />
           </div>
         </SwiperSlide>
@@ -65,9 +63,9 @@ const Hero = () => {
         {/* Slide 2 */}
         <SwiperSlide>
           <div className="hero-container-green">
-            <img src={leftbg} className="left-bg" />
-            <img src={rightbg} className="right-bg" />
-            <img src={satbig} className="sat-big" />
+            <img src={leftbg} alt="" className="left-bg" />
+            <img src={rightbg} alt="" className="right-bg" />
+            <img src={satbig} alt="" className="sat-big" />
             <div className="hero-content">
               <h1 className="roboto-medium zero-h1 mb-3">
                 1 year guidance from Educators for ₦60,000 yearly
@@ -86,10 +84,10 @@ const Hero = () => {
                 </button>
               </div>
             </div>
-            <img src={teacher} className="teacher" />
-            <img src={greengirl} className="greengirl" />
-            <img src={greenboy} className="greenboy" />
-            <img src={earth} className="earth" />
+            <img src={teacher} alt="Teacher guiding a student" className="teacher" />
+            <img src={greengirl} alt="Student learning" className="greengirl" />
+            <img src={greenboy} alt="Student learning" className="greenboy" />
+            <img src={earth} alt="" className="earth" />
           </div>
         </SwiperSlide>
       </Swiper>
@@ -163,7 +161,7 @@ const Hero = () => {
                 placeholder="Enter account number"
               />
               <button className="claim-book-btn roboto-medium">
-                Claim now
+                Claim Now
               </button>
             </div>
           </div>
@@ -179,7 +177,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

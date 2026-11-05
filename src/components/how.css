@@ -224,3 +224,219 @@
 .code14eco {
   margin-top: -183px !important;
 }
+
+@media (max-width: 900px) {
+  .how-container {
+    overflow: hidden;
+    padding: 32px 20px 0;
+  }
+
+  .how-container > .head-ind {
+    padding: 0 !important;
+    font-size: 18px !important;
+  }
+
+  .how-container > .head-h1 {
+    width: 100% !important;
+    padding: 12px 0 24px !important;
+  }
+
+  .how-container > .head-h1 h1 {
+    max-width: 560px;
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .cloud-container {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: center;
+    gap: 8px;
+    width: 100%;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .cloud,
+  #cloud-1,
+  #cloud-2,
+  #cloud-3,
+  #cloud-4 {
+    position: relative !important;
+    inset: auto !important;
+    width: min(100%, 375px) !important;
+    height: 460px !important;
+    margin: 0 auto;
+  }
+
+  .cloud-head {
+    height: 192px !important;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+
+  .cloud-p { top: 18% !important; left: 36% !important; }
+  .cloud-heading {
+    top: 48% !important;
+    left: 18% !important;
+    max-width: 68%;
+    font-size: 20px !important;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  #cloud-2 > .cloud-head > .cloud-heading,
+  #cloud-4 > .cloud-head > .cloud-heading { left: 16% !important; }
+
+  .rope1 { top: 31% !important; left: calc(50% - 18px) !important; }
+  .rope2 { top: 57% !important; left: calc(50% - 9px) !important; }
+
+  .box,
+  #pink-box,
+  #orange-box,
+  #purple-box,
+  #green-box {
+    top: 60% !important;
+    left: 50% !important;
+    width: min(90%, 300px) !important;
+    padding: 16px !important;
+    transform: translateX(-50%) rotate(-1deg);
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  #orange-box { transform: translateX(-50%); }
+  #green-box { transform: translateX(-50%) rotate(1deg); }
+  .hole { left: 49%; top: 3%; }
+
+  .code14eco {
+    display: block;
+    width: calc(100% + 40px);
+    height: auto;
+    margin: 8px -20px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .how-container > .head-h1 h1 { font-size: 26px; }
+  .cloud-container { gap: 0; }
+  .cloud { height: 440px !important; }
+  .box,
+  #pink-box,
+  #orange-box,
+  #purple-box,
+  #green-box { top: 62% !important; font-size: 14px; line-height: 20px; }
+}
+
+@media (max-width: 600px) {
+  .how-container { padding: 0 !important; }
+  .how-container > .head-ind { padding: 64px 24px 0 !important; font-size: 16px !important; }
+  .how-container > .head-h1 { width: 100% !important; padding: 40px 24px 0 !important; }
+  .how-container > .head-h1 h1 { font-size: 24px; line-height: 32px; letter-spacing: -1px; }
+
+  .cloud-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start;
+    gap: 16px 0;
+    width: 100%;
+    height: auto !important;
+    margin: 20px auto 0 !important;
+    padding: 0 8px !important;
+  }
+
+  .how-container #cloud-1,
+  .how-container #cloud-2,
+  .how-container #cloud-3,
+  .how-container #cloud-4 {
+    position: relative !important;
+    inset: auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100% !important;
+    height: auto !important;
+    min-width: 0;
+    margin: 0 !important;
+  }
+
+  .how-container #cloud-2,
+  .how-container #cloud-4 { transform: translateY(-36px); }
+  .how-container .cloud-head { width: 100%; height: auto !important; aspect-ratio: 375 / 192; }
+  .how-container .cloud-p { top: 16% !important; left: 50% !important; transform: translateX(-50%); padding: 4px 8px !important; font-size: 9px; }
+  .how-container #cloud-1 .cloud-heading,
+  .how-container #cloud-2 .cloud-heading,
+  .how-container #cloud-3 .cloud-heading,
+  .how-container #cloud-4 .cloud-heading {
+    top: 44% !important;
+    left: 0 !important;
+    width: 100%;
+    max-width: none;
+    padding: 0 8px !important;
+    font-size: 12px !important;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .how-container .cloud > .rope1 {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    width: auto;
+    height: 105px;
+    object-fit: contain;
+    margin-top: -6px !important;
+  }
+  .how-container .cloud > .rope2 { display: none; }
+  .how-container #pink-box,
+  .how-container #orange-box,
+  .how-container #purple-box,
+  .how-container #green-box {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    width: 82% !important;
+    padding: 10px !important;
+    margin-top: -4px !important;
+    border-radius: 12px;
+    transform: none;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .how-container > picture { display: block; margin-top: 32px !important; }
+  .how-container .code14eco { display: block; width: 100%; height: auto; margin: 0 !important; }
+}
+
+/* Figma desktop alignment: shared section pin + heading (Pin at y120, heading at y196, x140) */
+@media (min-width: 1200px) {
+  .head-ind { padding-top: 120px !important; padding-left: max(5%, calc(50% - 580px)) !important; height: 148px; line-height: 28px; letter-spacing: -0.4px; }
+  .head-ind .indicator { width: 28px; height: 28px; margin-right: 12px !important; }
+  .head-ind p { margin: 0 !important; line-height: 28px; }
+  .head-h1 { padding-top: 48px !important; padding-left: max(5%, calc(50% - 580px)) !important; width: auto !important; }
+  .head-h1 h1 { font-size: 40px; line-height: 53px; letter-spacing: -1px; margin: 0 !important; }
+  .how-container > .head-h1 h1 { max-width: 564px; }
+}
+@media (min-width: 1200px) {
+  .how-container > .cloud-container { margin-top: -26px !important; }
+  .how-container { height: 1840px !important; overflow: hidden; }
+}
+/* Figma desktop alignment: step clouds + cards (Group 1:1384) */
+@media (min-width: 1200px) {
+  #cloud-1 { left: -1.7%; top: 35px !important; }
+  #cloud-2 { left: 25.3%; top: 84px; }
+  #cloud-3 { left: 47.9%; top: -75px !important; }
+  #cloud-4 { left: 72.8%; top: -195px; }
+  .how-container .cloud-p { left: 150px; top: 40px; height: 34px; padding: 10px 20px !important; font-size: 12px; line-height: 14px; }
+  .how-container .cloud-heading { left: 0 !important; right: 0; text-align: center; font-size: 24px !important; line-height: 28px; letter-spacing: -0.5px; margin: 0 !important; }
+  #cloud-1 > .cloud-head > .cloud-heading { top: 98px; }
+  #cloud-2 > .cloud-head > .cloud-heading { top: 80px; }
+  #cloud-3 > .cloud-head > .cloud-heading { top: 90px; }
+  #cloud-4 > .cloud-head > .cloud-heading { top: 78px; left: 14px !important; }
+  .how-container .box { font-size: 17px; line-height: 28px; padding: 20px !important; letter-spacing: 0; left: 48px !important; }
+  .how-container .box strong { font-weight: 700; }
+  #pink-box { width: 274px; top: 353px; }
+  #orange-box { width: 270px; top: 356px; left: 47px !important; }
+  #purple-box { width: 273px; top: 434px; }
+  #green-box { width: 272px; top: 391px; }
+}
