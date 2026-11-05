@@ -10,30 +10,30 @@ import gridArtwork from "../images/journey-grid-figma.png";
 import graduate from "../images/journey-graduate-figma.png";
 import sittingBoy from "../images/sitting boy.png";
 import sittingGirl from "../images/sitting girl.png";
-import standingBoy from "../images/boy.png";
-import standingGirl from "../images/polka-dotted girl.png";
+import standingBoy from "../images/journey-standing-boy-figma.png";
+import standingGirl from "../images/journey-standing-girl-figma.png";
 import "./thejourney.css";
 
 const years = [
   {
     image: bookShelve,
     topics: [
-      { title: "Engineering Thinking Book 1", points: ["Start developing object and situation awareness skills", "Build mind-hand coordination"] },
-      { title: "Engineering Thinking Book 2", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
-      { title: "Engineering Thinking Book 3", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
+      { title: "Engineering Thinking Book 1", tone: "pink", points: ["Start developing object and situation awareness skills", "Build mind-hand coordination"] },
+      { title: "Engineering Thinking Book 2", tone: "yellow", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
+      { title: "Engineering Thinking Book 3", tone: "purple", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
     ],
   },
   {
     image: htmlArtwork,
-    topics: [{ title: "HTML and the Web", points: ["Identify correct html code and it’s function", "Write grammatically correct HTML code", "Listen and convert text content into HTML"] }],
+    topics: [{ title: "HTML and the Web", tone: "green", points: ["Identify correct html code and it’s function", "Write grammatically correct HTML code", "Listen and convert text content into HTML"] }],
   },
   {
     image: interfaceArtwork,
-    topics: [{ title: "Interface Design and Analysis", points: ["See HTML tags as 3-dimensional objects", "Understand & Implement organisation of interfaces", "Master implementation of styles", "Implement professional web interface development"] }],
+    topics: [{ title: "Interface Design and Analysis", tone: "pink", points: ["See HTML tags as 3-dimensional objects", "Understand & Implement organisation of interfaces", "Master implementation of styles", "Implement professional web interface development"] }],
   },
   {
     image: gridArtwork,
-    topics: [{ title: "Grid Design & Analysis", points: ["See web interfaces as grids", "Implement grid organisation", "Master professional interface development"] }],
+    topics: [{ title: "Grid Design & Analysis", tone: "yellow", points: ["See web interfaces as grids", "Implement grid organisation", "Master professional interface development"] }],
   },
 ];
 
@@ -59,7 +59,10 @@ const TheJourney = () => {
   const year = plan[yearIndex];
 
   useEffect(() => {
-    if (result) resultRef.current?.scrollIntoView({ block: "start", behavior: "smooth" });
+    if (result) {
+      const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      resultRef.current?.scrollIntoView({ block: "start", behavior: reduceMotion ? "auto" : "smooth" });
+    }
   }, [result]);
 
   function simulate(event) {
@@ -112,7 +115,7 @@ const TheJourney = () => {
       </div>
 
       {!result ? <picture><source media="(max-width: 600px)" srcSet={defaultImgMobile} /><img className="journey-default" src={defaultImg} alt="Children learning to code with a teacher" /></picture> : (
-        <section ref={resultRef} className="journey-result" aria-label={`${result.name}’s learning plan`}>
+        <section ref={resultRef} className={`journey-result${year.topics.length > 1 ? " journey-result--intro" : ""}`} aria-label={`${result.name}’s learning plan`}>
           <div className="journey-summary">
             <p>{result.name}’s journey to mastery will take</p>
             <strong>{plan.length}<small> yrs</small></strong>
@@ -120,16 +123,22 @@ const TheJourney = () => {
             <a href="#enrol">Enrol Now</a>
           </div>
           <div className="journey-result-content">
-            <h2>{result.name}’s {ordinals[yearIndex]} Year</h2>
-            <a className="journey-download" href={`data:text/plain;charset=utf-8,${encodeURIComponent(learningPlanText(result, plan))}`} download="learning-plan.txt"><img src={downloadIcon} alt="" /> Download Learning Plan</a>
+            <div className="journey-result-header">
+              <h2 aria-live="polite">{result.name}’s {ordinals[yearIndex]} Year</h2>
+              <a className="journey-download" href={`data:text/plain;charset=utf-8,${encodeURIComponent(learningPlanText(result, plan))}`} download="learning-plan.txt"><img src={downloadIcon} alt="" /> Download Learning Plan</a>
+            </div>
             <div className="journey-year-art">
               <img src={year.image} alt="" />
+            </div>
+            <div className="journey-year-controls">
               <button type="button" aria-label="Previous year" disabled={yearIndex === 0} onClick={() => setYearIndex(index => index - 1)}>‹</button>
               <button type="button" aria-label="Next year" disabled={yearIndex === plan.length - 1} onClick={() => setYearIndex(index => index + 1)}>›</button>
             </div>
-            <h3>{result.gender === "Female" ? "She" : "He"} will master:</h3>
-            <div className="journey-topics">
-              {year.topics.map(topic => <div key={topic.title}><h4>{topic.title}</h4><ul>{topic.points.map(point => <li key={point}>{point}</li>)}</ul></div>)}
+            <div className="journey-mastery">
+              <h3>{result.gender === "Female" ? "She" : "He"} will master:</h3>
+              <div className="journey-topics">
+                {year.topics.map(topic => <div key={topic.title}><h4 className={`journey-topic-${topic.tone}`}>{topic.title}</h4><ul>{topic.points.map(point => <li key={point}>{point}</li>)}</ul></div>)}
+              </div>
             </div>
             <img className="journey-learner" src={learner} alt="" />
           </div>
