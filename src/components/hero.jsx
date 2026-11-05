@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import curtain from "../images/pink curtain.png";
 import girl from "../images/pink girl.png";
@@ -21,10 +22,55 @@ import "swiper/css";
 
 import "./hero.css";
 
+// How far (px) past the hero the claim bar must be before it pins to the top, and
+// how early it unpins on the way back up — so it is gone before the hero returns.
+const STICKY_OFFSET = 160;
+
+// "static" = inside the hero; "pinned" = fixed to the top of the screen;
+// "leaving" = sliding back up before returning to the hero.
+function useStickyClaimBar(heroRef) {
+  const [mode, setMode] = useState("static");
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
+
+  useEffect(() => {
+    let frame = 0;
+    let leaveTimer = 0;
+    const update = () => {
+      frame = 0;
+      const hero = heroRef.current;
+      if (!hero) return;
+      const pastHero = hero.getBoundingClientRect().bottom < -STICKY_OFFSET;
+      const current = modeRef.current;
+      if (pastHero && current !== "pinned") {
+        clearTimeout(leaveTimer);
+        setMode("pinned");
+      } else if (!pastHero && current === "pinned") {
+        setMode("leaving");
+        leaveTimer = setTimeout(() => setMode("static"), 300);
+      }
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+      clearTimeout(leaveTimer);
+    };
+  }, [heroRef]);
+
+  return mode;
+}
+
 const Hero = () => {
   const navigate = useNavigate();
+  const heroRef = useRef(null);
+  const claimMode = useStickyClaimBar(heroRef);
   return (
-    <div className="hero-home">
+    <div className={`hero-home${claimMode === "static" ? "" : " hero-home--claim-pinned"}`} ref={heroRef}>
       <Swiper
         modules={[Autoplay]}
         slidesPerView={1}
@@ -147,7 +193,7 @@ const Hero = () => {
 
       */}
 
-      <div className="claim-section">
+      <div className={`claim-section${claimMode === "static" ? "" : ` claim-section--${claimMode}`}`}>
         <div className="claim-container d-flex align-items-center">
           <div className="atc-digital d-flex align-items-center">
             <img src={atcbook} alt="ATC Digital" className="atc-book" />

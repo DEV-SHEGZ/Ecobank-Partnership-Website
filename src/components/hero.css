@@ -384,3 +384,26 @@
 @media (min-width: 1200px) {
   .claim-section .child-section { margin-right: -28px !important; }
 }
+
+/* Claim bar follows the reader down the page, then slides away before the hero comes back */
+@media (min-width: 601px) {
+  /* lift the hero's stacking context so the pinned bar sits above later sections */
+  .hero-home--claim-pinned { z-index: 60; }
+  .claim-section--pinned,
+  .claim-section--leaving {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: auto !important;
+    left: 0;
+    width: 100%;
+    z-index: 50 !important;
+    box-shadow: 0 6px 20px rgb(2 52 72 / 18%);
+    animation: claim-bar-in 300ms ease-out both;
+  }
+  .claim-section--leaving { animation: claim-bar-out 300ms ease-in both; }
+}
+@keyframes claim-bar-in { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes claim-bar-out { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .claim-section--pinned, .claim-section--leaving { animation-duration: 1ms; }
+}
