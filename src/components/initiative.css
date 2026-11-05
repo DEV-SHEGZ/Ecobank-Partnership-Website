@@ -4,6 +4,39 @@
  height: 740px;
  position: relative;
 }
+.support-widget {
+  position: absolute;
+  z-index: 10;
+  top: 18px;
+  right: max(8%, calc((100% - 1160px) / 2));
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.support-prompt {
+  max-width: 190px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #e9edf0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgb(2 52 72 / 10%);
+  color: #023448;
+  font: 400 16px/1.35 Roboto, sans-serif;
+}
+.support-toggle {
+  width: 56px;
+  height: 56px;
+  padding: 11px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+}
+.support-toggle svg { width: 100%; height: 100%; fill: currentColor; }
 .content{
     display:flex;
     flex-direction: row;
@@ -140,7 +173,14 @@ color: #023448;
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .support-widget {
+    top: 18px;
+    right: 18px;
+    gap: 8px;
+  }
+  .support-prompt { max-width: 145px; padding: 9px 10px; font-size: 13px; }
+  .support-toggle { width: 46px; height: 46px; padding: 9px; }
   .initiative {
     height: 932px;
     min-height: 100vh;
@@ -271,6 +311,18 @@ left: 180px;
     
   }
 }
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .initiative { height: 1020px; }
+  .initiative .content { margin-left: 0 !important; }
+  .initiative-left { max-width: 600px; }
+  .initiative-title {
+    width: min(600px, 100%) !important;
+    font-size: 32px !important;
+    line-height: 1.25;
+  }
+  .initiative-description { width: min(560px, 100%) !important; font-size: 17px; }
+}
  
 @media (max-width: 480px) {
   .initiative {
@@ -314,3 +366,41 @@ left: 180px;
     margin-top: -18px;
   }
 }
+
+@media (max-width: 600px) {
+  .initiative { height: 932px; min-height: 0; padding: 0 !important; }
+  .initiative .content { width: calc(100% - 48px); margin-left: 24px !important; }
+  .initiative .initiative-left { width: 100%; gap: 0 !important; }
+  .initiative .title { margin: 64px 0 40px !important; font-size: 16px; }
+  .initiative .initiative-title { width: min(280px, 100%) !important; margin-bottom: 18px !important; font-size: 24px !important; line-height: 32px; }
+  .initiative .initiative-description { width: min(330px, 100%) !important; margin-bottom: 18px !important; font-size: 14px; line-height: 20px; }
+  .initiative .button { width: 240px; max-width: 100%; height: 48px; font-size: 16px; }
+
+  .initiative .initiative-right { position: absolute; top: 0; left: 0; width: 100% !important; margin: 0 !important; }
+  .initiative .initiative-art { position: static; width: 100%; height: auto; margin: 0 !important; transform: none; }
+  .initiative .robot { width: 35%; height: auto; top: 420px; left: 5%; }
+  .initiative .laptop { width: 76%; height: auto; top: 548px; left: 17%; }
+  .initiative .screen { width: 53%; height: auto; top: 523px; left: 31%; }
+  .initiative .initiative-kids { inset: 0; height: 100%; margin: 0 !important; }
+  .initiative .girl-reading { width: 35%; height: auto; top: 750px; left: 5%; }
+  .initiative .boy-reading { width: 43%; height: auto; top: 750px; left: 52%; }
+}
+
+/* Figma desktop alignment (Landing Page 1440 frame, node 1:602) */
+@media (min-width: 1200px) {
+  .initiative .initiative-left { flex: none; margin-left: max(60px, calc(50% - 580px)) !important; margin-right: clamp(20px, calc(100% - 1290px), 150px) !important; }
+  .initiative .title { margin-top: 120px !important; margin-bottom: 56px !important; line-height: 28px; }
+  .initiative .initiative-title, .initiative .initiative-description { margin: 0 !important; }
+  .initiative .button { height: 56px; line-height: 24px; }
+  .initiative .initiative-right { top: 81px; }
+  .initiative .laptop { top: 215px; left: 49px; }
+  .initiative .screen { left: 163px; }
+  .initiative .support-widget { top: 35px; right: auto; left: min(calc(100% - 355px), calc(50% + 365px)); gap: 12px; align-items: flex-start; }
+  .initiative .support-prompt { width: 187px; max-width: none; min-height: 76px; padding: 10px !important; border: 1px solid #eceff5; border-radius: 12px; background: #f6f7fb; box-shadow: none; color: #000; font-size: 18px; line-height: 28px; letter-spacing: -0.3px; }
+  .initiative .support-toggle { margin-top: 20px !important; padding: 16px !important; background: #25d366; }
+}
+@media (min-width: 1200px) {
+  .initiative .title { display: flex; align-items: center; gap: 12px; }
+}
+.initiative .button { display: inline-flex; align-items: center; justify-content: space-between; }
+.initiative .button-arrow { flex: none; }

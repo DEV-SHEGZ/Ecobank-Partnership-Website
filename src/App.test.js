@@ -6,9 +6,13 @@ beforeEach(() => {
   window.scrollTo = jest.fn();
   window.ResizeObserver = class { observe() {} disconnect() {} };
   Element.prototype.scrollIntoView = jest.fn();
+  Element.prototype.scrollTo = jest.fn();
+  // jsdom has <dialog> but no showModal/close; mirror the browser's open attribute.
+  HTMLDialogElement.prototype.showModal = function () { this.setAttribute('open', ''); };
+  HTMLDialogElement.prototype.close = function () { this.removeAttribute('open'); };
   HTMLCanvasElement.prototype.getContext = jest.fn(() => ({clearRect: jest.fn()}));
 });
-test('completes nine preview steps, retains edits, and requires preview acknowledgement', async () => {
+test('completes the nine-step preview, retains edits, and gates results behind the terms', async () => {
   render(<AccountOpening />);
   const advance = async (name, nextStep) => {
     fireEvent.click(screen.getByRole('button', {name, exact:true}));
@@ -27,11 +31,12 @@ test('completes nine preview steps, retains edits, and requires preview acknowle
   fireEvent.click(screen.getAllByRole('button',{name:'Edit Info'})[0]);
   expect(screen.getByLabelText('Parent/Guardian Name')).toHaveValue('Example Parent');
   await advance('Save and return to review',7);
-  await advance('Continue Account Opening',8);
-  fireEvent.click(screen.getByRole('button',{name:'I agree to the terms & conditions'}));
-  expect(screen.getByText('Confirm that you understand this is a preview.')).toBeInTheDocument();
-  fireEvent.click(screen.getByRole('checkbox'));
-  await advance('I agree to the terms & conditions',9);
-  expect(screen.getByText('DEMO-0004')).toBeInTheDocument();
+  // Review opens the Terms & Conditions dialog; accepting it shows the account numbers (step 8).
+  fireEvent.click(screen.getByRole('button', {name:'Continue Account Opening'}));
+  await waitFor(() => expect(screen.getByText('Thanks for reading. You can now accept.')).toBeInTheDocument());
+  await advance('I agree to the terms & conditions',8);
   expect(screen.getByText('Demo results only — no bank accounts were created.')).toBeInTheDocument();
+  expect(document.querySelector('.account-result p').textContent).toMatch(/^\d{10}$/);
+  await advance('Fund Account Now',9);
+  expect(screen.getByRole('button', {name:'Fund Account'})).toBeInTheDocument();
 });

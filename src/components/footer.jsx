@@ -1,6 +1,5 @@
 import atc from "../images/atc_banner.png";
 import ecobank from "../images/ecoobank-logo.png";
-import icon from "../images/Icon.png";
 import "./footer.css";
 
 const Footer = () => {
@@ -15,7 +14,7 @@ const Footer = () => {
             <p>
               All educators are provided with world class teaching tools and training for extracting data from learning sessions from Day 1. This data serves as the backbone for verifying learning has occurred. At Andrew Teaches Coding our full trust and confidence is in data alone.
             </p>
-            <button type="button">Talk to a Learning Specialists</button>
+            <button type="button">Talk to a Learning Specialist</button>
           </div>
         </div>
       </div>
