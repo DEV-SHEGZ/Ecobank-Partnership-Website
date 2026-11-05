@@ -1044,7 +1044,7 @@
     url('../../images/account/paper-blob-left.svg') left bottom / 29.8611% auto no-repeat,
     url('../../images/account/paper-blob-right.svg') right bottom / 29.8611% auto no-repeat,
     url('../../images/account/paper-wave.svg') center top / 100% auto no-repeat,
-    linear-gradient(90deg, transparent 6.9444%, #fff 6.9444%, #fff 93.0556%, transparent 93.0556%) 0 calc(min(100vw, 1440px) * .1) / 100% 100% no-repeat;
+    linear-gradient(90deg, transparent 6.9444%, rgb(255 255 255 / .84) 6.9444%, rgb(255 255 255 / .84) 93.0556%, transparent 93.0556%) 0 calc(min(100vw, 1440px) * .1) / 100% 100% no-repeat;
 }
 .account-step-fund .account-paper,.account-step-review .account-paper,.account-step-documents .account-paper,.account-step-children .account-paper,.account-step-parent .account-paper { min-height: 0; }
 
@@ -1317,3 +1317,21 @@
 .account-liveness-row .account-liveness-ok { margin: 0!important; white-space: nowrap; }
 .account-liveness-row .account-change { white-space: nowrap; }
 .account-page .account-identity .account-change { font-size: 14px; font-weight: 500; letter-spacing: -.2px; color: #00577a; text-decoration: underline; padding: 4px 0!important; margin: 0!important; }
+
+/* Keep the campaign artwork still while the account form scrolls over it. */
+.account-form-stage { position: relative; isolation: isolate; }
+.account-form-stage > .account-hero { position: sticky; top: 0; z-index: 0; }
+.account-form-stage > .account-preview,
+.account-form-stage > .account-panel { position: relative; z-index: 1; }
+.account-form-stage > .account-panel { background: transparent; }
+.account-paper { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+.account-step-results .account-paper {
+  background-image: linear-gradient(rgb(255 255 255 / .84), rgb(255 255 255 / .84)), url('../../images/account/success-paper.svg');
+  background-size: 100% 100%, 86.1111% auto;
+  background-position: center, center 60px;
+  background-repeat: no-repeat;
+}
+@media(max-width:600px) {
+  .account-panel:not(.account-step-results) .account-paper { background: rgb(255 255 255 / .84); }
+  .account-step-results .account-paper { background-image: linear-gradient(rgb(255 255 255 / .84), rgb(255 255 255 / .84)); }
+}
