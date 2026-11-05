@@ -274,9 +274,10 @@ export default function AccountOpening() {
   const isResults = current.key === 'results';
   const bvnReady = /^\d{11}$/.test(watched.bvn || '') && /^\d{11}$/.test(watched.nin || '');
 
-  return <div className="account-page"><a className="account-skip" href="#account-form">Skip to account opening</a><SiteHeader /><AccountHero />
+  return <div className="account-page"><a className="account-skip" href="#account-form">Skip to account opening</a><SiteHeader />
+    <main><div className="account-form-stage"><AccountHero />
     <div className="account-preview"><strong>Local preview</strong><span>Use sample details only. Nothing is sent to a bank or saved after you leave or refresh.</span><button type="button" onClick={loadSample}>Use sample details</button></div>
-    <main><section ref={panel} id="account-form" className={`account-panel account-step-${current.key}`} aria-labelledby="account-title">
+    <section ref={panel} id="account-form" className={`account-panel account-step-${current.key}`} aria-labelledby="account-title">
       <div className="account-paper"><div className="account-progress"><span>Step {step} of {STEPS.length} · {current.name}</span><progress value={step} max={STEPS.length} aria-label={`Step ${step} of ${STEPS.length}`} /></div>
         {!isResults && <div className="account-title"><h1 id="account-title" ref={heading} tabIndex={-1}>{current.title || 'ACCOUNT OPENING'}</h1><p>{funded ? 'Here is a summary of the funding you set up for each child/ward.' : current.copy}</p></div>}
         <FormProvider {...methods}><form className="account-form" onSubmit={submit} noValidate>
@@ -313,7 +314,7 @@ export default function AccountOpening() {
           <TermsModal open={terms} onClose={() => setTerms(false)} onAgree={agree} />
           <BenefitsModal open={benefits} onClose={() => setBenefits(false)} onStart={startStandingOrder} />
         </FormProvider></div>
-    </section><section className="account-ad"><h2>Give <span>Your Child</span> the Best Start in Life!</h2><p>Every big dream begins with a small step. <strong>MyFirst Account</strong> is specially designed for children and teenagers aged <strong>0 - 15 years,</strong> helping parents build a strong financial foundation from day one.</p><button type="button" className="account-primary" onClick={() => {
+    </section></div><section className="account-ad"><h2>Give <span>Your Child</span> the Best Start in Life!</h2><p>Every big dream begins with a small step. <strong>MyFirst Account</strong> is specially designed for children and teenagers aged <strong>0 - 15 years,</strong> helping parents build a strong financial foundation from day one.</p><button type="button" className="account-primary" onClick={() => {
       if (isResults || current.key === 'fund') {
         if (window.confirm('Start a new preview and clear these details?')) { reset(emptyValues()); setFunded(false); setReturnToReview(false); changeStep(1); }
       } else panel.current?.scrollIntoView({ behavior: 'smooth' });
