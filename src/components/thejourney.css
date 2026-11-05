@@ -50,6 +50,7 @@ option {
   position: absolute;
   left: 96%;
   top: 67%;
+  pointer-events: none;
 }
 
 .options-cont {
@@ -72,4 +73,42 @@ option {
 .atc-yr {
   color: #023448;
   font-size: 32px !important;
+}
+
+@media (min-width: 901px) {
+  #journey {
+    margin-top: 103px !important;
+    padding-bottom: 16px !important;
+  }
+
+  #journey .options-cont {
+    margin: 42px auto 0 !important;
+  }
+
+  #journey .slideCardCont {
+    margin-top: 54px !important;
+    padding-bottom: 47px !important;
+  }
+
+  #enrol {
+    margin-top: 120px !important;
+  }
+}
+
+/* Figma desktop alignment (Our Journey 1:2327: pin y120, heading y196, form y334, art y459) */
+@media (min-width: 1200px) {
+  #journey { margin-top: 0 !important; padding-bottom: 0 !important; }
+  .thejourneycont #teach-div { margin: 0 !important; }
+  .thejourneycont #teach-div h1 { max-width: 560px; }
+  .thejourneycont .head-ind { color: #0082bb !important; }
+  #journey .options-cont { width: min(1160px, 90%) !important; margin: 32px auto 0 !important; align-items: flex-end !important; gap: 18px; height: 65px; }
+  #journey .option-age { width: 300px !important; flex: 0 1 300px; min-width: 0; }
+  #journey .option-age:first-child { width: 350px !important; flex-basis: 350px; }
+  #journey .option-age label { height: 14px; line-height: 14px; margin: 0 0 6px !important; padding: 0 !important; letter-spacing: -0.2px; }
+  #journey .option-age select, #journey .option-age input { height: 45px; width: 100%; padding: 12px 16px !important; border: 0.57px solid #d1d8db; border-radius: 12px; background: #f6f8f9; color: #a7b2b6; font: 400 18px/21px Roboto, sans-serif; letter-spacing: -0.4px; }
+  #journey .option-age input::placeholder { color: #a7b2b6; }
+  #journey .option-age select:valid, #journey .option-age input:not(:placeholder-shown) { color: #023448; }
+  #journey .arr-down { left: auto; right: 20px; top: 38.5px; width: 16px; height: 8px; pointer-events: none; }
+  #journey .submit { flex: none; white-space: nowrap; margin: 0 0 0 auto !important; height: 45px; width: 155px; padding: 0 24px !important; font-size: 18px; line-height: 21px; letter-spacing: -0.5px; }
+  #journey .journey-default { display: block; width: 100%; height: 703px; object-fit: cover; margin-top: 60px !important; }
 }

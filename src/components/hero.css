@@ -1,42 +1,56 @@
+.hero-home {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-container {
   background-color: #fdd8e2 !important;
-  height: 100vh !important;
+  height: 820px !important;
   min-height: 700px;
   position: relative;
   overflow: hidden;
 }
 .hero-container-green {
   background-color: #d6e9c3 !important;
-  height: 100vh !important;
+  height: 820px !important;
+  min-height: 700px;
+  position: relative;
+  overflow: hidden;
 }
 
 .zero-h1 {
-  font-size: 50px !important;
+  font-size: 40px !important;
+  line-height: 1.18 !important;
   color: #023448 !important;
-  width: 70% !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 .zero-p {
-  font-size: 24px !important;
-  letter-spacing: -0.5px !important;
-  width: 65% !important;
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+  letter-spacing: -0.25px !important;
+  width: 100% !important;
+  margin: 0 !important;
 }
 
 .hero-content {
-  width: 60% !important;
-  height: 271px !important;
+  width: min(510px, 42%) !important;
+  height: auto !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
-  margin-left: 7% !important;
-  margin-top: 15% !important;
+  align-items: flex-start;
+  gap: 18px;
+  left: max(7%, calc((100% - 1160px) / 2));
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 !important;
   z-index: 5 !important;
   position: absolute !important;
 }
 
 .hero-container-green > .hero-content {
-  margin-top: 15% !important;
-  margin-left: 4% !important;
+  left: max(7%, calc((100% - 1160px) / 2));
 }
 
 .claim-btn {
@@ -206,4 +220,167 @@
   position: absolute !important;
   top: 53%;
   right: 39%;
+}
+
+.hero-mobile-floor { display: none; }
+
+@media (max-width: 900px) {
+  .hero-container,
+  .hero-container-green {
+    height: min(760px, 100svh) !important;
+    min-height: 640px;
+  }
+
+  .hero-content {
+    width: min(440px, 52%) !important;
+    left: 5% !important;
+    gap: 14px;
+  }
+
+  .zero-h1 { font-size: 34px !important; }
+  .zero-p { font-size: 16px !important; }
+  .curtain { width: 47%; top: 12%; }
+  .girl { width: 40%; right: 2%; top: 32%; }
+  .flower { width: 14%; }
+  .teacher { width: 48%; right: 0; }
+  .sat-big { width: 16%; }
+  .greengirl { width: 20%; right: 23%; }
+  .greenboy { width: 17%; right: 37%; }
+  .earth { width: 25%; }
+
+  .claim-section {
+    top: auto;
+    bottom: 0;
+    height: 120px !important;
+    min-height: 120px;
+  }
+
+  .claim-container { width: 94%; }
+  .atc-book { height: 70px !important; margin-right: 18px !important; }
+  .input-p, .child-p { font-size: 15px; margin-bottom: 6px; }
+  .child { width: 72px; }
+}
+
+@media (max-width: 600px) {
+  .hero-container,
+  .hero-container-green {
+    height: 850px !important;
+    min-height: 850px;
+  }
+
+  .hero-content {
+    top: 112px;
+    transform: none;
+    left: 6% !important;
+    width: 88% !important;
+    gap: 12px;
+  }
+
+  .zero-h1 { font-size: 30px !important; max-width: 340px; }
+  .zero-p { font-size: 15px !important; max-width: 340px; }
+  .hero-content > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .claim-btn, .open-btn {
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    margin-right: 0 !important;
+  }
+
+  .curtain { width: 84%; top: 37%; right: -12%; }
+  .girl { width: 68%; top: 48%; right: 5%; }
+  .flower { width: 22%; bottom: 16%; }
+  .hero-container-green .hero-content { top: 100px; }
+  .hero-container-green .teacher { width: 67%; top: 47%; right: -8%; }
+  .hero-container-green .sat-big { width: 22%; top: 36%; }
+  .hero-container-green .greengirl { width: 27%; top: 61%; right: 27%; }
+  .hero-container-green .greenboy { width: 23%; top: 65%; right: 49%; }
+  .hero-container-green .earth { width: 31%; top: 72%; right: 4%; }
+  .hero-container-green .left-bg { width: 35%; left: -4% !important; }
+  .hero-container-green .right-bg { width: 100%; }
+
+  .claim-section { height: 154px !important; min-height: 154px; }
+  .claim-container { align-items: center !important; width: 94%; }
+  .atc-digital { width: 58%; flex-shrink: 0; }
+  .atc-book { width: 56px; height: auto !important; margin-right: 8px !important; }
+  .input-section { width: calc(100% - 64px); min-width: 0; flex: 1; }
+  .input-p { width: 100%; max-width: 100%; white-space: nowrap; font-size: 9px; line-height: 1.25; text-align: center; }
+  .child-p { font-size: 10px; line-height: 1.25; text-align: center; }
+  .claim-input { font-size: 10px !important; padding: 5px 8px !important; }
+  .claim-book-btn, .open-btn-child { font-size: 10px; padding: 5px 10px !important; }
+  .child-section { width: 42%; justify-content: flex-end; }
+  .child-content { flex: 1; min-width: 0; }
+  .child { width: 38px; margin-top: 8px !important; }
+}
+
+@media (max-width: 600px) {
+  .hero-container,
+  .hero-container-green {
+    height: clamp(830px, 216.74vw, 1000px) !important;
+    min-height: 0;
+  }
+
+  .hero-content,
+  .hero-container-green > .hero-content {
+    top: clamp(120px, 35.81vw, 154px) !important;
+    left: 24px !important;
+    width: calc(100% - 48px) !important;
+    gap: 18px;
+  }
+
+  .zero-h1 {
+    max-width: 382px;
+    font-size: clamp(28px, 7.44vw, 32px) !important;
+    line-height: 1.125 !important;
+    letter-spacing: -1px;
+  }
+
+  .zero-p {
+    max-width: 382px;
+    color: #4e4e4e;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .hero-content > div { gap: 10px; }
+  .claim-btn, .open-btn { min-height: 40px; padding: 10px 24px !important; font-size: 14px !important; }
+  .hero-mobile-floor { display: block; position: absolute; bottom: 0; left: 0; width: 100%; height: auto; }
+  .curtain { width: 87.44%; height: auto; top: max(47.21%, 410px); right: 0; }
+  .girl { width: 76.51%; height: auto; top: auto; right: 0; bottom: 0; }
+  .flower { width: 11.4%; left: -1.2%; bottom: 7.7%; }
+  .claim-section { display: none; }
+
+  .hero-container-green .teacher { width: 57%; top: auto; right: -7%; bottom: 0; }
+  .hero-container-green .greengirl { width: 27%; top: auto; right: 33%; bottom: 13%; }
+  .hero-container-green .greenboy { width: 24%; top: auto; left: 4%; right: auto; bottom: 5%; }
+  .hero-container-green .earth { width: 65%; top: auto; right: 5%; bottom: -2%; }
+}
+
+/* Figma desktop alignment (Hero Section 1:43, 1440 frame) */
+@media (min-width: 1200px) {
+  .hero-container .hero-content,
+  .hero-container-green .hero-content { width: 540px !important; gap: 0; transform: translateY(calc(-50% + 5px)); }
+  .hero-home .zero-h1 { font-size: 48px !important; line-height: 55px !important; letter-spacing: 0; }
+  .hero-home .zero-p { font-size: 22px !important; line-height: 30px !important; letter-spacing: -0.15px !important; color: #4e4e4e; margin-top: 23px !important; }
+  .hero-home .hero-content > div { margin-top: 33px !important; }
+  .hero-home .claim-btn, .hero-home .open-btn { height: 44px; padding: 0 24px !important; font-size: 18px; line-height: 44px; letter-spacing: -0.2px; }
+  .hero-home .claim-btn { margin-right: 7px !important; }
+  .hero-home .open-btn { color: #4e4e4e; }
+
+  .claim-section { top: auto; bottom: 0; height: 126px !important; min-height: 0; background: #035171; overflow: hidden; }
+  .claim-section::before { content: ""; position: absolute; inset: 0; background: #adbd03; clip-path: polygon(55.35% 0, 100% 0, 100% 100%, 44.72% 100%); z-index: -1; }
+  .claim-section { isolation: isolate; }
+  .claim-container { width: min(1240px, calc(100% - 120px)); height: 100%; }
+  .atc-book { height: 86px !important; margin-right: 47px !important; }
+  .input-section { gap: 0; }
+  .input-p { font-size: 19px; line-height: 22px; margin: 0 0 10px !important; }
+  .claim-input { width: 202px; height: 24px; font-size: 11px !important; padding: 0 12px !important; margin: 0 0 8px !important; }
+  .claim-book-btn, .open-btn-child { height: 26px; padding: 0 18px !important; font-size: 13px; line-height: 26px; }
+  .child-p { font-size: 19px; line-height: 22px; margin: 0 0 13px !important; }
+}
+@media (min-width: 1200px) {
+  .claim-section .child-section { margin-right: -28px !important; }
 }

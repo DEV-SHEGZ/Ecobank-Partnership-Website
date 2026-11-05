@@ -36,3 +36,115 @@
   border-radius: 100px;
   padding: 2px !important;
 }
+
+.mobile-menu-close,
+.mobile-start-learning {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  #eco-navbar {
+    width: 100% !important;
+    padding: 16px 24px !important;
+  }
+
+  #eco-navbar .container-fluid {
+    display: flex;
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+  }
+
+  #eco-navbar .eco-logo {
+    display: block;
+    width: 85px;
+    height: auto;
+  }
+
+  #eco-navbar .navbar-toggler {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    padding: 8px !important;
+  }
+
+  #eco-navbar .navbar-toggler:focus-visible,
+  #eco-navbar .mobile-menu-close:focus-visible {
+    outline: 3px solid #bdcf00;
+    outline-offset: 3px;
+  }
+
+  #eco-navbar .navbar-collapse {
+    display: none !important;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 130px 24px 40px !important;
+    background: #00577a;
+  }
+
+  #eco-navbar .navbar-collapse.show { display: flex !important; }
+  #eco-navbar .navbar-nav { align-items: center; gap: 30px; margin: 0 !important; }
+  #eco-navbar .navbar-nav > li { margin: 0 !important; font-size: 24px !important; }
+  #eco-navbar .navbar-nav > li > a { color: #fff !important; padding: 8px !important; }
+
+  #eco-navbar .mobile-menu-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  #eco-navbar .mobile-start-learning {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px !important;
+    padding: 10px 24px !important;
+    border-radius: 100px;
+    background: #0075ff;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  #eco-navbar .mobile-start-learning img {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ffbf46;
+    border-radius: 50%;
+  }
+
+  #eco-navbar #start-learning-btn { display: none !important; }
+}
+
+/* Figma desktop alignment (Nav Bar 1:44: 1440x96, logo 100,18 122x60, tabs at 440, button 1145,20 195x56) */
+@media (min-width: 992px) {
+  #eco-navbar { width: min(1240px, calc(100% - 80px)) !important; height: 96px; padding: 0 !important; }
+  #eco-navbar > .container-fluid { position: relative; height: 96px; padding: 0 !important; }
+  #eco-navbar .navbar-brand { padding: 0 !important; margin: 0 !important; }
+  #eco-navbar .eco-logo { display: block; width: 122px; height: 60px; object-fit: contain; }
+  #eco-navbar .navbar-collapse { position: absolute; left: calc(50% - 280px); top: 30px; }
+  #eco-navbar .navbar-nav { gap: 16px; margin: 0 !important; }
+  #eco-navbar .navbar-nav > li { margin: 0 !important; font-size: 14px !important; line-height: 16px; }
+  #eco-navbar .navbar-nav > li > a { padding: 10px !important; line-height: 16px; letter-spacing: -0.45px; }
+  #start-learning-btn { height: 56px; padding: 0 32px !important; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: -0.5px; }
+  #start-learning-btn .pe-3 { padding-right: 11px !important; }
+  #start-learning-btn .atc-logo { width: 32px; height: 32px; }
+}

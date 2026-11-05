@@ -10,6 +10,7 @@ import TheJourney from "./components/thejourney.jsx";
 import Footer from "./components/footer.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./styles/mobile-figma.css";
 
 import AccountOpening from "./features/account-opening/AccountOpening";
 
