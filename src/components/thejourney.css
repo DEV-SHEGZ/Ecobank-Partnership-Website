@@ -139,7 +139,7 @@ option {
   #journey .option-age input::placeholder { color: #a7b2b6; }
   #journey .arr-down { top: auto; right: 20px; bottom: 19px; left: auto; }
   #journey .submit { min-height: 45px; margin: 0 !important; }
-  #journey .journey-default { display: block; width: 100%; height: auto; margin-top: 60px !important; }
+  #journey .journey-default { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 703; margin-top: 60px !important; }
 }
 
 .journey-result {

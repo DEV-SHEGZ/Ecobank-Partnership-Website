@@ -150,3 +150,50 @@
   .teach-crd-bdy .teacher-years { font-size: 18px !important; letter-spacing: -0.4px; }
   .linkedprof > .btn { font-size: 16px !important; margin-right: 14px !important; letter-spacing: -0.3px; }
 }
+
+/* Keep the teacher profiles compact without scaling down the mobile design. */
+@media (min-width: 601px) {
+  .overall-cont { height: auto; padding-bottom: 80px !important; }
+  .cards-cont { padding-bottom: 0 !important; }
+  .teacher-card {
+    width: calc(100% - 24px) !important;
+    height: auto;
+    min-height: 520px;
+    padding: 12px !important;
+    border-radius: 28px !important;
+  }
+  .teachers-img {
+    width: 100%;
+    height: clamp(220px, 23vw, 280px);
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  .teach-crd-bdy {
+    height: auto;
+    min-height: 215px;
+    flex: 1 1 auto;
+    margin-top: 12px !important;
+    padding: 20px !important;
+    border-radius: 18px !important;
+  }
+  .teach-crd-bdy > h5.card-title { font-size: 24px !important; line-height: 29px; }
+  .teach-crd-bdy .teacher-school { height: auto; overflow: visible; font-size: 19px !important; line-height: 26px !important; }
+  .teach-crd-bdy .teacher-years { font-size: 16px !important; line-height: 24px; margin: 8px 0 16px !important; }
+  .linkedprof { height: auto; padding: 0 !important; gap: 6px; }
+  .linkedprof .linkedin-icon { width: 24px; height: 24px; }
+  .linkedprof > .btn { padding: 0 !important; font-size: 15px !important; margin-right: 8px !important; }
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+  .teacher-slide { width: 40% !important; }
+}
+
+@media (min-width: 601px) and (max-width: 1199px) {
+  .ourteacherscont .head-ind,
+  .ourteacherscont .head-h1 { padding-left: 5% !important; }
+}
+
+@media (min-width: 1200px) {
+  .cards-cont { width: min(1160px, 90%) !important; margin: 0 auto !important; padding-top: 64px !important; }
+  .teacher-slide { width: calc(100% / 3) !important; }
+}

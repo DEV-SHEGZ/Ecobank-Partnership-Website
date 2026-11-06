@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import curtain from "../images/pink curtain.png";
 import girl from "../images/pink girl.png";
 import flower from "../images/flowers.png";
@@ -66,19 +65,39 @@ function useStickyClaimBar(heroRef) {
 }
 
 const Hero = () => {
-  const navigate = useNavigate();
   const heroRef = useRef(null);
+  const swiperRef = useRef(null);
+  const claimInputRef = useRef(null);
+  const [showMobileClaimBar, setShowMobileClaimBar] = useState(false);
   const claimMode = useStickyClaimBar(heroRef);
+
+  const focusClaimInput = (event) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    setShowMobileClaimBar(true);
+    requestAnimationFrame(() => claimInputRef.current?.focus({ preventScroll: true }));
+  };
+
   return (
-    <div className={`hero-home${claimMode === "static" ? "" : " hero-home--claim-pinned"}`} ref={heroRef}>
+    <div
+      className={`hero-home${claimMode === "static" ? "" : " hero-home--claim-pinned"}${showMobileClaimBar ? " hero-home--mobile-claim-active" : ""}`}
+      ref={heroRef}
+      onFocusCapture={() => swiperRef.current?.autoplay?.stop()}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          swiperRef.current?.autoplay?.start();
+        }
+      }}
+    >
       <Swiper
         modules={[Autoplay]}
+        onSwiper={(swiper) => { swiperRef.current = swiper; }}
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
         autoplay={{
-          delay: 1200,
+          delay: 6000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
       >
         {/* Slide 1 */}
@@ -93,10 +112,10 @@ const Hero = () => {
                 journey today with 18 hrs WhatsApp support
               </p>
               <div>
-                <button className="claim-btn roboto-medium">Claim Now</button>
-                <button className="open-btn roboto-medium" onClick={() => navigate("/open-account")}>
+                <a className="claim-btn roboto-medium" href="#enrol" onClick={focusClaimInput}>Claim Now</a>
+                <a className="open-btn roboto-medium" href="/open-account" target="_blank" rel="noopener noreferrer">
                   Open a Junior Savers Account
-                </button>
+                </a>
               </div>
             </div>
             <img src={mobileFloor} alt="" className="hero-mobile-floor" />
@@ -125,9 +144,9 @@ const Hero = () => {
                 <button id="green-btn" className="claim-btn roboto-medium">
                   Download Learning Calendar
                 </button>
-                <button id="green-white" className="open-btn roboto-medium">
+                <a id="green-white" className="open-btn roboto-medium" href="#teachers">
                   See Teachers Profile
-                </button>
+                </a>
               </div>
             </div>
             <img src={teacher} alt="Teacher guiding a student" className="teacher" />
@@ -193,7 +212,8 @@ const Hero = () => {
 
       */}
 
-      <div className={`claim-section${claimMode === "static" ? "" : ` claim-section--${claimMode}`}`}>
+      <div className={`claim-section${claimMode === "static" ? "" : ` claim-section--${claimMode}`}${showMobileClaimBar ? " claim-section--mobile-active" : ""}`}>
+        <button className="claim-mobile-close" type="button" aria-label="Close account number bar" onClick={() => setShowMobileClaimBar(false)}>×</button>
         <div className="claim-container d-flex align-items-center">
           <div className="atc-digital d-flex align-items-center">
             <img src={atcbook} alt="ATC Digital" className="atc-book" />
@@ -202,8 +222,11 @@ const Hero = () => {
                 Claim your Free Book Now!
               </p>
               <input
+                ref={claimInputRef}
                 className="claim-input roboto-regular mb-1"
-                type="number"
+                type="text"
+                inputMode="numeric"
+                aria-label="Junior Savers account number"
                 placeholder="Enter account number"
               />
               <button className="claim-book-btn roboto-medium">
@@ -217,7 +240,7 @@ const Hero = () => {
               <p className="roboto-medium child-p">
                 Don’t have a Junior Savers Account?
               </p>
-              <button className="open-btn-child roboto-medium" onClick={() => navigate("/open-account")}>Open Now</button>
+              <a className="open-btn-child roboto-medium" href="/open-account" target="_blank" rel="noopener noreferrer">Open Now</a>
             </div>
             <img src={child} alt="Child" className="child" />
           </div>

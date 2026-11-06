@@ -4,39 +4,6 @@
  height: 740px;
  position: relative;
 }
-.support-widget {
-  position: absolute;
-  z-index: 10;
-  top: 18px;
-  right: max(8%, calc((100% - 1160px) / 2));
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.support-prompt {
-  max-width: 190px;
-  margin: 0;
-  padding: 12px 14px;
-  border: 1px solid #e9edf0;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgb(2 52 72 / 10%);
-  color: #023448;
-  font: 400 16px/1.35 Roboto, sans-serif;
-}
-.support-toggle {
-  width: 56px;
-  height: 56px;
-  padding: 11px;
-  display: grid;
-  place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: #22c55e;
-  color: white;
-  cursor: pointer;
-}
-.support-toggle svg { width: 100%; height: 100%; fill: currentColor; }
 .content{
     display:flex;
     flex-direction: row;
@@ -141,14 +108,18 @@ color: #023448;
 
 .screen {
   width: 370px;
-  height: 227px;
+  height: auto;
   position: absolute;
   top: 170px;
   left: 165px;
   z-index: 3;
+  /* Straighten the perspective baked into the workbook artwork. */
+  transform-origin: top left;
+  transform: matrix3d(1.12935, 0.03968, 0, 0.0003496, 0, 1.12935, 0, 0, 0, 0, 1, 0, 0, -14.68, 0, 1);
 }
 .initiative-kids {
   position: absolute;
+  pointer-events: none;
   top: 0;
   left: 0;
   width: 100%;
@@ -174,13 +145,6 @@ color: #023448;
 
 
 @media (max-width: 900px) {
-  .support-widget {
-    top: 18px;
-    right: 18px;
-    gap: 8px;
-  }
-  .support-prompt { max-width: 145px; padding: 9px 10px; font-size: 13px; }
-  .support-toggle { width: 46px; height: 46px; padding: 9px; }
   .initiative {
     height: 932px;
     min-height: 100vh;
@@ -287,6 +251,7 @@ margin-top: 8px;
     height: auto;
     top: 625.2px;
     left: 128px;
+    transform: matrix3d(1.12935, 0.03968, 0, 0.0005666, 0, 1.12935, 0, 0, 0, 0, 1, 0, 0, -9.06, 0, 1);
   }
 
   .initiative-kids {
@@ -395,12 +360,9 @@ left: 180px;
   .initiative .initiative-right { top: 81px; }
   .initiative .laptop { top: 215px; left: 49px; }
   .initiative .screen { left: 163px; }
-  .initiative .support-widget { top: 35px; right: auto; left: min(calc(100% - 355px), calc(50% + 365px)); gap: 12px; align-items: flex-start; }
-  .initiative .support-prompt { width: 187px; max-width: none; min-height: 76px; padding: 10px !important; border: 1px solid #eceff5; border-radius: 12px; background: #f6f7fb; box-shadow: none; color: #000; font-size: 18px; line-height: 28px; letter-spacing: -0.3px; }
-  .initiative .support-toggle { margin-top: 20px !important; padding: 16px !important; background: #25d366; }
 }
 @media (min-width: 1200px) {
   .initiative .title { display: flex; align-items: center; gap: 12px; }
 }
-.initiative .button { display: inline-flex; align-items: center; justify-content: space-between; }
+.initiative .button { display: inline-flex; align-items: center; justify-content: space-between; text-decoration: none; }
 .initiative .button-arrow { flex: none; }

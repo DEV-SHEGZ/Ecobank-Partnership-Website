@@ -65,11 +65,26 @@
 .open-btn {
   padding: 12px 24px !important;
   border-radius: 100px;
-  border-width: 1px;
+  border: 1px solid #f53064;
   color: #4e4e4e;
   background-color: #fee7ed !important;
   border-color: #f53064 !important;
   font-size: 18px;
+}
+
+.hero-home a.claim-btn,
+.hero-home a.open-btn,
+.hero-home a.open-btn-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.hero-home a.open-btn-child { color: #ffffff; }
+
+@media (min-width: 601px) {
+  #teachers, #enrol { scroll-margin-top: 130px; }
 }
 
 #green-btn {
@@ -128,6 +143,8 @@
   z-index: 1 !important;
 }
 
+.claim-mobile-close { display: none; }
+
 .claim-container {
   width: 90%;
   margin: auto !important;
@@ -142,6 +159,12 @@
   font-size: 15px !important;
   border: none !important;
   width: 100%;
+}
+
+.claim-input:focus {
+  outline: 2px solid #bdcf00 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #bdcf00, 0 0 16px rgb(189 207 0 / 75%) !important;
 }
 
 .input-p {
@@ -259,6 +282,32 @@
   .atc-book { height: 70px !important; margin-right: 18px !important; }
   .input-p, .child-p { font-size: 15px; margin-bottom: 6px; }
   .child { width: 72px; }
+}
+
+@media (min-width: 601px) and (max-width: 1199px) {
+  .claim-section { height: 120px !important; min-height: 120px; }
+  .claim-container { width: calc(100% - 32px); height: 100%; gap: 12px; }
+  .atc-digital, .child-section { flex: 1 1 50%; min-width: 0; }
+  .child-section { justify-content: flex-end; }
+  .atc-book {
+    flex: none;
+    width: clamp(60px, 12vw, 130px);
+    height: auto !important;
+    max-height: 72px;
+    object-fit: contain;
+    margin-right: 12px !important;
+  }
+  .input-section { width: 100%; max-width: 190px; min-width: 0; }
+  .input-p, .child-p {
+    margin-bottom: 4px !important;
+    font-size: clamp(12px, 1.5vw, 16px);
+    line-height: 1.2;
+    text-align: center;
+  }
+  .claim-input { height: 24px; padding: 3px 10px !important; font-size: 12px !important; }
+  .claim-book-btn, .open-btn-child { padding: 4px 12px !important; font-size: 12px; }
+  .child-content { min-width: 0; }
+  .child { width: clamp(44px, 8vw, 75px); height: auto; margin-top: 0 !important; align-self: flex-end; }
 }
 
 @media (max-width: 600px) {
@@ -406,4 +455,51 @@
 @keyframes claim-bar-out { from { transform: translateY(0); } to { transform: translateY(-100%); } }
 @media (prefers-reduced-motion: reduce) {
   .claim-section--pinned, .claim-section--leaving { animation-duration: 1ms; }
+}
+
+@media (max-width: 600px) {
+  .hero-home--mobile-claim-active { z-index: 60; }
+  .hero-home .claim-section--mobile-active {
+    display: block;
+    position: fixed !important;
+    inset: 0 0 auto;
+    height: 100px !important;
+    min-height: 0;
+    padding: 10px 12px !important;
+    background: #035171;
+    z-index: 50 !important;
+    box-shadow: 0 6px 20px rgb(2 52 72 / 18%);
+  }
+  .claim-section--mobile-active .claim-container { width: 100%; height: 100%; padding-right: 42px !important; }
+  .claim-section--mobile-active .atc-digital { width: 100%; }
+  .claim-section--mobile-active .atc-book,
+  .claim-section--mobile-active .child-section { display: none !important; }
+  .claim-section--mobile-active .input-section {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center !important;
+    gap: 6px 8px;
+    width: 100%;
+  }
+  .claim-section--mobile-active .input-p { grid-column: 1 / -1; font-size: 14px; text-align: left; }
+  .claim-section--mobile-active .claim-input { height: 40px; margin: 0 !important; padding: 8px 12px !important; color: #023448; font-size: 16px !important; }
+  .claim-section--mobile-active .claim-input::placeholder { font-size: clamp(12px, 3.8vw, 16px); }
+  .claim-section--mobile-active .claim-book-btn { height: 40px; padding: 8px 14px !important; font-size: 14px; }
+  .claim-section--mobile-active .claim-mobile-close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+  }
+  .hero-home--mobile-claim-active ~ #enrol { scroll-margin-top: 104px; }
 }

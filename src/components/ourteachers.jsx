@@ -50,7 +50,7 @@ const OurTeachers = () => {
             </p>
             <div className="linkedprof">
               <img className="linkedin-icon" src={linkedIn} alt="LinkedIn" />
-              <button type="button" className="btn roboto-regular me-2">
+              <button type="button" className="btn roboto-regular me-2" disabled aria-label={`Profile unavailable for ${teacher.name}`}>
                 View Profile
               </button>
               <img className="right-arr" src={rightArr} alt="" />
@@ -78,7 +78,7 @@ const OurTeachers = () => {
 
       <div className="cards-cont">
         <Swiper
-          slidesPerView={2.1}
+          slidesPerView="auto"
           spaceBetween={0}
           loop={false}
           className="teacher-swiper"

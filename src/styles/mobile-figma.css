@@ -27,9 +27,6 @@
   .initiative .initiative-title { width: 255px !important; margin-bottom: 16px !important; }
   .initiative .initiative-description { width: 310px !important; margin-bottom: 16px !important; }
   .initiative .button { width: 242px; padding: 0 24px !important; display: flex; align-items: center; justify-content: space-between; }
-  .initiative .support-widget { zoom: var(--mk, 1); top: 20px; right: 24px; gap: 12px; align-items: flex-start; }
-  .initiative .support-prompt { width: 139px; max-width: none; min-height: 60px; padding: 10px !important; border: 1px solid #eceff5; border-radius: 12px; background: #f6f7fb; box-shadow: none; color: #000; font-size: 16px; line-height: 20px; letter-spacing: -0.3px; }
-  .initiative .support-toggle { width: 48px; height: 48px; margin-top: 9px !important; padding: 12px !important; background: #25d366; }
 }
 
 /* How it Works — the whole tile is laid out on the 430px Figma grid and zoomed to the
@@ -125,7 +122,7 @@
   #journey .arr-down { left: auto; right: 20px; top: 38.5px; width: 16px; height: 8px; }
   #journey .submit { width: 382px; height: 43px; margin: -2px 0 0 !important; padding: 0 !important; font-size: 16px; line-height: 43px; letter-spacing: -0.4px; }
   #journey picture { display: block; }
-  #journey .journey-default { display: block; width: 100%; height: auto; margin: 0 !important; }
+  #journey .journey-default { display: block; width: 100%; height: auto; aspect-ratio: 860 / 2236; margin: 0 !important; }
 }
 
 /* Enrol Now: Figma's mobile heading is placeholder text (2 lines); the real heading needs 3 lines,
@@ -194,7 +191,7 @@
   .initiative .initiative-kids { zoom: var(--mk, 1); width: 430px; }
   .initiative .robot { left: 24px; top: 420px; width: 150px; height: 316px; }
   .initiative .laptop { left: 54px; top: 552.5px; width: 352.5px; height: 210px; }
-  .initiative .screen { left: 125px; top: 525px; width: 229px; height: 140.5px; }
+  .initiative .screen { left: 125px; top: 525px; width: 229px; height: auto; }
   .initiative .girl-reading { left: 24px; top: 740px; width: 150px; height: 121px; }
   .initiative .boy-reading { left: 219px; top: 750px; width: 187px; height: 122px; }
 }
