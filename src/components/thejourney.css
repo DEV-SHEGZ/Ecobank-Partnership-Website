@@ -142,13 +142,28 @@ option {
   #journey .journey-default { display: block; width: 100%; height: auto; aspect-ratio: 1440 / 703; margin-top: 60px !important; }
 }
 
+/* The classroom illustration contains an older badge; keep its replacement aligned with the artwork. */
+#journey .journey-default-art { position: relative; width: 100%; overflow: hidden; margin-top: 60px; }
+#journey .journey-default-art .journey-default { margin: 0 !important; }
+#journey .journey-default-logo { position: absolute; left: 30.2083%; top: 7.3969%; width: 4.5833%; height: auto; }
+@media (min-width: 1200px) and (max-width: 1440px) {
+  #journey .journey-default-logo { left: calc(50% - 285px); top: 52px; width: 66px; }
+}
+@media (min-width: 1441px) {
+  #journey .journey-default-logo { top: calc(50% - 20.7986vw); }
+}
+@media (max-width: 600px) {
+  #journey .journey-default-art { margin-top: 0; }
+  #journey .journey-default-logo { left: 4.7674%; top: 24.5975%; width: 12.907%; }
+}
+
 .journey-result {
   display: grid;
   grid-template-areas: "content summary";
   grid-template-columns: minmax(0, 1fr) clamp(250px, 20.833vw, 300px);
   min-height: 703px;
-  margin-top: 60px !important;
-  scroll-margin-top: 130px;
+  margin-top: 96px !important;
+  scroll-margin-top: 16px;
   color: #023448;
   font-family: Roboto, sans-serif;
 }
@@ -426,7 +441,7 @@ option {
     display: flex;
     flex-direction: column;
     min-height: 0;
-    margin-top: 48px !important;
+    margin-top: 64px !important;
   }
 
   .journey-summary {
@@ -520,8 +535,7 @@ option {
   .journey-topics h4 { padding: 7px 12px !important; font-size: 10px; }
   .journey-topics ul { margin-top: 10px !important; padding-left: 20px !important; font-size: 14px; line-height: 1.4; }
   .journey-result--intro .journey-topics { grid-template-columns: 1fr 1fr; column-gap: 20px; }
-  .journey-result--intro .journey-topics > :nth-child(2) { grid-column: 1; grid-row: 2; }
-  .journey-result--intro .journey-topics > :nth-child(3) { grid-column: 2; grid-row: 1; }
+  .journey-result--intro .journey-topics > :nth-child(2) { grid-column: 2; grid-row: 1; }
 
   .journey-learner,
   .journey-result--intro .journey-learner {

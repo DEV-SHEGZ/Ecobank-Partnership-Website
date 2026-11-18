@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import indicator from "../images/indicator icon.png";
 import defaultImg from "../images/default.png";
 import defaultImgMobile from "../images/journey-mobile-figma.png";
+import atcLogo from "../images/atc-logo.svg";
 import downloadIcon from "../images/Download icon.png";
-import bookShelve from "../images/books on shelf.png";
-import htmlArtwork from "../images/journey-html-figma.png";
-import interfaceArtwork from "../images/journey-interface-figma.png";
-import gridArtwork from "../images/journey-grid-figma.png";
+import bookShelve from "../images/journey-books@3x.png";
+import htmlArtwork from "../images/journey-html.svg";
+import interfaceArtwork from "../images/journey-interface.svg";
+import gridArtwork from "../images/journey-grid.svg";
 import graduate from "../images/journey-graduate-figma.png";
 import sittingBoy from "../images/sitting boy.png";
 import sittingGirl from "../images/sitting girl.png";
@@ -18,9 +19,8 @@ const years = [
   {
     image: bookShelve,
     topics: [
-      { title: "Engineering Thinking Book 1", tone: "pink", points: ["Start developing object and situation awareness skills", "Build mind-hand coordination"] },
-      { title: "Engineering Thinking Book 2", tone: "yellow", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
-      { title: "Engineering Thinking Book 3", tone: "purple", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
+      { title: "KG2 Book 1", tone: "pink", points: ["Start developing object and situation awareness skills", "Build mind-hand coordination"] },
+      { title: "KG2 Book 2", tone: "yellow", points: ["Solidify ability to recognise pattern", "Learn to see and analyse problems"] },
     ],
   },
   {
@@ -38,12 +38,13 @@ const years = [
 ];
 
 const ordinals = ["First", "Second", "Third", "Fourth"];
+const workbookCount = plan => plan.reduce((total, year) => total + year.topics.length, 0);
 
 function learningPlanText(result, plan) {
   return [
     `${result.name}’s learning journey`,
     `Age range: ${result.age}`,
-    `${plan.length} years · ${result.age === "5 - 6 years" ? 6 : 3} workbooks`,
+    `${plan.length} years · ${workbookCount(plan)} workbooks`,
     ...plan.flatMap((year, index) => ["", `${ordinals[index]} Year`, ...year.topics.flatMap(topic => [topic.title, ...topic.points.map(point => `- ${point}`)])]),
   ].join("\n");
 }
@@ -114,12 +115,17 @@ const TheJourney = () => {
         </form>
       </div>
 
-      {!result ? <picture><source media="(max-width: 600px)" srcSet={defaultImgMobile} /><img className="journey-default" src={defaultImg} alt="Children learning to code with a teacher" /></picture> : (
+      {!result ? (
+        <div className="journey-default-art">
+          <picture><source media="(max-width: 600px)" srcSet={defaultImgMobile} /><img className="journey-default" src={defaultImg} alt="Children learning to code with a teacher" /></picture>
+          <img className="journey-default-logo" src={atcLogo} alt="" />
+        </div>
+      ) : (
         <section ref={resultRef} className={`journey-result${year.topics.length > 1 ? " journey-result--intro" : ""}`} aria-label={`${result.name}’s learning plan`}>
           <div className="journey-summary">
             <p>{result.name}’s journey to mastery will take</p>
             <strong>{plan.length}<small> yrs</small></strong>
-            <p>to complete. {result.gender === "Female" ? "She" : "He"} will use {result.age === "5 - 6 years" ? "six (6)" : "three (3)"} workbooks over that time.</p>
+            <p>to complete. {result.gender === "Female" ? "She" : "He"} will use {workbookCount(plan) === 5 ? "five (5)" : "three (3)"} workbooks over that time.</p>
             <a href="#enrol">Enrol Now</a>
           </div>
           <div className="journey-result-content">

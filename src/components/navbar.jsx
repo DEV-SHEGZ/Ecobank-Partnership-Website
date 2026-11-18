@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import atcLogo from "../images/A.T.C.png";
+import atcLogo from "../images/atc-logo.svg";
 import ecobankLogo from "../images/layer1 (1).png";
 
 const links = [

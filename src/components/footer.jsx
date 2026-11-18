@@ -1,4 +1,4 @@
-import atc from "../images/atc_banner.png";
+import atc from "../images/atc-lockup.svg";
 import ecobank from "../images/ecoobank-logo.png";
 import "./footer.css";
 
@@ -35,7 +35,7 @@ const Footer = () => {
             </div>
 
             <p className="brand-description">
-              Ecobank Nigeria is partnering with Andrew Teaches Coding to expand the accessibility, credibility and reach of coding education for school children across Nigeria.
+              Ecobank Nigeria is partnering with Andrew Teaches Coding to expand the accessibility, credibility and reach of coding education for children across Nigeria.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ const Footer = () => {
           <hr className="footer-divider" />
 
           <div className="footer-bottom">
-            <p>© 2026. Ecobank/Andrew Teaches Coding. All Rights Reserved.</p>
+            <p>© 2027. Ecobank/Andrew Teaches Coding. All Rights Reserved.</p>
             <div className="legal-links">
               <a href="#terms">Terms and Conditions</a>
               <a href="#privacy">Privacy Policy</a>

@@ -19,18 +19,19 @@ export function longDate(iso) {
   const d = +m[3], suffix = d % 10 === 1 && d !== 11 ? 'st' : d % 10 === 2 && d !== 12 ? 'nd' : d % 10 === 3 && d !== 13 ? 'rd' : 'th';
   return `${d}${suffix} ${new Date(+m[1], +m[2] - 1, 1).toLocaleString('en-GB', { month: 'long' })}, ${m[1]}`;
 }
-export function Input({ name, label, type = 'text', placeholder, optional = false, readOnly = false, hint }) {
+export function Input({ name, label, type = 'text', placeholder, optional = false, readOnly = false, hint, help, maxLength, inputMode }) {
   const { register } = useFormContext();
   const value = useWatch({ name });
   const error = useFieldError(name);
-  const describedBy = [hint && `${name}-hint`, error && `${name}-error`].filter(Boolean).join(' ') || undefined;
+  const describedBy = [hint && `${name}-hint`, help && `${name}-help`, error && `${name}-error`].filter(Boolean).join(' ') || undefined;
   return <div className={`account-field${readOnly ? ' is-readonly' : ''}`}>
     <label htmlFor={name}>{label}</label>
     {readOnly && type === 'date' ? <input id={name} type="text" readOnly value={longDate(value)} aria-describedby={describedBy} aria-invalid={!!error} /> :
     <input id={name} {...register(name)} type={type} placeholder={placeholder} readOnly={readOnly}
-      maxLength={type === 'date' ? undefined : 200} inputMode={/bvn|nin|sourceAccount/i.test(name) ? 'numeric' : /amount/i.test(name) ? 'decimal' : undefined}
+      maxLength={type === 'date' ? undefined : maxLength || 200} inputMode={inputMode || (/bvn|nin|sourceAccount/i.test(name) ? 'numeric' : /amount/i.test(name) ? 'decimal' : undefined)}
       autoComplete="off" aria-invalid={!!error} aria-required={!optional && !readOnly} aria-describedby={describedBy} />}
     {hint && <span className="account-visually-hidden" id={`${name}-hint`}>{hint}</span>}
+    {help && <span className="account-field-help" id={`${name}-help`}>{help.text} <a href={help.href} target="_blank" rel="noopener noreferrer">{help.label}</a></span>}
     <ErrorText name={name} error={error} />
   </div>;
 }
@@ -114,7 +115,7 @@ export function FieldSpec({ spec, prefix, data }) {
       disabledText={spec.dependsOn ? 'Select a state first' : undefined} format={spec.format}
       onChange={spec.resets ? () => setValue(prefix + spec.resets, '') : undefined} />;
   }
-  return <Input name={name} label={spec.label} type={spec.type} placeholder={spec.placeholder} optional={spec.optional} readOnly={spec.readOnly} hint={spec.hint} />;
+  return <Input name={name} label={spec.label} type={spec.type} placeholder={spec.placeholder} optional={spec.optional} readOnly={spec.readOnly} hint={spec.hint} help={spec.help} maxLength={spec.maxLength} inputMode={spec.inputMode} />;
 }
 
 export function Photo({ value, label }) {

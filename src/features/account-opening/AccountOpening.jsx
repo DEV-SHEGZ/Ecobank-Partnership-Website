@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { FormProvider, useForm, useFormContext, useWatch } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { FieldSpec, Input, Select, Upload, Photo, Signature, Otp, LivePhoto } from './Fields';
 import AddressMap from './AddressMap';
-import { TermsModal, BenefitsModal } from './Modals';
+import { BenefitsModal } from './Modals';
+import TermsPage from './TermsPage';
 import {
-  STEPS, BVN_RECORD, MAX_CHILDREN, FUNDING_TYPES, FREQUENCIES, parentFields, addressFields, parentExtraFields, childFields,
+  STEPS, BVN_RECORD, MAX_CHILDREN, FUNDING_TYPES, FREQUENCIES, parentFields, addressFields, parentExtraFields, pepField, childFields,
   emptyValues, sampleValues, validateStep, formatAddress, formatNaira, demoAccountNumbers, stepIndex
 } from './model';
 import SuccessArt from './SuccessArt';
 import AccountHero from './AccountHero';
-import learningBadge from '../../images/account/learning-badge.svg';
+import atcLogo from '../../images/atc-logo.svg';
 import logo from '../../images/account/666e2.svg';
 import footerLogo from '../../images/account/3204c.svg';
 import atcText from '../../images/account/93f63.svg';
-import atcFace from '../../images/account/d6b77.png';
 import checkArt from '../../images/account/be198.svg';
 import './account-opening.css';
 
@@ -23,7 +23,7 @@ const COUNT_OPTIONS = Array.from({ length: MAX_CHILDREN }, (_, i) => String(i + 
 
 function SiteHeader() {
   const [open, setOpen] = useState(false);
-  return <header className="account-nav"><Link to="/" aria-label="Ecobank home"><img src={logo} alt="Ecobank" /></Link><button type="button" className="account-menu" aria-expanded={open} aria-controls="account-links" onClick={() => setOpen(!open)}><span className="account-visually-hidden">{open ? 'Close menu' : 'Menu'}</span><span aria-hidden="true">☰</span></button><nav id="account-links" className={open ? 'is-open' : ''} aria-label="Main navigation">{destinations.map(([title, id]) => <Link key={id} to={`/#${id}`}>{title}</Link>)}</nav><Link className="account-learning" to="/#enrol">Start Learning <img src={learningBadge} alt="" /></Link></header>;
+  return <header className="account-nav"><Link to="/" aria-label="Ecobank home"><img src={logo} alt="Ecobank" /></Link><button type="button" className="account-menu" aria-expanded={open} aria-controls="account-links" onClick={() => setOpen(!open)}><span className="account-visually-hidden">{open ? 'Close menu' : 'Menu'}</span><span aria-hidden="true">☰</span></button><nav id="account-links" className={open ? 'is-open' : ''} aria-label="Main navigation">{destinations.map(([title, id]) => <Link key={id} to={`/#${id}`}>{title}</Link>)}</nav><Link className="account-learning" to="/#enrol">Start Learning <img src={atcLogo} alt="" /></Link></header>;
 }
 const SOCIAL = ['Instagram', 'Facebook', 'LinkedIn', 'Email'];
 const QUICK_LINKS = [['About', 'about'], ['How it Works', 'how-it-works'], ['The Journey', 'journey'], ['Our Teachers', 'teachers'], ['Learning Pathway', 'enrol']];
@@ -34,8 +34,8 @@ function FormFooter() {
   return <footer className="account-footer">
     <div className="account-footer-top">
       <div className="account-footer-about">
-        <div className="account-brands"><img src={footerLogo} alt="Ecobank, The Pan African Bank" /><span aria-hidden="true" /><img className="account-face" src={atcFace} alt="" /><img className="account-atc" src={atcText} alt="Andrew Teaches Coding" /></div>
-        <p>Ecobank Nigeria is partnering with Andrew Teaches Coding to expand the accessibility, credibility and reach of coding education for school children across Nigeria.</p>
+        <div className="account-brands"><img src={footerLogo} alt="Ecobank, The Pan African Bank" /><span aria-hidden="true" /><img className="account-face" src={atcLogo} alt="" /><img className="account-atc" src={atcText} alt="Andrew Teaches Coding" /></div>
+        <p>Ecobank Nigeria is partnering with Andrew Teaches Coding to expand the accessibility, credibility and reach of coding education for children across Nigeria.</p>
       </div>
       <div className="account-footer-links">
         <nav aria-label="Social links"><h3>Social Links</h3><ul>{SOCIAL.map(name => <li key={name}><span className="account-footer-soon" title="Link coming soon">{name}<Arrow /></span></li>)}</ul></nav>
@@ -43,7 +43,7 @@ function FormFooter() {
       </div>
     </div>
     <div className="account-legal">
-      <p>© 2026.&nbsp; EcoBank/Andrew Teaches Coding.&nbsp; All Rights Reserved.</p>
+      <p>© 2027.&nbsp; EcoBank/Andrew Teaches Coding.&nbsp; All Rights Reserved.</p>
       <ul>{LEGAL.map(name => <li key={name}><span className="account-footer-soon" title="Link coming soon">{name}</span></li>)}</ul>
     </div>
   </footer>;
@@ -71,12 +71,16 @@ function ParentStep({ parent }) {
       <div className="account-grid account-address-grid">{addressFields.map(spec => <FieldSpec key={spec.key} spec={spec} prefix="parent." data={parent} />)}</div>
       <AddressMap />
     </fieldset>
-    <Fields fields={parentExtraFields} prefix="parent." data={parent} />
+    <div className="account-grid">{parentExtraFields.map(spec => <Fragment key={spec.key}>
+      <FieldSpec spec={spec} prefix="parent." data={parent} />
+      {spec.key === 'sourceFunds' && parent?.sourceFunds === 'Others' && <Input name="parent.sourceFundsOther" label="Please specify your source of funds" />}
+    </Fragment>)}</div>
     <div className="account-pep">
       <h2>PEP QUESTION</h2>
       <ul>
-        <li>Have you or a member of your nuclear family ever held a <strong>“position of authority”</strong> in the government, a political party, an international organization, a government ministry, department or agency, a public corporation, the judicial system, the military, the police or any other law enforcement agency or a traditional leader? Yes or No)</li>
-        {pep === 'Yes' ? <li className="account-pep-field"><Input name="parent.pepPosition" label="If Yes, state position held" /></li> : <li>If Yes, state position held<span className="account-pep-dots" aria-hidden="true" /></li>}
+        <li>Have you or a member of your nuclear family ever held a <strong>“position of authority”</strong> in the government, a political party, an international organization, a government ministry, department or agency, a public corporation, the judicial system, the military, the police or any other law enforcement agency or a traditional leader?</li>
+        <li className="account-pep-field"><FieldSpec spec={pepField} prefix="parent." data={parent} /></li>
+        {pep === 'Yes' && <li className="account-pep-field"><Input name="parent.pepPosition" label="If Yes, state position held" /></li>}
         <li>If No, proceed to next question.</li>
       </ul>
     </div>
@@ -112,6 +116,8 @@ function ReviewStep({ values, count, edit }) {
     { key: 'address', label: 'Residential Address', value: formatAddress(p) || 'Not provided' },
     { key: 'pin', label: 'Map Pin', value: p.location ? p.location.label : 'Not provided' },
     ...parentExtraFields,
+    ...(p.sourceFunds === 'Others' ? [{ key: 'sourceFundsOther', label: 'Other Source of Funds' }] : []),
+    pepField,
     ...(p.pep === 'Yes' ? [{ key: 'pepPosition', label: 'Position Held' }] : [])
   ];
   const docName = file => file ? file.name : 'Not provided';
@@ -131,24 +137,26 @@ function ReviewStep({ values, count, edit }) {
 }
 
 function FundStep({ values, count }) {
-  const funding = useWatch({ name: 'funding' }) || [];
-  const recurring = funding.slice(0, count).some(f => f.type === 'Recurring payment');
+  const funding = useWatch({ name: 'funding' }) || {};
+  const recurring = funding.type === 'Recurring Payment';
   const { register, formState: { errors } } = useFormContext();
   return <>
+    <div className="account-grid account-funding-shared">
+      <Select name="funding.type" label="Funding Type" caption="Funding Type" options={FUNDING_TYPES} />
+      <Input name="funding.sourceAccount" label="Ecobank Account to Be Debited (10-digit account number)" placeholder="0123456789" maxLength={10} />
+      {recurring && <>
+        <Select name="funding.frequency" label="Frequency" caption="Frequency" options={FREQUENCIES} />
+        <Input name="funding.startDate" label="Start Date" type="date" />
+        <Input name="funding.endDate" label="End Date (optional)" type="date" optional />
+      </>}
+    </div>
     <div className="account-children">{Array.from({ length: count }, (_, i) => {
-      const f = funding[i] || {}, p = `funding.${i}.`;
-      return <Accordion key={i} open title={<>{`Child/Ward ${i + 1}`}<span className="account-summary-meta">{values.children[i].name} · {values.accounts[i]}</span></>}>
+      return <Accordion key={i} open title={<>{`Child/Ward ${i + 1}`}<span className="account-summary-meta">{values.children[i].name}</span></>}>
+        <p className="account-fund-account">Child/Ward Account Number: <strong>{values.accounts[i]}</strong></p>
         <div className="account-grid">
-          <Select name={p + 'type'} label="Funding Type" caption="Funding Type" options={FUNDING_TYPES} />
-          <Input name={p + 'amount'} label={f.type === 'Recurring payment' ? 'Amount per Payment (₦)' : 'Amount (₦)'} placeholder="50,000" />
-          <Input name={p + 'sourceAccount'} label="Account to Debit (10-digit account number)" placeholder="0123456789" />
-          {f.type === 'Recurring payment' && <>
-            <Select name={p + 'frequency'} label="Frequency" caption="Frequency" options={FREQUENCIES} />
-            <Input name={p + 'startDate'} label="Start Date" type="date" />
-            <Input name={p + 'endDate'} label="End Date (optional)" type="date" optional />
-          </>}
+          <Input name={`funding.amounts.${i}`} label={recurring ? `Amount per Payment for ${values.children[i].name} (₦)` : `Amount for ${values.children[i].name} (₦)`} placeholder="50,000" />
         </div>
-        {f.type === 'Recurring payment' && formatNaira(f.amount) && f.frequency && <p className="account-fund-summary">Standing order: {formatNaira(f.amount)} {f.frequency.toLowerCase()} into {values.children[i].name}’s account{f.startDate ? `, starting ${f.startDate}` : ''}{f.endDate ? ` until ${f.endDate}` : ''}.</p>}
+        {recurring && formatNaira(funding.amounts?.[i]) && funding.frequency && <p className="account-fund-summary">Standing order: {formatNaira(funding.amounts[i])} {funding.frequency.toLowerCase()} into {values.children[i].name}’s account{funding.startDate ? `, starting ${funding.startDate}` : ''}{funding.endDate ? ` until ${funding.endDate}` : ''}.</p>}
       </Accordion>;
     })}</div>
     {recurring && <label className="account-consent"><input id="mandate" type="checkbox" aria-invalid={!!errors.mandate} aria-describedby={errors.mandate ? 'mandate-error' : undefined} {...register('mandate')} />I authorise Ecobank to debit my account for the standing order(s) above at the amount and frequency I have chosen, until the end date or until I cancel.</label>}
@@ -162,8 +170,8 @@ function FundDone({ values, count }) {
     <h2>Funding instructions received</h2>
     <p className="account-demo-result">Demo only — no money has moved.</p>
     <ul>{Array.from({ length: count }, (_, i) => {
-      const f = values.funding[i];
-      return <li key={i}><strong>{values.children[i].name}</strong><em>{values.accounts[i]}</em><span>{f.type === 'Recurring payment' ? `${formatNaira(f.amount)} ${f.frequency.toLowerCase()} standing order from ${f.startDate}` : `${formatNaira(f.amount)} one-time payment`}</span></li>;
+      const f = values.funding;
+      return <li key={i}><strong>{values.children[i].name}</strong><em>{values.accounts[i]}</em><span>{f.type === 'Recurring Payment' ? `${formatNaira(f.amounts[i])} ${f.frequency.toLowerCase()} standing order from ${f.startDate}` : `${formatNaira(f.amounts[i])} one-time payment`}</span></li>;
     })}</ul>
   </div>;
 }
@@ -177,7 +185,7 @@ export default function AccountOpening() {
     [errorList, setErrorList] = useState([]),
     [returnToReview, setReturnToReview] = useState(false),
     [claimMessage, setClaimMessage] = useState(false),
-    [terms, setTerms] = useState(false),
+    [termsRead, setTermsRead] = useState(false),
     [benefits, setBenefits] = useState(false),
     [funded, setFunded] = useState(false);
   const heading = useRef(), panel = useRef(), mounted = useRef(false);
@@ -222,7 +230,12 @@ export default function AccountOpening() {
           return;
         }
       }
-      setTerms(true);
+      setTermsRead(false);
+      changeStep(stepIndex('terms'));
+      return;
+    }
+    if (current.key === 'terms') {
+      if (termsRead) agree();
       return;
     }
     const errors = validateStep(step, values);
@@ -235,7 +248,7 @@ export default function AccountOpening() {
       clearErrors();
       setErrorList([]);
       setFunded(true);
-      if (values.funding.slice(0, count).some(f => f.type === 'One-time payment')) setBenefits(true);
+      if (values.funding.type === 'One-Time Payment') setBenefits(true);
       requestAnimationFrame(() => panel.current?.scrollIntoView({ block: 'start', behavior: 'instant' }));
       return;
     }
@@ -248,14 +261,13 @@ export default function AccountOpening() {
   function agree() {
     setValue('consent', true);
     setValue('accounts', demoAccountNumbers(count));
-    setTerms(false);
     changeStep(stepIndex('results'));
   }
   function startStandingOrder() {
-    getValues('funding').slice(0, count).forEach((f, i) => { if (f.type === 'One-time payment') setValue(`funding.${i}.type`, 'Recurring payment'); });
+    setValue('funding.type', 'Recurring Payment');
     setBenefits(false);
     setFunded(false);
-    requestAnimationFrame(() => document.getElementById('funding.0.frequency')?.focus());
+    requestAnimationFrame(() => document.getElementById('funding.frequency')?.focus());
   }
   function loadSample() {
     if (methods.formState.isDirty && !window.confirm('Replace the details currently entered with sample details?')) return;
@@ -272,6 +284,7 @@ export default function AccountOpening() {
     documents: 'Submit Form', review: 'Continue Account Opening', fund: 'Fund Account'
   }[current.key];
   const isResults = current.key === 'results';
+  const isTerms = current.key === 'terms';
   const bvnReady = /^\d{11}$/.test(watched.bvn || '') && /^\d{11}$/.test(watched.nin || '');
 
   return <div className="account-page"><a className="account-skip" href="#account-form">Skip to account opening</a><SiteHeader />
@@ -279,7 +292,7 @@ export default function AccountOpening() {
     <div className="account-preview"><strong>Local preview</strong><span>Use sample details only. Nothing is sent to a bank or saved after you leave or refresh.</span><button type="button" onClick={loadSample}>Use sample details</button></div>
     <section ref={panel} id="account-form" className={`account-panel account-step-${current.key}`} aria-labelledby="account-title">
       <div className="account-paper"><div className="account-progress"><span>Step {step} of {STEPS.length} · {current.name}</span><progress value={step} max={STEPS.length} aria-label={`Step ${step} of ${STEPS.length}`} /></div>
-        {!isResults && <div className="account-title"><h1 id="account-title" ref={heading} tabIndex={-1}>{current.title || 'ACCOUNT OPENING'}</h1><p>{funded ? 'Here is a summary of the funding you set up for each child/ward.' : current.copy}</p></div>}
+        {!isResults && !isTerms && <div className="account-title"><h1 id="account-title" ref={heading} tabIndex={-1}>{current.title || 'ACCOUNT OPENING'}</h1><p>{funded ? 'Here is a summary of the funding you set up for each child/ward.' : current.copy}</p></div>}
         <FormProvider {...methods}><form className="account-form" onSubmit={submit} noValidate>
           {errorList.length > 0 && <div className="account-error-summary" role="alert">Please correct the highlighted fields before continuing.</div>}
           {current.key === 'identity' && <>
@@ -297,21 +310,21 @@ export default function AccountOpening() {
             <div className="account-children">{Array.from({ length: count }, (_, i) => <Accordion key={i} title={`Child/Ward ${i + 1}`} open={i === 0}><Fields fields={childFields} prefix={`children.${i}.`} data={watched.children?.[i]} /></Accordion>)}</div></>}
           {current.key === 'documents' && <DocumentsStep count={count} />}
           {current.key === 'review' && <ReviewStep values={values} count={count} edit={edit} />}
+          {isTerms && <TermsPage headingRef={heading} onBack={() => changeStep(stepIndex('review'))} read={termsRead} onRead={setTermsRead} />}
           {isResults && <div className="account-success"><img className="account-success-check" src={checkArt} alt="" /><SuccessArt /><div className="account-success-content">
             <h1 id="account-title" ref={heading} tabIndex={-1}>Your Account Numbers are:</h1><p className="account-demo-result">Demo results only — no bank accounts were created.</p>
             {values.children.slice(0, count).map((child, i) => <div className="account-result" key={i}><h2>{child.name}</h2><p>{values.accounts[i]}</p></div>)}
-            <button className="account-learning" type="button" onClick={() => setClaimMessage(true)}><img src={atcFace} alt="" />Claim free coding workbook now</button>
+            <button className="account-learning" type="button" onClick={() => setClaimMessage(true)}><img src={atcLogo} alt="" />Claim free coding workbook now</button>
             {claimMessage && <p role="status" className="account-hint">Workbook claiming will be available when the live account service is connected. <Link to="/#enrol">View learning options</Link>.</p>}
           </div></div>}
           {current.key === 'fund' && (funded ? <FundDone values={values} count={count} /> : <FundStep values={values} count={count} />)}
-          <div className="account-actions">
+          {!isTerms && <div className="account-actions">
             {step > 1 && !isResults && !(current.key === 'fund' && funded) && <button className="account-back" type="button" onClick={() => { setReturnToReview(false); changeStep(step - 1); }}>Back</button>}
             {isResults && <button type="button" className="account-primary" onClick={() => changeStep(stepIndex('fund'))}>Fund Account Now</button>}
             {current.key === 'fund' && funded && <><button type="button" className="account-back" onClick={() => setFunded(false)}>Edit funding</button><Link className="account-primary" to="/">Back to home</Link></>}
             {primaryLabel && !isResults && !(current.key === 'fund' && funded) && <button type="submit" className="account-primary">{primaryLabel}</button>}
-          </div>
+          </div>}
         </form>
-          <TermsModal open={terms} onClose={() => setTerms(false)} onAgree={agree} />
           <BenefitsModal open={benefits} onClose={() => setBenefits(false)} onStart={startStandingOrder} />
         </FormProvider></div>
     </section></div><section className="account-ad"><h2>Give <span>Your Child</span> the Best Start in Life!</h2><p>Every big dream begins with a small step. <strong>MyFirst Account</strong> is specially designed for children and teenagers aged <strong>0 - 15 years,</strong> helping parents build a strong financial foundation from day one.</p><button type="button" className="account-primary" onClick={() => {

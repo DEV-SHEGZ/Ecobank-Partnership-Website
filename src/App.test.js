@@ -12,11 +12,11 @@ beforeEach(() => {
   HTMLDialogElement.prototype.close = function () { this.removeAttribute('open'); };
   HTMLCanvasElement.prototype.getContext = jest.fn(() => ({clearRect: jest.fn()}));
 });
-test('completes the nine-step preview, retains edits, and gates results behind the terms', async () => {
+test('completes the account-opening preview, retains edits, and gates results behind the terms', async () => {
   render(<AccountOpening />);
   const advance = async (name, nextStep) => {
     fireEvent.click(screen.getByRole('button', {name, exact:true}));
-    await waitFor(() => expect(screen.getByText(new RegExp(`Step ${nextStep} of 9`))).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(new RegExp(`Step ${nextStep} of 10`))).toBeInTheDocument());
   };
   fireEvent.click(screen.getByRole('button', {name:'Use sample details'}));
   await advance('Submit',2);
@@ -31,12 +31,12 @@ test('completes the nine-step preview, retains edits, and gates results behind t
   fireEvent.click(screen.getAllByRole('button',{name:'Edit Info'})[0]);
   expect(screen.getByLabelText('Parent/Guardian Name')).toHaveValue('Example Parent');
   await advance('Save and return to review',7);
-  // Review opens the Terms & Conditions dialog; accepting it shows the account numbers (step 8).
-  fireEvent.click(screen.getByRole('button', {name:'Continue Account Opening'}));
+  // Terms follow review as a separate screen before the account numbers.
+  await advance('Continue Account Opening',8);
   await waitFor(() => expect(screen.getByText('Thanks for reading. You can now accept.')).toBeInTheDocument());
-  await advance('I agree to the terms & conditions',8);
+  await advance('I agree to the terms & conditions',9);
   expect(screen.getByText('Demo results only — no bank accounts were created.')).toBeInTheDocument();
   expect(document.querySelector('.account-result p').textContent).toMatch(/^\d{10}$/);
-  await advance('Fund Account Now',9);
+  await advance('Fund Account Now',10);
   expect(screen.getByRole('button', {name:'Fund Account'})).toBeInTheDocument();
 });

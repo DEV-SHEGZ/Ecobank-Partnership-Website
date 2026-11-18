@@ -1022,6 +1022,8 @@
 @media(max-width:600px) {
   .account-step-results .account-paper { padding-top: 85px!important; background: white; }
   .account-step-results .account-progress { top: 28px; }
+  .account-success { padding-bottom: 426px!important; }
+  .account-success-art { display: block; top: auto; bottom: 100px; left: calc(50% - 360px); width: 1440px; height: 816px; transform: scale(.4); transform-origin: left bottom; }
   .account-success-content { width: 100%; }
   .account-success-check { top: 0; width: 100%; }
   .account-review-heading button { padding: 12px 16px!important; }
@@ -1102,6 +1104,9 @@
 .account-pep-dots { display: inline-block; width: min(240px, 40%); border-bottom: 2px dotted #023448; margin-left: 2px!important; vertical-align: baseline; }
 .account-pep-field { list-style: none; margin-left: -18px!important; }
 .account-pep .account-field { max-width: 570px; }
+.account-field-help { display: block; margin-top: 8px; color: #52636c; font-size: 14px; line-height: 1.4; }
+.account-field-help a { color: #00577a; text-decoration: underline; }
+.account-funding-shared { margin-bottom: 32px!important; }
 
 /* Uploads (Tile 6: drop #DFE7EB, button 12/500 #023448, "Change" Roboto 10/400 #ADBD03). */
 .account-upload { position: relative; }
@@ -1139,6 +1144,8 @@
 
 /* Accordion meta (fund step). */
 .account-summary-meta { margin-left: auto!important; padding-left: 16px!important; font-size: 14px; font-weight: 400; color: #52636c; letter-spacing: -.2px; text-align: right; }
+.account-fund-account { margin: 0 0 20px!important; color: #52636c; font-size: 14px; line-height: 1.4; }
+.account-fund-account strong { color: #023448; white-space: nowrap; }
 .account-fund-summary { background: #eaf6fa; border-radius: 12px; padding: 16px!important; margin: 24px 0 0!important; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.2px; color: #023448; }
 .account-step-fund .account-consent { margin-top: 32px!important; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -.2px; color: #023448; }
 .account-step-fund .account-title p { max-width: 520px; margin: 0 auto!important; }
@@ -1164,13 +1171,14 @@
 .account-modal .account-primary { background: #bdcf00; color: #023448!important; border-radius: 40px; font-size: 18px; min-width: 184px; }
 .account-modal .account-back { border-radius: 40px; font-size: 18px; }
 
-.account-terms-modal { width: 1240px; padding: 56px 60px 32px!important; }
-.account-terms-modal .account-terms-heading h2 { color: #023448; font-size: 36px; font-weight: 500; line-height: 42px; letter-spacing: -1px; margin: 0!important; }
-.account-terms-modal .account-terms { flex: 1; min-height: 0; overflow-y: auto; margin: 24px 0 0!important; padding-right: 12px!important; overscroll-behavior: contain; }
-.account-terms-modal .account-terms h3 { font-size: 32px; font-weight: 500; color: #023448; letter-spacing: -1.4px; margin: 32px 0 20px!important; }
-.account-terms-modal .account-terms p { font-size: 16px; font-weight: 500; color: #4e4e4e; line-height: 24px; letter-spacing: -.2px; margin-bottom: 14px!important; }
-.account-terms-modal .account-modal-actions { border-top: 1px solid #e8eef1; padding-top: 20px!important; }
-.account-terms-status { margin: 0 auto 0 0!important; font-size: 14px; color: #52636c; }
+.account-step-terms .account-paper { min-height: 0; padding-left: 4.8611%!important; padding-right: 4.8611%!important; }
+.account-terms-page { padding: 32px 60px 48px!important; background: rgb(255 255 255 / .78); border-radius: 20px; }
+.account-terms-page .account-terms-heading h1 { color: #023448; font-size: 36px; font-weight: 500; line-height: 42px; letter-spacing: -1px; margin: 0!important; }
+.account-terms-page .account-terms { margin: 40px 0 24px!important; }
+.account-terms-page .account-terms h2 { font-size: 32px; font-weight: 500; color: #023448; letter-spacing: -1.4px; margin: 32px 0 20px!important; }
+.account-terms-page .account-terms p { font-size: 16px; font-weight: 500; color: #4e4e4e; line-height: 24px; letter-spacing: -.2px; margin-bottom: 14px!important; }
+.account-terms-status { margin: 0!important; font-size: 14px; color: #52636c; text-align: center; }
+.account-terms-page .account-actions { margin-top: 24px!important; }
 
 .account-camera { width: 560px; padding: 32px!important; overflow-y: auto; }
 .account-camera-frame { position: relative; margin-top: 20px!important; aspect-ratio: 3 / 4; max-height: 56vh; width: 100%; border-radius: 16px; overflow: hidden; background: #023448; }
@@ -1235,10 +1243,11 @@
   .account-pep { padding: 0!important; }
   .account-pep h2,.account-pep li { font-size: 16px; }
   .account-summary-meta { display: none; }
-  .account-terms-modal { padding: 28px 20px 20px!important; }
-  .account-terms-modal .account-terms-heading h2 { font-size: 27px; line-height: 34px; }
-  .account-terms-modal .account-terms h3 { font-size: 24px; letter-spacing: -.6px; }
-  .account-terms-modal .account-terms p { font-size: 15px; }
+  .account-step-terms .account-paper { padding-left: 16px!important; padding-right: 16px!important; }
+  .account-terms-page { padding: 24px 20px 32px!important; }
+  .account-terms-page .account-terms-heading h1 { font-size: 27px; line-height: 34px; }
+  .account-terms-page .account-terms h2 { font-size: 24px; letter-spacing: -.6px; }
+  .account-terms-page .account-terms p { font-size: 15px; }
   .account-modal .account-primary { min-width: 0; flex: 1; font-size: 16px; }
   .account-camera { padding: 20px!important; }
   .account-fund-done h2 { font-size: 26px; }
@@ -1291,6 +1300,10 @@
   .account-footer-links { gap: 32px; }
   .account-legal { flex-direction: column; align-items: flex-start; font-size: 14px; }
   .account-legal ul { flex-wrap: wrap; gap: 16px; }
+}
+@media(max-width:360px) {
+  .account-brands { gap: 8px; }
+  .account-brands>.account-atc { min-width: 0; }
 }
 .account-legal li,.account-legal ul { line-height: 19px; }
 

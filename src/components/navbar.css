@@ -32,9 +32,8 @@
 }
 
 .atc-logo {
-  border: 3px solid #ffbf46;
   border-radius: 100px;
-  padding: 2px !important;
+  padding: 0 !important;
 }
 
 .mobile-menu-close,
@@ -127,7 +126,6 @@
   #eco-navbar .mobile-start-learning img {
     width: 32px;
     height: 32px;
-    border: 2px solid #ffbf46;
     border-radius: 50%;
   }
 

@@ -1,4 +1,5 @@
 import "./ourteachers.css";
+import { useRef, useState } from "react";
 import indicator from "../images/indicator icon.png";
 import Teach1 from "../images/teacher1.png";
 import Teach2 from "../images/teacher 2.png";
@@ -31,6 +32,12 @@ const teacherDetails = [
 ];
 
 const OurTeachers = () => {
+  const swiperRef = useRef(null);
+  const [navigation, setNavigation] = useState({ previous: false, next: false });
+  const updateNavigation = swiper => {
+    const next = { previous: !swiper.isBeginning && !swiper.isLocked, next: !swiper.isEnd && !swiper.isLocked };
+    setNavigation(current => current.previous === next.previous && current.next === next.next ? current : next);
+  };
   const teacherCards = teacherDetails.map((teacher, i) => {
     return (
       <SwiperSlide key={teacher.name} className="teacher-slide">
@@ -77,14 +84,21 @@ const OurTeachers = () => {
       </div>
 
       <div className="cards-cont">
+        {navigation.previous && <button type="button" className="teacher-arrow teacher-arrow--previous" aria-label="Previous teachers" aria-controls="teachers-carousel" onClick={() => swiperRef.current?.slidePrev()}>←</button>}
         <Swiper
+          id="teachers-carousel"
           slidesPerView="auto"
           spaceBetween={0}
           loop={false}
           className="teacher-swiper"
+          onSwiper={swiper => { swiperRef.current = swiper; updateNavigation(swiper); }}
+          onSlideChange={updateNavigation}
+          onResize={updateNavigation}
+          onUpdate={updateNavigation}
         >
           {teacherCards}
         </Swiper>
+        <button type="button" className="teacher-arrow" aria-label="Next teachers" aria-controls="teachers-carousel" disabled={!navigation.next} title={navigation.next ? "Next teachers" : "More teacher profiles will be added"} onClick={() => swiperRef.current?.slideNext()}>→</button>
       </div>
     </div>
   );

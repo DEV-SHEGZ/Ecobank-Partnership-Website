@@ -8,8 +8,9 @@ export const STEPS = [
   { key: 'children', name: 'Child details', copy: 'Kindly select the number of children/wards you wish to open an account for' },
   { key: 'documents', name: 'Documents', copy: 'Kindly upload the following document to complete this account opening process of each child/ward' },
   { key: 'review', name: 'Review', copy: 'Kindly review all information provided to ensure that they are all correct.' },
+  { key: 'terms', name: 'Terms and conditions' },
   { key: 'results', name: 'Account numbers' },
-  { key: 'fund', name: 'Fund account', title: 'FUND ACCOUNT', copy: 'Fund each child/ward’s account individually with a one-time payment or a recurring standing order.' }
+  { key: 'fund', name: 'Fund account', title: 'FUND ACCOUNT', copy: 'Choose a funding type and debit account for all children/wards, then enter an amount for each account.' }
 ];
 export const STEP_NAMES = STEPS.map(step => step.name);
 export const stepIndex = key => STEPS.findIndex(step => step.key === key) + 1;
@@ -44,11 +45,13 @@ export const addressFields = [
 export const parentExtraFields = [
   option('income', 'Annual Income', ['Less than ₦32 million', '₦32 million to less than ₦50 million', '₦50 million and above'], { caption: 'Annual Income' }),
   option('employment', 'Employment Status', ['Employed', 'Self Employed', 'Unemployed'], { caption: 'Employment Status' }),
+  option('sourceFunds', 'Source of Funds', ['Salary', 'Inheritance', 'Investments/Savings', 'Retirement Funds/Pension', 'Real Estate/Rental Income', 'Business Proceeds', 'Others'], { caption: 'Source of Funds' }),
+  field('tin', 'Taxpayer Identification Number (TIN)', 'text', { placeholder: '13 digits', maxLength: 13, inputMode: 'numeric', help: { text: 'Retrieve your unified Tax ID using your NIN.', label: 'Retrieve and Verify Your Tax ID', href: 'https://taxid.jrb.gov.ng/' } }),
   field('nextOfKin', 'Next of Kin (18 years and older)', 'text', { placeholder: 'Damola Chinedu Sanusi' }),
-  field('nextOfKinDob', 'Next of Kin’s Date of Birth', 'date'),
-  option('pep', 'Politically Exposed Person (PEP) Status', ['Yes', 'No'], { caption: 'PEP Status' })
+  field('nextOfKinDob', 'Next of Kin’s Date of Birth', 'date')
 ];
-export const allParentFields = [...parentFields, ...addressFields, ...parentExtraFields];
+export const pepField = option('pep', 'Politically Exposed Person (PEP) Status', ['Yes', 'No'], { caption: 'PEP Status' });
+export const allParentFields = [...parentFields, ...addressFields, ...parentExtraFields, pepField];
 
 export const childFields = [
   option('title', 'Title', ['Master', 'Miss'], { caption: 'Title' }),
@@ -61,18 +64,18 @@ export const childFields = [
   option('currency', 'Account Currency', ['NGN (₦)', 'USD ($)', 'Euro (€)'], { caption: 'Account Currency' })
 ];
 
-export const FUNDING_TYPES = ['One-time payment', 'Recurring payment'];
+export const FUNDING_TYPES = ['One-Time Payment', 'Recurring Payment'];
 export const FREQUENCIES = ['Weekly', 'Monthly', 'Quarterly'];
 
 const emptyOf = fields => Object.fromEntries(fields.map(({ key }) => [key, '']));
 export const emptyChild = () => emptyOf(childFields);
-export const emptyFunding = () => ({ type: '', amount: '', sourceAccount: '', frequency: '', startDate: '', endDate: '' });
+export const emptyFunding = () => ({ type: '', sourceAccount: '', frequency: '', startDate: '', endDate: '', amounts: Array.from({ length: MAX_CHILDREN }, () => '') });
 
 export const emptyValues = () => ({
   bvn: '',
   nin: '',
   otp: '',
-  parent: { ...emptyOf(allParentFields), pepPosition: '', location: null },
+  parent: { ...emptyOf(allParentFields), sourceFundsOther: '', pepPosition: '', location: null },
   count: '',
   children: Array.from({ length: MAX_CHILDREN }, emptyChild),
   photo: null,
@@ -82,7 +85,7 @@ export const emptyValues = () => ({
   childFiles: Array.from({ length: MAX_CHILDREN }, () => ({ photo: null, birth: null })),
   consent: false,
   accounts: [],
-  funding: Array.from({ length: MAX_CHILDREN }, emptyFunding),
+  funding: emptyFunding(),
   mandate: false
 });
 
@@ -106,6 +109,8 @@ export function sampleValues() {
     location: { lat: 6.4281, lng: 3.4219, label: 'Victoria Island, Eti-Osa, Lagos' },
     income: 'Less than ₦32 million',
     employment: 'Self Employed',
+    sourceFunds: 'Business Proceeds',
+    tin: '0000000000000',
     nextOfKin: 'Damola Chinedu Sanusi',
     nextOfKinDob: '1985-02-11',
     pep: 'No'
@@ -167,6 +172,8 @@ export function validateStep(step, values, today = new Date()) {
     const p = values.parent;
     validateFields(allParentFields, 'parent.', p);
     if (p.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(p.email)) errors['parent.email'] = 'Enter a valid email address.';
+    if (!/^\d{13}$/.test(p.tin || '')) errors['parent.tin'] = 'Enter exactly 13 digits.';
+    if (p.sourceFunds === 'Others') required('parent.sourceFundsOther', p.sourceFundsOther);
     if (!(ageInYears(p.dob, today) >= 18)) errors['parent.dob'] = 'Parent/guardian must be at least 18 years old.';
     if (!(ageInYears(p.nextOfKinDob, today) >= 18)) errors['parent.nextOfKinDob'] = 'Next of kin must be at least 18 years old.';
     if (!p.location) errors['parent.location'] = 'Pin your residential address on the map.';
@@ -194,21 +201,19 @@ export function validateStep(step, values, today = new Date()) {
   }
   if (key === 'fund') {
     const todayIso = isoDate(today);
-    let recurring = false;
-    values.funding.slice(0, count).forEach((fund, i) => {
-      const p = `funding.${i}.`;
-      if (!FUNDING_TYPES.includes(fund.type)) errors[p + 'type'] = 'Choose a funding type.';
-      const amount = Number(String(fund.amount).replace(/[^\d.]/g, ''));
-      if (!(amount > 0)) errors[p + 'amount'] = 'Enter an amount greater than ₦0.';
-      if (!/^\d{10}$/.test(fund.sourceAccount)) errors[p + 'sourceAccount'] = 'Enter the 10-digit account number to debit.';
-      if (fund.type === 'Recurring payment') {
-        recurring = true;
-        if (!FREQUENCIES.includes(fund.frequency)) errors[p + 'frequency'] = 'Choose how often to fund this account.';
-        if (!/^\d{4}-\d{2}-\d{2}$/.test(fund.startDate) || fund.startDate < todayIso) errors[p + 'startDate'] = 'Choose a start date from today onwards.';
-        if (fund.endDate && fund.endDate <= fund.startDate) errors[p + 'endDate'] = 'The end date must be after the start date.';
-      }
-    });
-    if (recurring && !values.mandate) errors.mandate = 'Authorise the standing order to continue.';
+    const fund = values.funding;
+    if (!FUNDING_TYPES.includes(fund.type)) errors['funding.type'] = 'Choose a funding type.';
+    if (!/^\d{10}$/.test(fund.sourceAccount)) errors['funding.sourceAccount'] = 'Enter the 10-digit account number to debit.';
+    if (fund.type === 'Recurring Payment') {
+      if (!FREQUENCIES.includes(fund.frequency)) errors['funding.frequency'] = 'Choose how often to fund these accounts.';
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(fund.startDate) || fund.startDate < todayIso) errors['funding.startDate'] = 'Choose a start date from today onwards.';
+      if (fund.endDate && fund.endDate <= fund.startDate) errors['funding.endDate'] = 'The end date must be after the start date.';
+    }
+    for (let i = 0; i < count; i += 1) {
+      const amount = Number(String(fund.amounts?.[i] ?? '').replace(/[^\d.]/g, ''));
+      if (!(amount > 0)) errors[`funding.amounts.${i}`] = 'Enter an amount greater than ₦0.';
+    }
+    if (fund.type === 'Recurring Payment' && !values.mandate) errors.mandate = 'Authorise the standing order to continue.';
   }
   return errors;
 }

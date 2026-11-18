@@ -21,8 +21,7 @@ import "swiper/css";
 
 import "./hero.css";
 
-// How far (px) past the hero the claim bar must be before it pins to the top, and
-// how early it unpins on the way back up — so it is gone before the hero returns.
+// Keep the automatic claim bar between the hero and the learning journey.
 const STICKY_OFFSET = 160;
 
 // "static" = inside the hero; "pinned" = fixed to the top of the screen;
@@ -40,11 +39,14 @@ function useStickyClaimBar(heroRef) {
       const hero = heroRef.current;
       if (!hero) return;
       const pastHero = hero.getBoundingClientRect().bottom < -STICKY_OFFSET;
+      const journey = document.getElementById("journey");
+      const reachedJourney = journey && journey.getBoundingClientRect().top < window.innerHeight;
+      const shouldPin = pastHero && !reachedJourney;
       const current = modeRef.current;
-      if (pastHero && current !== "pinned") {
+      if (shouldPin && current !== "pinned") {
         clearTimeout(leaveTimer);
         setMode("pinned");
-      } else if (!pastHero && current === "pinned") {
+      } else if (!shouldPin && current === "pinned") {
         setMode("leaving");
         leaveTimer = setTimeout(() => setMode("static"), 300);
       }
@@ -68,18 +70,18 @@ const Hero = () => {
   const heroRef = useRef(null);
   const swiperRef = useRef(null);
   const claimInputRef = useRef(null);
-  const [showMobileClaimBar, setShowMobileClaimBar] = useState(false);
+  const [showClaimBar, setShowClaimBar] = useState(false);
   const claimMode = useStickyClaimBar(heroRef);
 
   const focusClaimInput = (event) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    setShowMobileClaimBar(true);
+    setShowClaimBar(true);
     requestAnimationFrame(() => claimInputRef.current?.focus({ preventScroll: true }));
   };
 
   return (
     <div
-      className={`hero-home${claimMode === "static" ? "" : " hero-home--claim-pinned"}${showMobileClaimBar ? " hero-home--mobile-claim-active" : ""}`}
+      className={`hero-home${claimMode === "static" ? "" : " hero-home--claim-pinned"}${showClaimBar ? " hero-home--claim-active" : ""}`}
       ref={heroRef}
       onFocusCapture={() => swiperRef.current?.autoplay?.stop()}
       onBlurCapture={(event) => {
@@ -105,7 +107,7 @@ const Hero = () => {
           <div className="hero-container">
             <div className="hero-content">
               <h1 className="roboto-medium zero-h1">
-                Zero to Mastery with Andrew Teaching Coding
+                Zero to Mastery with Andrew Teaches Coding
               </h1>
               <p className="roboto-regular zero-p">
                 Claim the free coding workbook to start your child learning
@@ -163,7 +165,7 @@ const Hero = () => {
       <section className="hero-container">
         <div className="hero-content">
           <h1 className="roboto-medium zero-h1">
-            Zero to Mastery with Andrew Teaching Coding
+            Zero to Mastery with Andrew Teaches Coding
           </h1>
           <p className="roboto-regular zero-p">
             Claim the free coding workbook to start your child learning journey
@@ -212,8 +214,8 @@ const Hero = () => {
 
       */}
 
-      <div className={`claim-section${claimMode === "static" ? "" : ` claim-section--${claimMode}`}${showMobileClaimBar ? " claim-section--mobile-active" : ""}`}>
-        <button className="claim-mobile-close" type="button" aria-label="Close account number bar" onClick={() => setShowMobileClaimBar(false)}>×</button>
+      <div className={`claim-section${claimMode === "static" ? "" : ` claim-section--${claimMode}`}${showClaimBar ? " claim-section--claim-active" : ""}`}>
+        <button className="claim-close" type="button" aria-label="Close account number bar" onClick={() => setShowClaimBar(false)}>×</button>
         <div className="claim-container d-flex align-items-center">
           <div className="atc-digital d-flex align-items-center">
             <img src={atcbook} alt="ATC Digital" className="atc-book" />

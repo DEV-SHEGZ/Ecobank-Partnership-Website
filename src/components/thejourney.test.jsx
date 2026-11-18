@@ -44,10 +44,14 @@ test("starts the younger learner’s four-year plan with the engineering workboo
 
   const result = screen.getByRole("region", { name: "Andrew’s learning plan" });
   expect(within(result).getByRole("heading", { name: "Andrew’s First Year" })).toBeInTheDocument();
-  expect(within(result).getByText(/six \(6\) workbooks/)).toBeInTheDocument();
-  expect(within(result).getByRole("heading", { name: "Engineering Thinking Book 1" })).toBeInTheDocument();
-  expect(within(result).getByRole("heading", { name: "Engineering Thinking Book 2" })).toBeInTheDocument();
-  expect(within(result).getByRole("heading", { name: "Engineering Thinking Book 3" })).toBeInTheDocument();
+  expect(within(result).getByText(/five \(5\) workbooks/)).toBeInTheDocument();
+  expect(within(result).getByRole("heading", { name: "KG2 Book 1" })).toBeInTheDocument();
+  expect(within(result).getByRole("heading", { name: "KG2 Book 2" })).toBeInTheDocument();
+  expect(within(result).queryByRole("heading", { name: /Book 3/ })).not.toBeInTheDocument();
+
+  const download = within(result).getByRole("link", { name: "Download Learning Plan" });
+  expect(decodeURIComponent(download.getAttribute("href"))).toContain("4 years · 5 workbooks");
+  expect(decodeURIComponent(download.getAttribute("href"))).not.toContain("Book 3");
 
   fireEvent.click(within(result).getByRole("button", { name: "Next year" }));
   expect(within(result).getByRole("heading", { name: "Andrew’s Second Year" })).toBeInTheDocument();

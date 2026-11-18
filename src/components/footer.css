@@ -49,7 +49,7 @@
 
 .banner > img {
   width: 470px;
-  height: 66.35294342041016px;
+  height: auto;
   padding: 0;
   margin: 0;
   flex-shrink: 0;
@@ -347,7 +347,7 @@ hr {
 
   .banner > img {
    width: 257px;
-height: 36.282352447509766px;
+height: auto;
 opacity: 1;
 gap: 9.07px;
     transform: none;

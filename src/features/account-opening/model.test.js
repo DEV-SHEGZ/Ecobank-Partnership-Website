@@ -43,6 +43,29 @@ test('parent details: LGA must belong to the state, next of kin 18+, address pin
   expect(formatAddress(sampleValues().parent)).toBe('Plot 20, James Coker Street, Victoria Island, Eti-Osa, Lagos State');
 });
 
+test('parent details require a 13-digit tax ID and a source of funds, with an explanation for Others', () => {
+  const values = sampleValues();
+  values.parent.tin = '';
+  values.parent.sourceFunds = '';
+  let errors = validateStep(step('parent'), values, now);
+  expect(errors['parent.tin']).toBeTruthy();
+  expect(errors['parent.sourceFunds']).toBeTruthy();
+
+  values.parent.tin = '123456789012a';
+  values.parent.sourceFunds = 'Others';
+  errors = validateStep(step('parent'), values, now);
+  expect(errors['parent.tin']).toMatch(/13 digits/i);
+  expect(errors['parent.sourceFundsOther']).toBeTruthy();
+
+  values.parent.tin = '0123456789012';
+  values.parent.sourceFundsOther = 'Family support';
+  expect(validateStep(step('parent'), values, now)).toEqual({});
+
+  values.parent.sourceFunds = 'Salary';
+  values.parent.sourceFundsOther = '';
+  expect(validateStep(step('parent'), values, now)).toEqual({});
+});
+
 test('children must be 0–15 and documents follow the camera/upload rules', () => {
   const values = sampleValues();
   values.children[3].dob = '1990-06-23';
@@ -59,22 +82,34 @@ test('children must be 0–15 and documents follow the camera/upload rules', () 
   expect(photoTooOld({ name: 'new.jpg', takenAt: now.getTime() - 5 * 864e5 }, now.getTime())).toBe(false);
 });
 
-test('funding: each child needs a type, amount and source account; recurring needs a schedule and mandate', () => {
+test('funding shares the type, debit account and schedule while validating each child’s amount', () => {
   const values = sampleValues();
   values.count = '2';
   let errors = validateStep(step('fund'), values, now);
-  expect(errors['funding.0.type']).toBeTruthy();
-  expect(errors['funding.1.amount']).toBeTruthy();
-  values.funding[0] = { type: 'One-time payment', amount: '50,000', sourceAccount: '0123456789', frequency: '', startDate: '', endDate: '' };
-  values.funding[1] = { type: 'Recurring payment', amount: '10000', sourceAccount: '0123456789', frequency: 'Monthly', startDate: '2026-10-01', endDate: '2026-09-01' };
+  expect(errors['funding.type']).toBeTruthy();
+  expect(errors['funding.sourceAccount']).toBeTruthy();
+  expect(errors['funding.amounts.0']).toBeTruthy();
+  expect(errors['funding.amounts.1']).toBeTruthy();
+
+  values.funding = { type: 'Recurring Payment', sourceAccount: '0123456789', amounts: ['50,000', '10000'], frequency: 'Monthly', startDate: '2026-10-01', endDate: '2026-09-01' };
   errors = validateStep(step('fund'), values, now);
-  expect(errors['funding.0.type']).toBeUndefined();
-  expect(errors['funding.1.startDate']).toBeTruthy();
+  expect(errors['funding.type']).toBeUndefined();
+  expect(errors['funding.startDate']).toBeTruthy();
+  expect(errors['funding.endDate']).toBeTruthy();
   expect(errors.mandate).toBeTruthy();
-  values.funding[1].startDate = '2026-11-01';
-  values.funding[1].endDate = '';
+  values.funding.startDate = '2026-11-01';
+  values.funding.endDate = '';
   values.mandate = true;
   expect(validateStep(step('fund'), values, now)).toEqual({});
+
+  values.funding.type = 'One-Time Payment';
+  values.funding.amounts[1] = '0';
+  values.mandate = false;
+  errors = validateStep(step('fund'), values, now);
+  expect(errors['funding.amounts.1']).toBeTruthy();
+  expect(errors.mandate).toBeUndefined();
+  values.funding.amounts = ['50,000'];
+  expect(validateStep(step('fund'), values, now)['funding.amounts.1']).toBeTruthy();
 });
 
 test('demo account numbers are 10 digits and unique per child', () => {

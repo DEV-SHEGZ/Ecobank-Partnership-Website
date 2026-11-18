@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { CloseIcon } from './Fields';
-import terms from './terms.json';
 import boy from '../../images/account/tile-boy.svg';
 import blocks from '../../images/account/tile-blocks.svg';
 
@@ -13,32 +12,6 @@ function useDialog(open) {
     if (!open && node.open) node.close();
   }, [open]);
   return ref;
-}
-
-export function TermsModal({ open, onClose, onAgree }) {
-  const ref = useDialog(open);
-  const body = useRef();
-  const [read, setRead] = useState(false);
-  useEffect(() => { if (open) { setRead(false); body.current?.scrollTo(0, 0); } }, [open]);
-  const check = () => {
-    const el = body.current;
-    if (el && el.scrollTop + el.clientHeight >= el.scrollHeight - 24) setRead(true);
-  };
-  useEffect(() => { if (open) requestAnimationFrame(check); }, [open]);
-  return <dialog ref={ref} className="account-modal account-terms-modal" aria-labelledby="terms-title" onClose={onClose} onCancel={onClose}>
-    <div className="account-terms-heading">
-      <h2 id="terms-title">Terms &amp; Conditions</h2>
-      <button type="button" className="account-close" onClick={onClose} aria-label="Close terms and return to review"><CloseIcon /></button>
-    </div>
-    <div className="account-terms" ref={body} onScroll={check} tabIndex={0} aria-label="Terms and conditions text">
-      <p className="account-hint">Preview only: the design contains placeholder terms below. Agreeing does not create an agreement or open a real account.</p>
-      {terms.map((text, i) => text === 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' ? <h3 key={i}>{text}</h3> : <p key={i}>{text}</p>)}
-    </div>
-    <div className="account-modal-actions">
-      <p className="account-terms-status" role="status">{read ? 'Thanks for reading. You can now accept.' : 'Scroll to the end of the terms to accept.'}</p>
-      <button type="button" className="account-primary" disabled={!read} onClick={onAgree}>I agree to the terms &amp; conditions</button>
-    </div>
-  </dialog>;
 }
 
 const BENEFITS = [

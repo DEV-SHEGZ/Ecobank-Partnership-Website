@@ -40,6 +40,8 @@
 }
 
 .linkedprof > .btn {
+  border: 0 !important;
+  background: transparent !important;
   text-decoration: none !important;
   font-size: 18px !important;
   color: #023448 !important;
@@ -155,7 +157,9 @@
 @media (min-width: 601px) {
   .overall-cont { height: auto; padding-bottom: 80px !important; }
   .cards-cont { padding-bottom: 0 !important; }
+  .teacher-slide { display: flex; height: auto; }
   .teacher-card {
+    flex: 0 0 calc(100% - 24px);
     width: calc(100% - 24px) !important;
     height: auto;
     min-height: 520px;
@@ -169,6 +173,8 @@
     object-fit: cover;
   }
   .teach-crd-bdy {
+    display: flex;
+    flex-direction: column;
     height: auto;
     min-height: 215px;
     flex: 1 1 auto;
@@ -176,12 +182,12 @@
     padding: 20px !important;
     border-radius: 18px !important;
   }
-  .teach-crd-bdy > h5.card-title { font-size: 24px !important; line-height: 29px; }
-  .teach-crd-bdy .teacher-school { height: auto; overflow: visible; font-size: 19px !important; line-height: 26px !important; }
-  .teach-crd-bdy .teacher-years { font-size: 16px !important; line-height: 24px; margin: 8px 0 16px !important; }
-  .linkedprof { height: auto; padding: 0 !important; gap: 6px; }
+  .teach-crd-bdy > h5.card-title { font-size: 24px !important; line-height: 1.25; overflow-wrap: anywhere; }
+  .teach-crd-bdy .teacher-school { height: auto; overflow: visible; font-size: 19px !important; line-height: 1.4 !important; overflow-wrap: anywhere; }
+  .teach-crd-bdy .teacher-years { font-size: 16px !important; line-height: 1.5; margin: 8px 0 16px !important; }
+  .linkedprof { height: auto; margin-top: auto; padding: 0 !important; gap: 6px; flex-wrap: wrap; }
   .linkedprof .linkedin-icon { width: 24px; height: 24px; }
-  .linkedprof > .btn { padding: 0 !important; font-size: 15px !important; margin-right: 8px !important; }
+  .linkedprof > .btn { padding: 0 !important; font-size: 15px !important; line-height: 1.3; margin-right: 8px !important; }
 }
 
 @media (min-width: 901px) and (max-width: 1199px) {
@@ -197,3 +203,22 @@
   .cards-cont { width: min(1160px, 90%) !important; margin: 0 auto !important; padding-top: 64px !important; }
   .teacher-slide { width: calc(100% / 3) !important; }
 }
+
+.cards-cont { position: relative; display: flex; align-items: center; gap: 8px; }
+.teacher-swiper { flex: 1 1 auto; min-width: 0; }
+.teacher-arrow {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #bdcf00;
+  color: #023448;
+  font-size: 24px;
+  line-height: 1;
+}
+.teacher-arrow:disabled { opacity: .55; cursor: not-allowed; }
+.teacher-arrow:focus-visible { outline: 3px solid #00577a; outline-offset: 3px; }
+.teacher-arrow--previous { position: absolute; left: 0; }

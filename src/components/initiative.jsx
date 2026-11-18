@@ -1,10 +1,13 @@
 import "./initiative.css";
 import icon from "../images/Icon.png";
 import robot from "../images/Robot.png";
+import robotMobile from "../images/about-robot-figma.svg";
 import book from "../images/atc_book.png";
 import laptop from "../images/laptop.png";
 import boy from "../images/lying boy.png";
 import girl from "../images/lying_girl.png";
+import boyMobile from "../images/about-boy-figma.svg";
+import girlMobile from "../images/about-girl-figma.svg";
 const Initiative = () => {
   return (
     <section className="initiative">
@@ -22,7 +25,7 @@ const Initiative = () => {
         <p className="initiative-description">
           Through the Junior Savers Account, <strong>Ecobank</strong> Nigeria is partnering with
           Andrew Teaches Coding to expand the accessibility, credibility and reach
-          of coding education for school children across Nigeria.
+          of coding education for children across Nigeria.
         </p>
 
         <a className="button" href="https://punchng.com/ecobank-partners-firm-on-digital-training-for-students/?utm_source=rss.punchng.com&utm_medium=web" target="_blank" rel="noopener noreferrer">
@@ -34,7 +37,10 @@ const Initiative = () => {
       <div className="initiative-right">
 
         <div className="initiative-art">
-          <img src={robot} alt="robot mascot" className="robot" />
+          <picture>
+            <source media="(max-width: 600px)" srcSet={robotMobile} type="image/svg+xml" />
+            <img src={robot} alt="robot mascot" className="robot" />
+          </picture>
           <img src={laptop} alt="laptop" className="laptop" />
           <img src={book} alt="coding-workbook" className="screen" />
         </div>
@@ -43,8 +49,14 @@ const Initiative = () => {
       </div>
       </div>
       <div className="initiative-kids">
-          <img src={boy} alt="child reading"className="boy-reading"/>
-          <img src={girl} alt="child reading" className="girl-reading"/>
+          <picture>
+            <source media="(max-width: 600px)" srcSet={boyMobile} type="image/svg+xml" />
+            <img src={boy} alt="child reading" className="boy-reading" />
+          </picture>
+          <picture>
+            <source media="(max-width: 600px)" srcSet={girlMobile} type="image/svg+xml" />
+            <img src={girl} alt="child reading" className="girl-reading" />
+          </picture>
         </div>
     </section>
   );
